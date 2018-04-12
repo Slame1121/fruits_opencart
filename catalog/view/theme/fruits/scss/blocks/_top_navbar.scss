@@ -1,0 +1,119 @@
+.top_navbar{
+  &-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid #cccccc;
+    padding:5px 0 0 0;
+    &__item{
+
+      &-logo{
+        margin:0 15px;
+      }
+      &-mobile-nav{
+        display: none;
+        &__container{
+          position: absolute;
+          z-index: 25;
+          top:0;
+          right:-60%;
+          width: 60%;
+          height: 100%;
+          max-width: 60%;
+          background: #fff;
+          transition: all .4s;
+
+
+          &.open{
+            right: 0;
+          }
+          &-close{
+            position: absolute;
+            display: block;
+            right:10px;
+            top:10px;
+
+          }
+          ul{
+            margin: 35px 15px;
+            li{
+              width: 100%;
+              display: block;
+            }
+          }
+        }
+        &__button{
+          button{
+            margin:5px 5px 0 0;
+            outline: none;
+            padding:5px;
+            color:#D13D9B;
+            background: #fff;
+            border: 0 none;
+          }
+        }
+      }
+      &-contacts{
+        font-family: $font-ptsans;
+        text-align: right;
+        span, a{
+          color: #29262f;
+          margin-right:10px;
+        }
+      }
+      &-menu{
+        margin-top:10px;
+        &__list{
+          list-style-type: none;
+          li{
+            display: inline-block;
+
+            &:last-child{
+              //search block
+              display: inline-table;
+              vertical-align: middle;
+            }
+            a{
+              padding: 15px 10px;
+              color:#424852;
+              font-family: $font-ptsans;
+              position: relative;
+              display: block;
+              &:hover{
+                font-weight: 700;
+                &:after{
+                  width: calc(100% - 20px);
+                  height: 3px;
+                }
+              }
+              &:after{
+                content:"";
+                transition: all 1s;
+                width: 0;
+                height: 3px;
+                bottom: 0;
+                display: block;
+                left: 10px;
+                background: #f36b5b;
+                position: absolute;
+              }
+              &.active{
+                font-weight: 700;
+                cursor:default;
+                &:after{
+                  content: "";
+                  position: absolute;
+                  bottom: 0;
+                  left: 15px;
+                  width: 35%;
+                  height: 3px;
+                  background: #f36b5b;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

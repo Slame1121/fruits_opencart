@@ -1,0 +1,117 @@
+.seo_block{
+  position: relative;
+  &_container{
+    margin-top:80px;
+    &-header{
+      text-align: center;
+      margin-bottom:50px;
+      p{
+        font-size:36px;
+      }
+    }
+    &-content{
+      position: relative;
+      z-index: 1;
+      &__wrapper{
+        margin-top:30px;
+        padding:0 60px;
+        &-content{
+          box-shadow: 0 0 15px #00000052;
+          background: #fff;
+          &__item{
+            &__container{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              &__text{
+                padding:0 45px;
+                p{
+                  margin-top:5px;
+                  &.header{
+                    margin-top:15px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+              &__thumb{
+                img{
+                  width: auto;
+                }
+              }
+            }
+          }
+        }
+      }
+      &__tabs{
+        border-bottom:1px solid #ccc;
+        text-align: center;
+        ul{
+          li{
+            display: inline;
+            a{
+              padding:25px;
+              display: inline-block;
+              position: relative;
+              color:#000;
+              &:hover{
+                font-weight: 700;
+                &:after{
+                  width: (100%);
+                  height: 3px;
+                }
+              }
+              &:after{
+                content:"";
+                transition: all 1s;
+                width: 0;
+                height: 3px;
+                bottom: 0;
+                left:0;
+                display: block;
+                background: #f36b5b;
+                position: absolute;
+              }
+              &.active{
+                font-weight: 700;
+                cursor:default;
+                &:after{
+                  content: "";
+                  position: absolute;
+                  width: (100%);
+                  bottom: 0;
+                  height: 3px;
+                  background: #f36b5b;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_backgrounds{
+    position: absolute;
+    width: 100%;
+    height:700px;
+    top:0;
+    left:0;
+
+    >div{
+      position: absolute;
+      top:0;
+      left:0;
+      height:100%;
+      width: 100%;
+    }
+
+    .background{
+      &-1{
+        background: url(../images/backgrounds/background-1.jpg) no-repeat 160px 250px;
+      }
+      &-2{
+        background: url(../images/backgrounds/background-2.jpg) no-repeat 1160px 350px;
+      }
+    }
+  }
+}

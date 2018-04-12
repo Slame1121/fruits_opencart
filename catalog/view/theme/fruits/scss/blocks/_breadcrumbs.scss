@@ -1,0 +1,39 @@
+.breadcrumbs_block {
+	display: block;
+	&_container {
+		display: block;
+		position: relative;
+		margin: 40px 0 30px;
+		ul {
+			display: block;
+    		list-style: none;
+    		li {
+    			display: inline-block;
+				font-size: 12px;
+				&:first-child:before {
+					content: url('/catalog/view/theme/fruits/images/bd-home.png');
+					display: inline-block;
+					padding-right: 10px;
+				}
+				&:after {
+					content: '/';
+					padding-left: 3px;
+					font-size: 15px
+				}
+				&:last-child:after {
+					content: '';
+				}
+				.home {
+					color: #000;
+					font-size: 16px;
+					line-height: 25px;
+				}
+				a {
+					color: #000;
+					display: inline-block;
+					font-size: 12px;
+				}
+    		}
+		}
+	}
+}

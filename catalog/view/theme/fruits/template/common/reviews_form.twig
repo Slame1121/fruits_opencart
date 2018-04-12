@@ -1,0 +1,53 @@
+<section class="reviews_block">
+    <div class="reviews_block_backgrounds">
+        <div class="background-1">
+        </div>
+    </div>
+    <div class="container">
+        <div class="reviews_block_container">
+            <div class="reviews_block_container-header">
+                <p>ОТЗЫВЫ НАШИХ КЛИЕНТОВ</p>
+            </div>
+            {% if contacts %}
+            <div class="reviews_block_container-wrapper">
+                <div class="owl-carousel owl-theme">
+                    {% for contact in contacts %}
+                    <div class="item">
+                        <div class="reviews_block_container-wrapper__person">
+                            <div class="reviews_block_container-wrapper__person-thumb">
+                                <img src="/catalog/view/theme/fruits/images/reviews_profile.png" />
+                            </div>
+                            <div class="reviews_block_container-wrapper__person-name">
+                                <p>{{ contact.name }}</p>
+                                <span>{{ contact.date_added }}</span>
+                            </div>
+                        </div>
+                        <div class="reviews_block_container-wrapper__comment">
+                            <p>{{ contact.review }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="reviews_block_container-wrapper__addreview">
+                    <div class="reviews_block_container-wrapper__addreview__header">
+                        <div class="reviews_block_container-wrapper__addreview__header-close">
+                            <a href="#"><img src="/catalog/view/theme/fruits/images/icon-close.png" /></a>
+                        </div>
+                        <img src="/catalog/view/theme/fruits/images/icon-profile.png" />
+                        <p>ДОБАВИТЬ СВОЙ ОТЗЫВ</p>
+                    </div>
+                    <div class="reviews_block_container-wrapper__addreview__content">
+                        <input type="text" name="name" value="" placeholder="Укажите Ваше имя" id="name_input"/>
+                        <textarea name="comment" placeholder="Оставьте Ваш отзыв" id="comment_textarea"></textarea>
+                    </div>
+                </div>
+                <div class="reviews_block_container-wrapper__button">
+                    <button>ДОБАВИТЬ ОТЗЫВ</button>
+                </div>
+                <div class="owl-custom-pagination reviews_block_container-wrapper-pagination">
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

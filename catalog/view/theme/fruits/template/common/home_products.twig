@@ -1,0 +1,154 @@
+<section class="product_list">
+    <div class="container">
+        <div class="product_list_container tabs_container">
+            <div class="product_list_container-header tabs_list">
+                <div class="product_list_container-header__item">
+                    <a  href="#tab_specials">АКЦИИ!</a>
+                </div>
+                <div class="product_list_container-header__item">
+                    <a class="active" href="#tab_new">НОВЫЕ ПОСТУПЛЕНИЯ</a>
+                </div>
+                <div class="product_list_container-header__item">
+                    <a href="#tab_recomended">РЕКОМЕНДУЕМЫЕ</a>
+                </div>
+            </div>
+            <div class="product_list_container-content tabs_items">
+                <div id="tab_recomended">
+                    <div  class="owl-carousel owl-theme product_list_container-content__items">
+                        {% for product in recomended %}
+                        <div class="item">
+                            <div class="product_list_container-content__items-container">
+                                <div class="product_list_container-content__items-container__header">
+                                    <a href="{{ product.link }}">{{ product.name }}</a>
+                                    <div class="product_list_container-content__items-container__header-like">
+                                        <button class="product_list_container-content__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
+                                    </div>
+                                </div>
+                                <div class="product_list_container-content__items-container__image">
+                                    <a href="{{ product.link }}"> <img src="{{ product.image }}" /></a>
+                                </div>
+                                <div class="product_list_container-content__items-container__content">
+                                    <div class="product_list_container-content__items-container__content-price">
+                                        <div class="product_list_container-content__items-container__content-price__item">
+                                            {% if product.special > 0 %}
+                                            <p class="old_price">
+                                                {{ product.price }}
+                                            </p>
+                                            <p>{{ product.special_price }}</p>
+                                            {% else %}
+                                                <p>{{ product.price }}</p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product_list_container-content__items-container__content-price__item">
+                                            <div class="raty"></div>
+                                            <div class="product_list_container-content__items-container__content-price__item-rating">
+                                                <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзыва</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product_list_container-content__items-container__content-addtocart">
+                                        <a href="#">
+                                            <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div id="tab_new" class="active">
+                    <div  class="owl-carousel owl-theme product_list_container-content__items">
+                        {% for product in new %}
+                            <div class="item">
+                                <div class="product_list_container-content__items-container">
+                                    <div class="product_list_container-content__items-container__header">
+                                        <a href="{{ product.link }}">{{ product.name }}</a>
+                                        <div class="product_list_container-content__items-container__header-like">
+                                            <button class="product_list_container-content__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
+                                        </div>
+                                    </div>
+                                    <div class="product_list_container-content__items-container__image">
+                                        <a href="{{ product.link }}"> <img src="{{ product.image }}" /></a>
+                                    </div>
+                                    <div class="product_list_container-content__items-container__content">
+                                        <div class="product_list_container-content__items-container__content-price">
+                                            <div class="product_list_container-content__items-container__content-price__item">
+                                                {% if product.special > 0 %}
+                                                    <p class="old_price">
+                                                        {{ product.price }}
+                                                    </p>
+                                                    <p>{{ product.special_price }}</p>
+                                                {% else %}
+                                                    <p>{{ product.price }}</p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="product_list_container-content__items-container__content-price__item">
+                                                <div class="raty"></div>
+                                                <div class="product_list_container-content__items-container__content-price__item-rating">
+                                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзыва</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product_list_container-content__items-container__content-addtocart">
+                                            <a href="#">
+                                                <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div id="tab_specials">
+                    <div  class="owl-carousel owl-theme product_list_container-content__items">
+                        {% for product in special %}
+                            <div class="item">
+                                <div class="product_list_container-content__items-container">
+                                    <div class="product_list_container-content__items-container__header">
+                                        <a href="{{ product.link }}">{{ product.name }}</a>
+                                        <div class="product_list_container-content__items-container__header-like">
+                                            <button class="product_list_container-content__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
+                                        </div>
+                                    </div>
+                                    <div class="product_list_container-content__items-container__image">
+                                        <a href="{{ product.link }}"> <img src="{{ product.image }}" /></a>
+                                    </div>
+                                    <div class="product_list_container-content__items-container__content">
+                                        <div class="product_list_container-content__items-container__content-price">
+                                            <div class="product_list_container-content__items-container__content-price__item">
+                                                {% if product.special > 0 %}
+                                                    <p class="old_price">
+                                                        {{ product.price }}
+                                                    </p>
+                                                    <p>{{ product.special_price }}</p>
+                                                {% else %}
+                                                    <p>{{ product.price }}</p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="product_list_container-content__items-container__content-price__item">
+                                                <div class="raty"></div>
+                                                <div class="product_list_container-content__items-container__content-price__item-rating">
+                                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзыва</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product_list_container-content__items-container__content-addtocart">
+                                            <a href="#">
+                                                <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

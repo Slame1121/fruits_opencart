@@ -1,0 +1,18 @@
+
+<section class="main_banner">
+    <div class="container">
+        <div class="main_banner_container">
+            <div id="main_banner" class="owl-carousel owl-theme main_banner_container-items">
+                {% for banner in banners %}
+                <div class="item">
+                    <img alt="{{ banner.title }}" src="{{ banner.image }}" />
+                    <a href="{{ banner.link }}">{{ banner.link_title }}</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="owl-custom-pagination main_banner_container-pagination">
+
+            </div>
+        </div>
+    </div>
+</section>

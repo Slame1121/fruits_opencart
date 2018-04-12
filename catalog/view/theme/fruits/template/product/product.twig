@@ -1,0 +1,239 @@
+{{ header }}
+<section class="breadcrumbs_block">
+    <div class="container">
+        <div class="breadcrumbs_block_container">
+            <ul class="breadcrumbs_block_container__bread-crumbs">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="product_card">
+    <div class="container">
+        <div class="product_card_container">
+            <div class="product_card_container-item">
+                <div class="product_card_container-item-wrap">
+                    <div class="product_card_container-item-wrap__images">
+                        <div class="product_card_container-item-wrap__images__breadcrumbs">
+                            <a href="#">Назад к <span>Виноградные пасты</span></a>
+                        </div>
+                        <div class="product_card_container-item-wrap__images__title">
+                            {{ heading_title }}
+                        </div>
+                        <img src="{{ thumb }}">
+                    </div>
+                    <div class="product_card_container-item-wrap__text-wrap">
+                        <div class="product_card_container-item-wrap__text-wrap__head">
+                            <div class="product_card_container-item-wrap__text-wrap__head_raty raty"></div>
+                            <div class="product_card_container-item-wrap__text-wrap__head_like">
+                                <button class="product_card_container-item-wrap__text-wrap__head_like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-likeg.png"></button>
+                            </div>
+                            <div class="product_card_container-item-wrap__text-wrap__head_repost">
+                                <img src="/catalog/view/theme/fruits/images/icon-repost.png">
+                            </div>
+                        </div>
+                        <div id="tabs-head" class="product_card_container-item-wrap__text-wrap_container tabs_container">
+                            <div class="product_card_container-item-wrap__text-wrap_container__tabs">
+                                <ul class="tabs_list">
+                                    <li><a class="active" href="#tab_description">Описание продукта</a></li>
+                                    <li><a href="#tab_rewiews">Отзывы</a></li>
+                                    <li><a href="#tab_composition">Состав продукта</a></li>
+                                </ul>
+                            </div>
+                            <div id="tabs-content" class="product_card_container-item-wrap__text-wrap_container-content tabs_items">
+                                <div id="tab_description" class="product_card_container-item-wrap__text-wrap_container-content__item active mCustomScrollbar">
+                                    <div class="product_card_container-item-wrap__text-wrap_container-content__item-content">
+                                        {{ description }}
+                                    </div>
+                                </div>
+                                <div id="tab_rewiews" class="product_card_container-item-wrap__text-wrap_container-content__item">
+                                    <div class="product_card_container_reviews">
+                                        <div id="pagereview" class="owl-carousel owl-theme review product_card_container_reviews-content">
+                                            <div class="product_card_container_reviews-content-items item">
+                                                <div class="product_card_container_reviews-content-items__person">
+                                                    <div class="product_card_container_reviews-content-items__person-name">
+                                                        <p>Иванов Иванов</p>
+                                                    </div>
+                                                    <div class="product_card_container_reviews-content-items__person-raty raty"></div>
+                                                </div>
+                                                <div class="product_card_container_reviews-content-items__comment">
+                                                    <p>Фруктов жидких я не знал в жизни много потерял. Фрукты житкие познал многое я осознал. Осипенко что-то знал, тайну ягод разгадал и без всякого сомненья людям тайну даровал P.s. Есть загвоздочка одна, эта тайна не проста и поймёт её не каждый только тот, кто не стандартно размышляет иногда.</p>
+                                                </div>
+                                            </div>
+                                            <div class="product_card_container_reviews-content-items item">
+                                                <div class="product_card_container_reviews-content-items__person">
+                                                    <div class="product_card_container_reviews-content-items__person-name">
+                                                        <p>Иванов Иванов</p>
+                                                    </div>
+                                                    <div class="product_card_container_reviews-content-items__person-raty raty"></div>
+                                                </div>
+                                                <div class="product_card_container_reviews-content-items__comment">
+                                                    <p>Фруктов жидких я не знал в жизни много потерял. Фрукты житкие познал многое я осознал. Осипенко что-то знал, тайну ягод разгадал и без всякого сомненья людям тайну даровал P.s. Есть загвоздочка одна, эта тайна не проста и поймёт её не каждый только тот, кто не стандартно размышляет иногда.</p>
+                                                </div>
+                                            </div>
+                                            <div class="product_card_container_reviews-content-items item">
+                                                <div class="product_card_container_reviews-content-items__person">
+                                                    <div class="product_card_container_reviews-content-items__person-name">
+                                                        <p>Иванов Иванов</p>
+                                                    </div>
+                                                    <div class="product_card_container_reviews-content-items__person-raty raty"></div>
+                                                </div>
+                                                <div class="product_card_container_reviews-content-items__comment">
+                                                    <p>Фруктов жидких я не знал в жизни много потерял. Фрукты житкие познал многое я осознал. Осипенко что-то знал, тайну ягод разгадал и без всякого сомненья людям тайну даровал P.s. Есть загвоздочка одна, эта тайна не проста и поймёт её не каждый только тот, кто не стандартно размышляет иногда.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product_card_container_reviews__addreview">
+                                            <div class="product_card_container_reviews__addreview__header">
+                                                <div class="product_card_container_reviews__addreview__header-close">
+                                                    <a href="#"><img src="/catalog/view/theme/fruits/images/icon-close.png" /></a>
+                                                </div>
+                                                <p>ДОБАВИТЬ СВОЙ ОТЗЫВ</p>
+                                            </div>
+                                            <div class="product_card_container_reviews__addreview__content">
+                                                <input type="text" name="name" value="" placeholder="Укажите Ваше имя" />
+                                                <textarea name="comment" placeholder="Оставьте Ваш отзыв" ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="product_card_container_reviews__button">
+                                            <button>ДОБАВИТЬ ОТЗЫВ +</button>
+                                        </div>
+                                        <div class="owl-custom-pagination product_card_container_reviews-pagination">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab_composition" class="product_card_container-item-wrap__text-wrap_container-content__item">
+                                    <div class="product_card_container-item-wrap__text-wrap_container-content__item-content">
+                                        <table class="product_card_container-item-wrap__text-wrap_container-content__item-content_table">
+                                            <thead>
+                                            <tr>
+                                                <th>Группы полифенолов</th>
+                                                <th>Количество (мг/100г)</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Катехин-подобные/катехину</td>
+                                                <td>14,13/3,1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Флавонолы/Каертецин-подобные/Мирицетин-подобные</td>
+                                                <td>0,99/0,57/0,42</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Флаваконы</td>
+                                                <td>2,51</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Флапоны/Апигенин-подобные/Лютеолин-подобные</td>
+                                                <td>0,85/0,82/0,03</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Антоцианы</td>
+                                                <td>29,37</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Не идентифицированные</td>
+                                                <td>29,37</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Сумма полифенолов</td>
+                                                <td>50,59</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product_card_container-item-wrap__text-wrap__addtocart">
+                            <div class="product_card_container-item-wrap__text-wrap__addtocart_head">
+                                <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type">
+                                    <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type_title">
+                                        Выберете тип:
+                                    </div>
+                                    <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type-wrap">
+                                        <button class="type-amount">0,25 л</button>
+                                        <button class="type-amount active">0,5 л</button>
+                                        <button class="type-amount">1 л</button>
+                                    </div>
+                                </div>
+                                <div id="number" class="product_card_container-item-wrap__text-wrap__addtocart_head_number">
+                                    <div class="product_card_container-item-wrap__text-wrap__addtocart_head_number_title">
+                                        Количество:
+                                    </div>
+                                    <div class="product_card_container-item-wrap__text-wrap__addtocart_head_number-wrap">
+                                        <span class="product_card_container-item-wrap__text-wrap__addtocart_head_number_minus minus">-</span>
+                                        <input type="text" value="1" size="5"/>
+                                        <span class="product_card_container-item-wrap__text-wrap__addtocart_head_number_plus plus">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_card_container-item-wrap__text-wrap__addtocart_price">
+                                <span>347</span> грн
+                            </div>
+                            <div class="product_card_container-item-wrap__text-wrap__addtocart_button">
+                                <a href="#">
+                                    <span>В Корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="feature_product">
+    <div class="container">
+        <div class="feature_product_container">
+            <div class="feature_product_container-header">
+            <p>С этим товаром покупают</p>
+        </div>
+        <div class="feature_product_container-content">
+            <div id="feature_banner" class="owl-carousel owl-theme feature_product_container-content__items">
+                {% for product in products %}
+                    <div class="item">
+                    <div class="feature_product_container-content__items-container">
+                        <div class="feature_product_container-content__items-container__header">
+                            <a href="{{ product.href }}">{{ product.name }}</a>
+                            <div class="feature_product_container-content__items-container__header-like">
+                                <button class="feature_product_container-content__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-liked.png" /></button>
+                            </div>
+                        </div>
+                        <div class="feature_product_container-content__items-container__image">
+                            <a href="{{ product.href }}"><img src="{{ product.thumb }}" /></a>
+                        </div>
+                        <div class="feature_product_container-content__items-container__content">
+                            <div class="feature_product_container-content__items-container__content-price">
+                                <div class="feature_product_container-content__items-container__content-price__item">
+                                    {% if product.price %}
+                                       {% if not product.special %}
+                                           <p >  {{ product.price }}</p>
+                                       {% else %}  <p class="old_price">{{ product.price }}</p> <p class="price-new">{{ product.special }}</p>{% endif %}
+                                    {% endif %}
+                                </div>
+                                <div class="feature_product_container-content__items-container__content-price__item">
+                                    <div class="raty"></div>
+                                    <div class="feature_product_container-content__items-container__content-price__item-rating">
+                                        <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>2 отзыва</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature_product_container-content__items-container__content-addtocart">
+                                <a href="#">
+                                    <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{{ footer }} 

@@ -1,0 +1,51 @@
+#header_navbar{
+  background: #4a88db;
+}
+
+#header_description{
+  margin:15px 0;
+}
+
+#banner{
+  background: #f0f0f0;
+  margin-top:60px;
+}
+
+#home_products{
+  background: #f0f0f0;
+}
+
+#our_features{
+  margin:80px 0 80px 0;
+}
+
+#about_us{
+  background: #f0f0f0;
+  .container{
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 15px;
+    border-radius: 15px;
+    position: relative;
+    top:-40px;
+
+    >div{
+      width: 45%;
+      &:last-child{
+        padding-right:60px;
+      }
+      &:first-child{
+        padding-left:60px;
+      }
+    }
+  }
+}
+
+#catalog{
+  background: #f0f0f0;
+
+  .catalog_container{
+    top:40px;
+  }
+}

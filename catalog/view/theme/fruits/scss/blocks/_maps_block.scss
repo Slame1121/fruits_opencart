@@ -1,0 +1,10 @@
+.maps_block {
+	display: block;
+	position: relative;
+	&_container {
+		display: block;
+		padding: 5px 0 30px;
+		&__maps {
+		}
+	}
+}

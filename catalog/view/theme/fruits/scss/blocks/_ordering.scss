@@ -1,0 +1,478 @@
+.ordering_block{
+  &_container{
+    display: block;
+    position: relative;
+    margin-bottom: 20px;
+    &__login {
+      display: inline-block;
+      width: 460px;
+      height: 525px;
+      padding: 30px;
+      box-sizing: border-box;
+      box-shadow: 0 0 15px #00000052;
+      position: relative;
+      background: #fff;
+      z-index: 9;
+      left: 0;
+      &-header {
+        text-align: center;
+        margin-bottom: 25px;
+        .step {
+          display: block;
+          padding-bottom: 15px;
+          text-align: right;
+          font-size: 15px;
+          line-height: 20px;
+          color: #c6c6c6;
+        }
+      }
+      &.active {
+      .step {
+          color: #000;
+        }
+      }
+      &-content {
+        .tabs{
+        position: relative;
+        margin-bottom: 30px;
+        ul{
+          display: flex;
+          justify-content: center;
+          list-style-type: none;
+            &:after{
+              position: absolute;
+              content: "";
+              width:100%;
+              left:0;
+              bottom:0;
+              height:1px;
+              background:#cccccc;
+            }
+            li{
+              a{
+                padding:25px 20px;
+                text-transform: uppercase;
+                color:#000;
+                font-family: $font-ptsans;
+                position: relative;
+                display: block;
+                &:hover{
+                  font-weight: 700;
+                  &:after{
+                    width: (100%);
+                    height: 3px;
+                  }
+                }
+                &:after{
+                  content:"";
+                  transition: all 1s;
+                  width: 0;
+                  height: 3px;
+                  bottom: -1px;
+                  left:0;
+                  display: block;
+                  background: #f36b5b;
+                  position: absolute;
+                  z-index: 1;
+                }
+                &.active{
+                  font-weight: 700;
+                  cursor:default;
+                  &:after{
+                    content: "";
+                    position: absolute;
+                    width: (100%);
+                    bottom: -1px;
+                    height: 3px;
+                    background: #f36b5b;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .tabs_items{
+          .login__form{
+            input{
+              width: 100%;
+              padding: 15px 0;
+              outline: 0;
+              color:#952597;
+              font-size: 16px;
+              border: 0 none;
+              border-bottom: 1px solid #cccccc;
+              text-align: center;
+            }
+            .follow{
+              font-size: 11px;
+              text-transform: uppercase;
+              text-align: center;
+              color: #ccc;
+              padding-top: 15px;
+            }
+          }
+          .login__form-forget{
+            margin-top: 20px;
+            text-align: center;
+            a{
+              color: #000;
+              display: block;
+              font-size: 11px;
+              line-height: 29px;
+              text-transform: uppercase;
+            }
+          }
+          .login__form-submit{
+            padding-top: 20px;
+            button{
+              display: block;
+              cursor: pointer;
+              width: 100%;
+              background: #c6c6c6;
+              border: 0 none;
+              text-align: center;
+              padding: 15px 0;
+              span{
+                color: #fff;
+                font-size: 24px;
+                position: relative;
+                &:after{
+                  transition: all 0.3s;
+                  width: 16px;
+                  height: 11px;
+                  content: "";
+                  position: absolute;
+                  right: -25px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background: url(../images/icon-arrow-white.png) no-repeat;
+                }
+                &:hover:after{
+                  right: -45px;
+                }
+              }
+            }
+          } 
+          .login__form-social{
+            margin-top: 10px;
+            text-align: center;
+            p{
+              font-size: 15px;
+              text-transform: uppercase;
+              a{
+                display: inline-block;
+                padding-left: 10px;
+                position: relative;
+                top: 5px;
+              }
+            }
+          }
+        }
+      }
+      &.active {
+      button[type="submit"] {
+          background: #a4e243 !important;
+        }
+      }
+    }
+    &__delivery{
+      display: inline-block;
+      width: 460px;
+      height: 525px;
+      padding: 30px;
+      box-sizing: border-box;
+      box-shadow: 0 0 15px #00000052;
+      position: absolute;
+      z-index: 8;
+      background: #fff;
+      left: 240px;
+      &-header {
+        text-align: center;
+        margin-bottom: 30px;
+        span {
+          text-transform: uppercase;
+          font-size: 20px;
+          display: block;
+          padding-top: 26px;
+        }
+        .step {
+          display: block;
+          padding-bottom: 15px;padding-top: 0;
+          text-align: right;
+          color: #c6c6c6;
+          font-size: 15px;
+          line-height: 20px;
+        }
+      }
+      &.active {
+        z-index: 10;
+      }
+      &.active {
+      .step {
+          color: #000;
+        }
+      }
+      &-content {
+        display: block;
+        &__button {
+          display: block;
+          position: relative;
+          width: 100%;
+          border: 1px solid #ccc;
+          border-left: 7px solid #ccc;
+          background: transparent;
+          padding: 12px 20px;
+          margin-bottom: 20px;
+          span{
+            font-size: 17px;
+            color: #ccc;
+          }
+          &.active {
+            border: 1px solid #338351;
+            border-left: 7px solid #338351;
+            span {
+              color: #338351;
+              font-weight: 600;
+            }
+          }
+        }
+        &-submit {
+          margin-top: 20px;
+            button{
+              display: block;
+              cursor: pointer;
+              width: 100%;
+              background: #c6c6c6;
+              border: 0 none;
+              text-align: center;
+              padding: 15px 0;
+              margin: 15px 0;
+              span{
+                color: #fff;
+                font-size: 24px;
+                position: relative;
+                &:after{
+                  transition: all 0.3s;
+                  width: 16px;
+                  height: 11px;
+                  content: "";
+                  position: absolute;
+                  right: -25px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background: url(../images/icon-arrow-white.png) no-repeat;
+                }
+                &:hover:after{
+                  right: -45px;
+                }
+              }
+            }
+        }
+      }
+      &.active {
+      button[type="submit"] {
+          background: #a4e243 !important;
+        }
+      }
+    }
+    &__address{
+      display: inline-block;
+      width: 460px;
+      height: 525px;
+      padding: 30px;
+      box-sizing: border-box;
+      box-shadow: 0 0 15px #00000052;
+      position: absolute;
+      background: #fff;
+      z-index: 7;
+      left: 475px;
+      &-header {
+        text-align: center;
+        margin-bottom: 30px;
+        span {
+          text-transform: uppercase;
+          font-size: 20px;
+          display: block;
+          padding-top: 25px;
+        }
+        .step {
+          display: block;
+          padding-bottom: 15px;
+          padding-top: 0;
+          text-align: right;
+          color: #c6c6c6;
+          font-size: 15px;
+          line-height: 20px;
+        }
+      }
+      &.active {
+        z-index: 10;
+      }
+      &.active {
+      .step {
+          color: #000;
+        }
+      }
+      &-content {
+        display: block;
+        input {
+          display: block;
+          position: relative;
+          width: 100%;
+          border: 1px solid #ccc;
+          padding: 10px 20px;
+          margin-bottom: 10px;
+          box-sizing: border-box;
+        }
+        &-submit {
+          margin-top: 20px;
+            button{
+              display: block;
+              cursor: pointer;
+              width: 100%;
+              background: #c6c6c6;
+              border: 0 none;
+              text-align: center;
+              padding: 15px 0;
+              margin: 15px 0;
+              span{
+                color: #fff;
+                font-size: 24px;
+                position: relative;
+                &:after{
+                  transition: all 0.3s;
+                  width: 16px;
+                  height: 11px;
+                  content: "";
+                  position: absolute;
+                  right: -25px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background: url(../images/icon-arrow-white.png) no-repeat;
+                }
+                &:hover:after{
+                  right: -45px;
+                }
+              }
+            }
+        }
+      }
+      &.active {
+      button[type="submit"] {
+          background: #a4e243 !important;
+        }
+      }
+    }
+    &__paid{
+      display: inline-block;
+      width: 460px;
+      height: 525px;
+      padding: 30px;
+      box-sizing: border-box;
+      box-shadow: 0 0 15px #00000052;
+      background: #fff;
+      position: absolute;
+      z-index: 6;
+      left: 715px;
+      &-header {
+        text-align: center;
+        margin-bottom: 30px;
+        span {
+          text-transform: uppercase;
+          font-size: 20px;
+          display: block;
+          padding-top: 25px;
+        }
+        .step {
+          display: block;
+          padding-bottom: 15px;
+          padding-top: 0;
+          text-align: right;
+          color: #c6c6c6;
+          font-size: 15px;
+          line-height: 20px;
+        }
+      }
+      &.active {
+        z-index: 10;
+      }
+      &.active {
+      .step {
+          color: #000;
+        }
+      }
+      &-content {
+        display: block;
+        &__button {
+          display: block;
+          position: relative;
+          width: 100%;
+          border: 1px solid #ccc;
+          border-left: 7px solid #ccc;
+          background: transparent;
+          padding: 10px 20px;
+          margin-bottom: 11px;
+          span{
+            font-size: 17px;
+            color: #ccc;
+          }
+          &.active {
+            border: 1px solid #338351;
+            border-left: 7px solid #338351;
+            span {
+              color: #338351;
+              font-weight: 600;
+            }
+          }
+        }
+        &-important{
+          p{
+            font-size: 12px;
+            line-height: 14px;
+            padding: 1px 35px;
+            span{
+              color: #f36b5b;
+            }
+          }
+        }
+        &-submit {
+          margin-top: 20px;
+            button{
+              display: block;
+              cursor: pointer;
+              width: 100%;
+              background: #c6c6c6;
+              border: 0 none;
+              text-align: center;
+              padding: 15px 0;
+              margin: 15px 0;
+              span{
+                color: #fff;
+                font-size: 24px;
+                position: relative;
+                &:after{
+                  transition: all 0.3s;
+                  width: 24px;
+                  height: 23px;
+                  content: "";
+                  position: absolute;
+                  right: -35px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background: url(../images/icon-checked.png) no-repeat;
+                }
+                &:hover:after{
+                  right: -45px;
+                }
+              }
+            }
+        }
+      }
+      &.active {
+      button[type="submit"] {
+          background: #a4e243 !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<section class="footer">
+    <div class="container">
+        <div class="footer_container">
+            <div class="footer_container-top">
+                <div class="footer_container-top__logo">
+                    <img src="/catalog/view/theme/fruits/images/logo_footer.png" />
+                </div>
+                <div class="footer_container-top__navbar">
+                    <ul class="footer_container-top__navbar-list">
+                        {{ footer_menu }}
+
+                    </ul>
+                </div>
+            </div>
+            <div class="footer_container-bottom">
+                <div class="footer_container-bottom__copyrights">
+                    <p>2018 ©  жидкие фрукты</p>
+                </div>
+                <div class="footer_container-bottom__social">
+                    <a href="#"><img src="/catalog/view/theme/fruits/images/facebook-botom.png" /></a>
+                    <a href="#"><img src="/catalog/view/theme/fruits/images/youtube.png" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hidden_section">
+    <div class="remodal" data-remodal-id="login-modal">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <div class="login_modal">
+            <div class="login_modal-header">
+                <span>Регистрация</span>
+            </div>
+            <div class="login_modal-content">
+                <div class="tabs_container">
+                    <div class="tabs_items">
+                        <div id="tab_register" class="login_modal-content__form active">
+                            <form  id="register_form">
+                                <input type="email" name="email" value="" placeholder="Email" />
+                                <input type="password" name="password" value="" placeholder="Пароль" />
+                                <input type="password" name="confirm_password" value="" placeholder="Повторите пароль" />
+                            </form>
+                        </div>
+                        <div id="tab_login" class="login_modal-content__form">
+                            <form  id="login_form">
+                                <input type="email" name="email" value="" placeholder="Email" />
+                                <input type="password" name="password" value="" placeholder="Пароль" />
+                            </form>
+                        </div>
+                        <div id="tab_remember" class="login_modal-content__form">
+                            <form  id="remember_form">
+                                <input type="email" name="email" value="" placeholder="Email" />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="login_modal-content__tabs">
+                        <ul class="tabs_list">
+                            <li><a class="active" href="#tab_register">Регистрация</a></li>
+                            <li><a href="#tab_login">Вход</a></li>
+                            <li><a href="#tab_remember">Восстановление</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="login_modal-content__submit">
+                    <button type="submit" form="register_form"><span>Регистрация</span></button>
+                </div>
+                <div class="login_modal-content__social">
+                    <p>Вход через: <a href="#"><img src="/catalog/view/theme/fruits/images/icon-facebook.png" /></a></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% for script in scripts %}
+    <script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+</body>
+</html>

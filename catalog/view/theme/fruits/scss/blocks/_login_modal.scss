@@ -1,0 +1,134 @@
+.login_modal{
+  &-header{
+    text-align: center;
+    margin-bottom:15px;
+    span{
+      font-size: 24px;
+      text-transform: uppercase;
+      position: relative;
+      &:before{
+        content: "";
+        position: absolute;
+        left: -40px;
+        top: 4px;
+        background: url('/catalog/view/theme/fruits/images/icon_profile.png');
+        width: 21px;
+        height:21px;
+      }
+    }
+  }
+  &-content{
+
+    .tabs_container{
+      max-width: 80%;
+      margin: 0 auto;
+    }
+    &__submit{
+      button{
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        background: #88e538;
+        border:0 none;
+        text-align: center;
+        padding:15px 0;
+        margin:15px 0;
+        span{
+          color:#fff;
+          font-size: 24px;
+          position: relative;
+
+          &:hover{
+            &:after{
+              right:-45px;
+            }
+          }
+          &:after{
+            transition: all 0.3s;
+            width:16px;
+            height: 11px;
+            content:"";
+            position: absolute;
+            right:-25px;
+            top:50%;
+            transform: translateY(-50%);
+            background: url('/catalog/view/theme/fruits/images/icon-arrow-white.png') no-repeat;
+          }
+        }
+      }
+    }
+    &__tabs{
+      position: relative;
+
+      ul{
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+
+
+        &:after{
+          position: absolute;
+          content: "";
+          width:100%;
+          left:0;
+          bottom:0;
+          height:1px;
+          background:#cccccc;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.45);
+        }
+        li{
+          a{
+            padding:25px 15px;
+            text-transform: uppercase;
+            color:#000;
+            font-family: $font-ptsans;
+            position: relative;
+            display: block;
+            &:hover{
+              font-weight: 700;
+              &:after{
+                width: (100%);
+                height: 3px;
+              }
+            }
+            &:after{
+              content:"";
+              transition: all 1s;
+              width: 0;
+              height: 3px;
+              bottom: 0;
+              left:0;
+              display: block;
+              background: #f36b5b;
+              position: absolute;
+            }
+            &.active{
+              font-weight: 700;
+              cursor:default;
+              &:after{
+                content: "";
+                position: absolute;
+                width: (100%);
+                bottom: 0;
+                height: 3px;
+                background: #f36b5b;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__form{
+      input{
+        width: 100%;
+        padding: 10px 0;
+        outline: 0;
+        color:#949297;
+        font-size: 16px;
+        border: 0 none;
+        border-bottom: 1px solid #cccccc;
+        text-align: center;
+      }
+    }
+  }
+}
