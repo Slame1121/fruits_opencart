@@ -63,131 +63,44 @@
             </div>
             <div class="category_block_container_content">
                 <div id="grid-content" class="category_block_container_content_grid">
+
+                    {% for product in products %}
                     <div class="category_block_container_content_grid-item item">
                         <div class="category_block_container_content_grid-item__items-container">
                             <div class="category_block_container_content_grid-item__items-container__header">
-                                <a href="#">Паста черного винограда</a>
+                                <a href="{{ product.href }}">{{ product.name }} </a>
                                 <div class="category_block_container_content_grid-item__items-container__header-like">
                                     <button class="category_block_container_content_grid-item__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
                                 </div>
                             </div>
                             <div class="category_block_container_content_grid-item__items-container__image">
-                                <img src="/catalog/view/theme/fruits/images/products/product_1.jpg" />
+                                <a href="{{ product.href }}">  <img alt="{{ product.name }}" src="{{ product.thumb }}" /></a>
                             </div>
                             <div class="category_block_container_content_grid-item__items-container__content">
                                 <div class="category_block_container_content_grid-item__items-container__content-price">
                                     <div class="category_block_container_content_grid-item__items-container__content-price__item">
-                                        <p class="old_price">
-                                            380 грн
-                                        </p>
-                                        <p>347 грн</p>
-                                    </div>
-                                    <div class="category_block_container_content_grid-item__items-container__content-price__item">
-                                        <div class="raty"></div>
-                                        <div class="category_block_container_content_grid-item__items-container__content-price__item-rating">
-                                            <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>2 отзыва</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="category_block_container_content_grid-item__items-container__content-addtocart">
-                                    <a href="#">
-                                        <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category_block_container_content_grid-item item">
-                        <div class="category_block_container_content_grid-item__items-container">
-                            <div class="category_block_container_content_grid-item__items-container__header">
-                                <a href="#">Паста черного  винограда  </a>
-                                <div class="category_block_container_content_grid-item__items-container__header-like">
-                                    <button class="category_block_container_content_grid-item__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
-                                </div>
-                            </div>
-                            <div class="category_block_container_content_grid-item__items-container__image">
-                                <img src="/catalog/view/theme/fruits/images/products/product_1.jpg" />
-                            </div>
-                            <div class="category_block_container_content_grid-item__items-container__content">
-                                <div class="category_block_container_content_grid-item__items-container__content-price">
-                                    <div class="category_block_container_content_grid-item__items-container__content-price__item">
-                                        <p>317 грн</p>
+                                        {% if product.price %}
+                                          {% if not product.special %}
+                                              <p><span> {{ product.price }}</span> </p>
+                                                {% else %}
+                                                    <p><span>{{ product.special }}</span> </p>
+                                                    <p class="old_price"><span>{{ product.price }}</span> </p>
+                                          {% endif %}
+                                        {% endif %}
                                     </div>
                                     <div class="category_block_container_content_grid-item__items-container__content-price__item">
                                         <div class="raty"></div>
                                     </div>
                                 </div>
                                 <div class="category_block_container_content_grid-item__items-container__content-addtocart">
-                                    <a href="#">
+                                    <a data-product-id="{{ product.product_id }}" class="button-add-to-cart" href="#">
                                         <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="category_block_container_content_grid-item item">
-                        <div class="category_block_container_content_grid-item__items-container">
-                            <div class="category_block_container_content_grid-item__items-container__header">
-                                <a href="#">Паста черного  винограда  </a>
-                                <div class="category_block_container_content_grid-item__items-container__header-like">
-                                    <button class="category_block_container_content_grid-item__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
-                                </div>
-                            </div>
-                            <div class="category_block_container_content_grid-item__items-container__image">
-                                <img src="/catalog/view/theme/fruits/images/products/product_1.jpg" />
-                            </div>
-                            <div class="category_block_container_content_grid-item__items-container__content">
-                                <div class="category_block_container_content_grid-item__items-container__content-price">
-                                    <div class="category_block_container_content_grid-item__items-container__content-price__item">
-                                        <p>1347 грн</p>
-                                    </div>
-                                    <div class="category_block_container_content_grid-item__items-container__content-price__item">
-                                        <div class="raty"></div>
-                                        <div class="category_block_container_content_grid-item__items-container__content-price__item-rating">
-                                            <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>2 отзыва</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="not">Нет в наличии</p>
-                                <div class="category_block_container_content_grid-item__items-container__content-addtocart not-available">
-                                    <a href="#">
-                                        <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category_block_container_content_grid-item item">
-                        <div class="category_block_container_content_grid-item__items-container">
-                            <div class="category_block_container_content_grid-item__items-container__header">
-                                <a href="#">Паста черного  винограда  </a>
-                                <div class="category_block_container_content_grid-item__items-container__header-like">
-                                    <button class="category_block_container_content_grid-item__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
-                                </div>
-                            </div>
-                            <div class="category_block_container_content_grid-item__items-container__image">
-                                <img src="/catalog/view/theme/fruits/images/products/product_1.jpg" />
-                            </div>
-                            <div class="category_block_container_content_grid-item__items-container__content">
-                                <div class="category_block_container_content_grid-item__items-container__content-price">
-                                    <div class="category_block_container_content_grid-item__items-container__content-price__item">
-                                        <p>317 грн</p>
-                                    </div>
-                                    <div class="category_block_container_content_grid-item__items-container__content-price__item">
-                                        <div class="raty"></div>
-                                        <div class="category_block_container_content_grid-item__items-container__content-price__item-rating">
-                                            <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>2 отзыва</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="category_block_container_content_grid-item__items-container__content-addtocart">
-                                    <a href="#">
-                                        <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div id="list-content" class="category_block_container_content_list" style="display: none;">
                     <div class="category_block_container_content_list_item item">

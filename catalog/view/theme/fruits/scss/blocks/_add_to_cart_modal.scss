@@ -1,0 +1,62 @@
+.add-to-cart-modal{
+  &-content{
+    &__wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img{
+        width: auto;
+        margin-right:15px;
+      }
+
+      p{
+        text-transform: uppercase;
+        font-size: 36px;
+      }
+    }
+    button{
+      background: transparent;
+      cursor: pointer;
+      border: 0 none;
+      font-size: 16px;
+      text-transform: uppercase;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+    &__submit{
+     a{
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        background: #88e538;
+        border:0 none;
+        text-align: center;
+        padding:15px 0;
+        margin:15px 0;
+        span{
+          color:#fff;
+          font-size: 24px;
+          position: relative;
+
+          &:hover{
+            &:after{
+              right:-45px;
+            }
+          }
+          &:after{
+            transition: all 0.3s;
+            width:16px;
+            height: 11px;
+            content:"";
+            position: absolute;
+            right:-25px;
+            top:50%;
+            transform: translateY(-50%);
+            background: url('/catalog/view/theme/fruits/images/icon-arrow-white.png') no-repeat;
+          }
+        }
+      }
+    }
+  }
+}

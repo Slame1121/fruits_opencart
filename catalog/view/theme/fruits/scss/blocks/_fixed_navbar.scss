@@ -32,8 +32,8 @@
         .dropdown{
           .dropdown-header{
             padding: 5px;
-            display: flex;
             align-items: center;
+            display: flex;
             p{
               font-size: 13px;
             }
@@ -113,7 +113,6 @@
       }
     }
     &-catalog{
-
       &:hover{
         .fixed_navbar-container-catalog__dropdown{
           height: 456px;
@@ -122,19 +121,26 @@
       }
 
       &__dropdown{
-        padding-top:10px;
         background: #fff;
         height:0;
         z-index:0;
         overflow: hidden;
         transition: all 0.8s;
         position: absolute;
+        .catalog_block_container{
+          margin-top:10px;
+          &-header{
+            display: none;
+          }
+          &-subcategories{
+            top:0;
+          }
+
+        }
         >div{
           background: #fff;
         }
-        .catalog_block_container-subcategories{
-          top:0;
-        }
+
 
       }
       button{

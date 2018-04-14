@@ -62,6 +62,7 @@ class ControllerCommonHeader extends Controller {
 		$data['account'] = $this->url->link('account/account', '', true);
 		$data['register'] = $this->url->link('account/register', '', true);
 		$data['login'] = $this->url->link('account/login', '', true);
+		$data['category_catalog'] = $this->load->controller('common/category_catalog');
 		$data['order'] = $this->url->link('account/order', '', true);
 		$data['transaction'] = $this->url->link('account/transaction', '', true);
 		$data['download'] = $this->url->link('account/download', '', true);

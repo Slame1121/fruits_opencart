@@ -2,7 +2,6 @@
 class ControllerInformationInformation extends Controller {
 	public function index() {
 		$this->load->language('information/information');
-
 		$this->load->model('catalog/information');
         $this->load->model('design/layout');
 		$data['breadcrumbs'] = array();
@@ -41,6 +40,7 @@ class ControllerInformationInformation extends Controller {
 
 			$data['continue'] = $this->url->link('common/home');
             $data['reviews_form'] = $this->load->controller('common/reviews_form');
+			$data['contact_form'] = $this->load->controller('common/contact_form');
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
 			$data['content_top'] = $this->load->controller('common/content_top');

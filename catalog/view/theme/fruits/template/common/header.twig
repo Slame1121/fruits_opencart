@@ -92,101 +92,11 @@
             <div class="fixed_navbar-container-catalog">
                 <button type="button"><img src="/catalog/view/theme/fruits/images/icon-catalog.png">Каталог товаров</button>
                 <div class="fixed_navbar-container-catalog__dropdown">
-                    <div class="catalog_block">
-                        <div class="container">
-                            <div class="catalog_block_container">
-                                <div class="catalog_block_container-header">
-                                </div>
-                                <div id="categories_list" class="catalog_block_container-list owl-carousel owl-theme">
-                                    <div  class="item catalog_block_container-list__item">
-                                        <img data-image = "images/categories/1.png" data-image-active="images/categories/1-active.png" src="/catalog/view/theme/fruits/images/categories/1.png" />
-                                        <div class="item catalog_block_container-list__item-wrapper">
-                                            <div class="catalog_block_container-list__item-wrapper-text">
-                                                <h3>ЯГОДНЫЕ И  ФРУКТОВЫЕ ПАСТЫ </h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d</p>
-                                                <button>ПОДРОБНЕЕ</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div  class="item catalog_block_container-list__item">
-                                        <img src="/catalog/view/theme/fruits/images/categories/2.png" />
-                                        <div class="item catalog_block_container-list__item-wrapper">
-                                            <div class="catalog_block_container-list__item-wrapper-text">
-                                                <h3>белковые ПАСТЫ</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d</p>
-                                                <button>ПОДРОБНЕЕ</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div  class="item catalog_block_container-list__item">
-                                        <img src="/catalog/view/theme/fruits/images/categories/3.png" />
-                                        <div class="item catalog_block_container-list__item-wrapper">
-                                            <div class="catalog_block_container-list__item-wrapper-text">
-                                                <h3>Зерновые  и бобовые продукты</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d</p>
-                                                <button>ПОДРОБНЕЕ</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-custom-pagination catalog_block_container-pagination">
-
-                                </div>
-                                <div class="catalog_block_container-subcategories">
-                                    <div class="catalog_block_container-subcategories__close">
-                                        <a href="#" ><img src="/catalog/view/theme/fruits/images/icon-close.png" /></a>
-                                    </div>
-                                    <div class="catalog_block_container-subcategories__header">
-                                        <img src="/catalog/view/theme/fruits/images/icon-subcategories.png" />
-                                        <p><span>СМОТРЕТЬ ВСЕ ТОВАРЫ</span> /  ягодные и фруктовые пасты </p>
-                                    </div>
-                                    <div class="catalog_block_container-subcategories__content">
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Черничная паста</a>
-                                        </div>
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Клюквенная паста</a>
-                                        </div>
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Клюквенная паста</a>
-                                        </div>
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Черничная паста</a>
-                                        </div>
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Клюквенная паста</a>
-                                        </div>
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Клюквенная паста</a>
-                                        </div>
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Черничная паста</a>
-                                        </div>
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Клюквенная паста</a>
-                                        </div>
-                                        <div class="catalog_block_container-subcategories__content-item">
-                                            <a href="">Клюквенная паста</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="catalog_block_container-footer">
-                                    <div class="catalog_block_container-footer__link">
-                                        <a href="#" class="">открыть каталог всей продукции</a>
-                                    </div>
-                                    <div class="catalog_block_container-footer__pagination">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {{ category_catalog }}
                 </div>
             </div>
             <div class="fixed_navbar-container-cart">
-                <div class="fixed_navbar-container-cart__cart">
-                    <a href="#"><img src="/catalog/view/theme/fruits/images/icon-bag.png" /> <span>2</span> <p class="fixed_navbar-container-cart__cart-price">1 207 грн</p></a>
-                </div>
+                {{ cart }}
                 <div class="fixed_navbar-container-cart__account">
                     <div class="fixed_navbar-container-cart__account-navbar dropdown">
                         <div class="dropdown-header">

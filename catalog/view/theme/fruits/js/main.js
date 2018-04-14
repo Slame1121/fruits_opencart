@@ -176,6 +176,14 @@ var Main = {
 			$(this).closest('.tabs_container').find(href).fadeIn('slow');
 		})
 	},
+	initAddTocartButton: function () {
+		$('body').on('click','.button-add-to-cart', function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			var product_id = $(this).data('product-id');
+			cart.add(product_id, 1);
+		})
+	},
 	init: function(){
 		this.initCatalog();
 		this.initReviews();
@@ -183,6 +191,8 @@ var Main = {
 		this.initNews();
 
 		this.initTabs();
+
+		this.initAddTocartButton();
 	},
 
 	InitOwlPagination: function(e){
