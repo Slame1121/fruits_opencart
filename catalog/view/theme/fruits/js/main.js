@@ -171,6 +171,9 @@ var Main = {
 			e.preventDefault();
 			$(this).parent().parent().find('a').removeClass('active');
 			$(this).addClass('active');
+			$(this).closest('div.login_modal').find('.login_modal-header span').text($(this).text());
+            $(this).closest('div.login_modal').find('.login_modal-content__submit button span').text($(this).text());
+            $(this).closest('div.login_modal').find('.login_modal-content__submit button').attr('form', $(this).data('form-id'));
 			var href =  $(this).attr('href');
 			$(this).closest('.tabs_container').find('.tabs_items >div').hide();
 			$(this).closest('.tabs_container').find(href).fadeIn('slow');
