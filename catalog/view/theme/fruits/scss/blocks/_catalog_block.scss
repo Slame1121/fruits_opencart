@@ -1,7 +1,11 @@
 .catalog_block{
+
   &_container{
     position: relative;
     z-index: 1;
+    .container{
+      position: relative;
+    }
     &-header{
       text-align: center;
       margin-bottom:15px;
@@ -104,6 +108,22 @@
       }
     }
     &-list{
+
+      &[data-carousel="0"]{
+        display: flex;
+        flex-flow: wrap;
+        justify-content: left;
+        padding-left: 30px;
+        .catalog_block_container-list__item{
+
+          &:nth-child(2){
+            margin:0 5px;
+          }
+          margin-bottom:10px;
+            width: 31%;
+            position: relative;
+        }
+      }
       &__item{
         padding:0 5px;
         background-position: -10px top;

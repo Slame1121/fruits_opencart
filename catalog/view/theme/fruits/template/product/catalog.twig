@@ -1,0 +1,61 @@
+{{ header }}
+<div class="catalog_block_container">
+    <div class="container">
+        <div class="catalog_block_container-header">
+           <p>Каталог</p>
+        </div>
+        <div class="catalog_block_container-list" data-carousel="0">
+            {% for category in categories %}
+            <div  class="item catalog_block_container-list__item">
+                <img data-image = "{{ category.image }}" data-image-active="/catalog/view/theme/fruits/images/categories/1-active.png" src="{{ category.image }}" />
+                <div class="item catalog_block_container-list__item-wrapper">
+                    <div class="catalog_block_container-list__item-wrapper-text">
+                        <h3>{{ category.name }} </h3>
+                        <p>{{ category.description }} </p>
+                        <button data-category-id="{{ category.category_id }}" >ПОДРОБНЕЕ</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="catalog_block_container-subcategories">
+            <div class="catalog_block_container-subcategories__close">
+                <a href="#" ><img src="/catalog/view/theme/fruits/images/icon-close.png" /></a>
+            </div>
+            <div class="catalog_block_container-subcategories__header">
+                <img src="/catalog/view/theme/fruits/images/icon-subcategories.png" />
+                <p><span>СМОТРЕТЬ ВСЕ ТОВАРЫ</span> /  ягодные и фруктовые пасты </p>
+            </div>
+            <div class="catalog_block_container-subcategories__content">
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Черничная паста</a>
+                </div>
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Клюквенная паста</a>
+                </div>
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Клюквенная паста</a>
+                </div>
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Черничная паста</a>
+                </div>
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Клюквенная паста</a>
+                </div>
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Клюквенная паста</a>
+                </div>
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Черничная паста</a>
+                </div>
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Клюквенная паста</a>
+                </div>
+                <div class="catalog_block_container-subcategories__content-item">
+                    <a href="">Клюквенная паста</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ footer }}

@@ -106,44 +106,26 @@
                                 </div>
                                 <div id="tab_composition" class="product_card_container-item-wrap__text-wrap_container-content__item">
                                     <div class="product_card_container-item-wrap__text-wrap_container-content__item-content">
+
+                                        {% if attribute_groups %}
                                         <table class="product_card_container-item-wrap__text-wrap_container-content__item-content_table">
+                                            {% for attribute_group in attribute_groups %}
                                             <thead>
                                             <tr>
-                                                <th>Группы полифенолов</th>
-                                                <th>Количество (мг/100г)</th>
+                                                <th colspan="2">{{ attribute_group.name }}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            {% for attribute in attribute_group.attribute %}
                                             <tr>
-                                                <td>Катехин-подобные/катехину</td>
-                                                <td>14,13/3,1</td>
+                                                <td>{{ attribute.name }}</td>
+                                                <td>{{ attribute.text }}</td>
                                             </tr>
-                                            <tr>
-                                                <td>Флавонолы/Каертецин-подобные/Мирицетин-подобные</td>
-                                                <td>0,99/0,57/0,42</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Флаваконы</td>
-                                                <td>2,51</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Флапоны/Апигенин-подобные/Лютеолин-подобные</td>
-                                                <td>0,85/0,82/0,03</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Антоцианы</td>
-                                                <td>29,37</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Не идентифицированные</td>
-                                                <td>29,37</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Сумма полифенолов</td>
-                                                <td>50,59</td>
-                                            </tr>
+                                            {% endfor %}
                                             </tbody>
+                                            {% endfor %}
                                         </table>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -151,14 +133,27 @@
                         <div class="product_card_container-item-wrap__text-wrap__addtocart">
                             <div class="product_card_container-item-wrap__text-wrap__addtocart_head">
                                 <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type">
-                                    <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type_title">
-                                        Выберете тип:
-                                    </div>
-                                    <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type-wrap">
-                                        <button class="type-amount">0,25 л</button>
-                                        <button class="type-amount active">0,5 л</button>
-                                        <button class="type-amount">1 л</button>
-                                    </div>
+                                    {% if options %}
+                                        {% for option in options %}
+                                            {% if option.type == 'radio' %}
+
+                                                <div id="input-option{{ option.product_option_id }}">
+
+                                                    <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type_title">
+                                                        {{ option.name }}
+                                                    </div>
+                                                    <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type-wrap">
+                                                        {% for option_value in option.product_option_value %}
+                                                        <button data-product-option-id="{{ option.product_option_id }}" data-product-option-value-id="{{ option_value.product_option_value_id }}" class="type-amount product_option_value {% if loop.index == 1 %}active{% endif %}">{{ option_value.name }}</button>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                </div>
+
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+
                                 </div>
                                 <div id="number" class="product_card_container-item-wrap__text-wrap__addtocart_head_number">
                                     <div class="product_card_container-item-wrap__text-wrap__addtocart_head_number_title">
@@ -172,10 +167,14 @@
                                 </div>
                             </div>
                             <div class="product_card_container-item-wrap__text-wrap__addtocart_price">
-                                <span>347</span> грн
+                                {% if price %}
+                                     {% if not special %}
+                                         <span>{{ price }}</span>
+                                        {% else %} <span>{{ special }}</span> <span class="old_price">{{ price }}</span> {% endif %}
+                                {% endif %}
                             </div>
                             <div class="product_card_container-item-wrap__text-wrap__addtocart_button">
-                                <a href="#">
+                                <a class="button-add-to-cart" data-product-id="{{ product_id }}" href="#">
                                     <span>В Корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png">
                                 </a>
                             </div>
@@ -186,6 +185,7 @@
         </div>
     </div>
 </section>
+{% for product in products %}
 <section class="feature_product">
     <div class="container">
         <div class="feature_product_container">
@@ -194,7 +194,7 @@
         </div>
         <div class="feature_product_container-content">
             <div id="feature_banner" class="owl-carousel owl-theme feature_product_container-content__items">
-                {% for product in products %}
+
                     <div class="item">
                     <div class="feature_product_container-content__items-container">
                         <div class="feature_product_container-content__items-container__header">
@@ -223,17 +223,18 @@
                                 </div>
                             </div>
                             <div class="feature_product_container-content__items-container__content-addtocart">
-                                <a href="#">
+                                <a class="button-add-to-cart" data-product-id="{{ product.product_id }}" href="#">
                                     <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+
             </div>
         </div>
     </div>
     </div>
 </section>
+{% endfor %}
 {{ footer }} 

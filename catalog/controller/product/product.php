@@ -372,7 +372,12 @@ class ControllerProductProduct extends Controller {
 			$data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);
 
 			$data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
-
+			//Отключаем все группы кроме филов тех, можно переделать и выводить всё кроме болезней
+			foreach($data['attribute_groups'] as $key =>$group){
+				if($group['attribute_group_id'] != 7){
+					unset($data['attribute_groups'][$key]);
+				}
+			}
 			$data['products'] = array();
 
 			$results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);

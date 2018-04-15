@@ -31,9 +31,17 @@
                                 <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>17 отзывов</span>
                             </div>
                             <div class="cart_block_container-item-wrap__text-wrap__text__text-desc">
-                                Паста белого винограда привер текста. Паста белого винограда привер текста. Паста белого винограда привер текста.
+                                {% if product.option %}
+                                    {% for option in product.option %} <br />
+                                        <p>{{ option.name }}: {{ option.value }}</p> {% endfor %}
+                                    {% else %}
+                                        Паста белого винограда привер текста. Паста белого винограда привер текста. Паста белого винограда привер текста.
+                                {% endif %}
+
                             </div>
-                            <div class="cart_block_container-item-wrap__text-wrap__text__text-view"><a href="#">Смотреть подробнее...</a></div>
+
+                            <div class="cart_block_container-item-wrap__text-wrap__text__text-view"><a href="#">  {% if not product.option %}Смотреть подробнее...{% else %}&nbsp;{% endif %}</a> </div>
+
                         </div>
                         <div class="cart_block_container-item-wrap__text-wrap__container">
                             <div id="number" class="cart_block_container-item-wrap__text-wrap__container_number">
@@ -54,7 +62,7 @@
                     <span>Сумма к оплате: <strong>1299</strong> грн </span>
                 </div>
                 <div class="cart_block_container-item__checkout-addtocart">
-                    <a href="#">
+                    <a href="{{ checkout }}">
                         <span>Оформить заказ</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png">
                     </a>
                 </div>

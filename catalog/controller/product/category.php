@@ -398,7 +398,27 @@ class ControllerProductCategory extends Controller {
 
 			$data['continue'] = $this->url->link('common/home');
 
-			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+
+			$categories = $this->model_catalog_category->getCategories(0);
+			$data = [];
+			foreach ($categories as $category) {
+
+
+
+				$filter_data = array(
+					'filter_category_id'  => $category['category_id'],
+					'filter_sub_category' => true
+				);
+
+				$data['categories'][] = array(
+					'category_id' => $category['category_id'],
+					'description' => substr(htmlspecialchars_decode($category['description']), 0, 100),
+					'image'       => $this->model_tool_image->resize($category['image'], 170, 340),
+					'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+
+					'href'        => $this->url->link('product/category', 'path=' . $category['category_id'])
+				);
+			}
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
@@ -407,7 +427,8 @@ class ControllerProductCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			$this->response->setOutput($this->load->view('error/not_found', $data));
+
+			$this->response->setOutput($this->load->view('product/catalog', $data));
 		}
 	}
 }

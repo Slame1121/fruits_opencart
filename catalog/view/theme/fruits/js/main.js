@@ -184,7 +184,14 @@ var Main = {
 			e.stopPropagation();
 			e.preventDefault();
 			var product_id = $(this).data('product-id');
-			cart.add(product_id, 1);
+			var options = {};
+			var options_objects = $('.product_option_value.active');
+			if(options_objects.length > 0){
+				$.each(options_objects, function(key, val){
+					options[$(val).data('product-option-id')] = $(val).data('product-option-value-id');
+				});
+			}
+			cart.add(product_id, 1, JSON.stringify(options));
 		})
 	},
 	init: function(){
@@ -244,7 +251,7 @@ var Main = {
 		$.each(owl.find('>div'),function(key, val){
 			$(this).attr( 'data-position', $(val).index() );
 		})
-
+		owl = $('.catalog_block_container-list:not([data-carousel=0])');
 
 		owl.on('changed.owl.carousel', function(e) {
 			Main.setOwlPagination(e);

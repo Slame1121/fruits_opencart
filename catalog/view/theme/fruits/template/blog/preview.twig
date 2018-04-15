@@ -1,0 +1,43 @@
+<section class="news">
+    <div class="news_backgrounds">
+        <div class="background-1">
+        </div>
+    </div>
+    <div class="container">
+        <div class="news_container">
+            <div class="news_container-header">
+                <p>новости и статьи</p>
+            </div>
+            <div class="news_container-content">
+
+                <div class="news_container-content__list owl-carousel owl-theme">
+                    {% for post in posts %}
+                    <div class="item news_container-content__list-item">
+                        <div class="item news_container-content__list-item__thumb">
+                            <img src="{{ post.image }}" />
+                        </div>
+                        <div class="item news_container-content__list-item__description">
+                            <span>{{ post.date_added }} </span>
+                            <p class="header">{{ post.title }} </p>
+                            <p>{{ post.description }}</p>
+                            <a href="{{ post.link }}">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="owl-custom-pagination news_container-content-pagination">
+
+                </div>
+            </div>
+            <div class="news_container-footer">
+                <div class="news_container-footer__link">
+                    <a href="{{ blog_list }}" class="">открыть весь список</a>
+                </div>
+                <div class="news_container-footer__pagination">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -315,6 +315,12 @@
     						span {
     						    font-size: 36px;
     							font-weight: 600;
+                              &.old_price{
+                                font-size: 26px;
+                                text-decoration: line-through;
+                                color:#ccc;
+                                font-weight: normal;
+                              }
     						}
 				    	}
 				    	&_button {

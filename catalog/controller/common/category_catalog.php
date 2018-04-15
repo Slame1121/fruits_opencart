@@ -33,8 +33,11 @@ class ControllerCommonCategoryCatalog extends Controller {
 
 		$this->load->model('catalog/product');
 		$this->load->model('tool/image');
+
+
 		$categories = $this->model_catalog_category->getCategories(0);
 		$data = [];
+		$data['catalog'] = $this->url->link('product/category', 'path=0');
 		foreach ($categories as $category) {
 
 

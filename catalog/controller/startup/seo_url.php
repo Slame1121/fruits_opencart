@@ -32,7 +32,6 @@ class ControllerStartupSeoUrl extends Controller {
 							$this->request->get['path'] .= '_' . $url[1];
 						}
 					}
-
 					if ($url[0] == 'manufacturer_id') {
 						$this->request->get['manufacturer_id'] = $url[1];
 					}
@@ -41,7 +40,11 @@ class ControllerStartupSeoUrl extends Controller {
 						$this->request->get['information_id'] = $url[1];
 					}
 
-					if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+					if ($url[0] == 'post_id') {
+						$this->request->get['post_id'] = $url[1];
+					}
+
+					if ($query->row['query'] && $url[0] != 'post_id' && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
 						$this->request->get['route'] = $query->row['query'];
 					}
 				} else {
@@ -60,6 +63,8 @@ class ControllerStartupSeoUrl extends Controller {
 					$this->request->get['route'] = 'product/manufacturer/info';
 				} elseif (isset($this->request->get['information_id'])) {
 					$this->request->get['route'] = 'information/information';
+				} elseif (isset($this->request->get['post_id'])) {
+					$this->request->get['route'] = 'blog/blog';
 				}
 			}
 		}
@@ -76,9 +81,8 @@ class ControllerStartupSeoUrl extends Controller {
 
 		foreach ($data as $key => $value) {
 			if (isset($data['route'])) {
-				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
-					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
-
+				if (($data['route'] == 'checkout/checkout') || ($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id') || ($data['route'] == 'blog/blog' && $key == 'post_id')) {
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE `query` = '" . $this->db->escape($key . ($value != 0 ? '=' . (int)$value : '')) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
 					if ($query->num_rows && $query->row['keyword']) {
 						$url .= '/' . $query->row['keyword'];
 
@@ -94,7 +98,6 @@ class ControllerStartupSeoUrl extends Controller {
 							$url .= '/' . $query->row['keyword'];
 						} else {
 							$url = '';
-
 							break;
 						}
 					}
@@ -118,7 +121,6 @@ class ControllerStartupSeoUrl extends Controller {
 					$query = '?' . str_replace('&', '&amp;', trim($query, '&'));
 				}
 			}
-
 			return $url_info['scheme'] . '://' . $url_info['host'] . (isset($url_info['port']) ? ':' . $url_info['port'] : '') . str_replace('/index.php', '', $url_info['path']) . $url . $query;
 		} else {
 			return $link;

@@ -7,7 +7,7 @@
             <div id="categories_list" class="catalog_block_container-list owl-carousel owl-theme">
                 {% for category in categories %}
                 <div  class="item catalog_block_container-list__item">
-                    <img data-image = "/catalog/view/theme/fruits/images/categories/1.png" data-image-active="/catalog/view/theme/fruits/images/categories/1-active.png" src="{{ category.image }}" />
+                    <img data-image = "{{ category.image }}" data-image-active="/catalog/view/theme/fruits/images/categories/1-active.png" src="{{ category.image }}" />
                     <div class="item catalog_block_container-list__item-wrapper">
                         <div class="catalog_block_container-list__item-wrapper-text">
                             <h3>{{ category.name }}</h3>
@@ -62,7 +62,7 @@
             </div>
             <div class="catalog_block_container-footer">
                 <div class="catalog_block_container-footer__link">
-                    <a href="#" class="">открыть каталог всей продукции</a>
+                    <a href="{{ catalog }}" class="">открыть каталог всей продукции</a>
                 </div>
                 <div class="catalog_block_container-footer__pagination">
 

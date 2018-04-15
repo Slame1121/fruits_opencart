@@ -11,6 +11,7 @@ class ControllerCommonHome extends Controller {
 		$data['home_products'] = $this->load->controller('common/home_products');
 		$data['category_catalog'] = $this->load->controller('common/category_catalog');
 		$data['contact_form'] = $this->load->controller('common/contact_form');
+		$data['blog_preview'] = $this->load->controller('blog/blog_preview');
 		$data['big_seo_tabs_block'] = $this->load->controller('common/big_seo_tabs_block');
 		$data['small_seo_block'] = $this->load->controller('common/small_seo_block');
         $data['reviews_form'] = $this->load->controller('common/reviews_form');

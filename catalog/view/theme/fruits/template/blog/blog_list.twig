@@ -1,0 +1,30 @@
+{{ header }}
+<section class="breadcrumbs_block">
+    <div class="container">
+        <div class="breadcrumbs_block_container">
+            <ul class="breadcrumbs_block_container__bread-crumbs">
+                <li><a class="home" href="index.html">Главная</a></li>
+                <li>Новости компании</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="blog_block">
+    <div class="container">
+        <div class="blog_block_container">
+            {% for post in posts %}
+            <div class="blog_block_container_wrap-item">
+                <div class="blog_block_container_wrap-item__images">
+                    <img alt="{{ post.title }}" title="{{ post.title }}" src="{{ post.image }}">
+                </div>
+                <div class="blog_block_container_wrap-item__text">
+                    <h3>{{ post.title }}</h3>
+                    <p> {{ post.description }}</p>
+                    <a class="blog_block_container_wrap-item__text_link" href="{{ post.link }}">Подробнее</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{{ footer }}
