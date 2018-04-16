@@ -413,10 +413,13 @@ class ControllerProductCategory extends Controller {
 				$data['categories'][] = array(
 					'category_id' => $category['category_id'],
 					'description' => substr(htmlspecialchars_decode($category['description']), 0, 100),
-					'image'       => $this->model_tool_image->resize($category['image'], 170, 340),
+					'image'       => $this->model_tool_image->resize($category['image'], 150, 215),
 					'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-
-					'href'        => $this->url->link('product/category', 'path=' . $category['category_id'])
+					'active_image'       => $this->model_tool_image->resize($category['active_image'], 400, 340),
+					'href'        => $this->url->link('product/category', 'path=' . $category['category_id']),
+					'top_gradient'=> $category['top_gradient'],
+					'bottom_gradient'=> $category['bottom_gradient'],
+					'button_color'=> $category['button_color'],
 				);
 			}
 

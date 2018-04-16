@@ -131,8 +131,32 @@
                   <input type="hidden" name="image" value="{{ image }}" id="input-image" />
                 </div>
               </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Активное изображение</label>
+                    <div class="col-sm-10"><a id="active_image"  href="" data-toggle="image" class="img-thumbnail"><img src="{{ active_thumb }}" alt="" title="" data-placeholder="{{ placeholder }}" /></a>
+                        <input type="hidden" name="active_image" value="{{ active_image }}" id="input-active-image" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="top_gradient"><span data-toggle="tooltip" title="{{ help_column }}">Верхний градиент</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" name="top_gradient" value="{{ top_gradient }}" placeholder="#fff" id="top_gradient" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="bottom_gradient"><span data-toggle="tooltip" title="">Нижний градиент</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" name="bottom_gradient" value="{{ bottom_gradient }}" placeholder="#fff" id="bottom_gradient" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="button_color"><span data-toggle="tooltip" title="">Цвет кнопки</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" name="button_color" value="{{ button_color }}" placeholder="#fff" id="bottom_gradient" class="form-control" />
+                    </div>
+                </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-top"><span data-toggle="tooltip" title="{{ help_top }}">{{ entry_top }}</span></label>
+                <label class="col-sm-2 control-label" for="input-top"><span data-toggle="tooltip" title="">{{ entry_top }}</span></label>
                 <div class="col-sm-10">
                   <div class="checkbox">
                     <label>
@@ -151,6 +175,7 @@
                   <input type="text" name="column" value="{{ column }}" placeholder="{{ entry_column }}" id="input-column" class="form-control" />
                 </div>
               </div>
+
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
                 <div class="col-sm-10">

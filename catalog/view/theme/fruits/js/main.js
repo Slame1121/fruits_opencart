@@ -250,6 +250,8 @@ var Main = {
 		var owl = $('.catalog_block_container-list');
 		$.each(owl.find('>div'),function(key, val){
 			$(this).attr( 'data-position', $(val).index() );
+			var background_color = $(val).find('button').addClass('button-background-'+$(val).index()).data('color');
+			$('body').append('<style>.button-background-'+$(val).index()+':before{background:'+background_color+' !important;}</style>');
 		})
 		owl = $('.catalog_block_container-list:not([data-carousel=0])');
 
@@ -281,7 +283,23 @@ var Main = {
 
 		//init subcategories
 		$('.catalog_block_container-list__item-wrapper-text').on('click', 'button', function(){
+			$(this).closest('.owl-carousel').find('.active').removeClass('active');
+			var catalog_container = $(this).closest('.catalog_block_container-list');
+
+			var isCarousel = catalog_container.data('carousel') == 1;
 			var container = $(this).closest('.catalog_block_container-list__item');
+			if(!isCarousel){
+				container.addClass('to_left');
+				var index = container.index();
+				container.before('<div class="spawn" style="width:400px;height:340px;"></div>');
+				container.css({
+					top: (340 * (Math.floor(index/3) )  +(Math.floor(index/3))*10) + 'px'
+				})
+				catalog_container.parent().find('.catalog_block_container-subcategories').css({
+					top: (340 * (parseInt(Math.floor(index/3) )) + 60 +(Math.floor(index/3))*10) + 'px'
+				});
+			}
+
 			var n = container.data('position');
 			var category_id = $(this).data('category-id');
 			owl.trigger('to.owl.carousel', n);
@@ -297,13 +315,14 @@ var Main = {
 				success: function(json) {
 					var content = $('.catalog_block_container-subcategories__content');
 					content.empty();
-					$.each(json, function(key, val){
+					$.each(json['childs'], function(key, val){
 						content.append(
 							' <div class="catalog_block_container-subcategories__content-item">\
 									<a href="'+val.href+'">'+val.name+'</a>\
 								</div>'
 						);
 					});
+					$('.catalog_block_container-subcategories__header a').attr('href',json.link).html('<span>СМОТРЕТЬ ВСЕ ТОВАРЫ</span> /'+json.name);
 					$('.alert-dismissible, .text-danger').remove();
 
 					if (json['redirect']) {
@@ -311,17 +330,7 @@ var Main = {
 					}
 
 					if (json['success']) {
-						$('#content').parent().before('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-						// Need to set timeout otherwise it wont update the total
-						setTimeout(function () {
-							$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-						}, 100);
-
-						$('html, body').animate({ scrollTop: 0 }, 'slow');
-
-						$('#cart > ul').load('index.php?route=common/cart/info ul li');
-					}
+				}
 				},
 				error: function(xhr, ajaxOptions, thrownError) {
 					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -335,20 +344,25 @@ var Main = {
 
 			$.each($('div[data-position='+position+']'),function(key, val){
 				var img =	$(val).find('>img');
+				$(val).addClass('active');
 				//bordered div
 				$(val).find('>div').addClass('without_border');
-				img.attr('src',img.data('image-active'));
+				//img.attr('src',img.data('image-active'));
+
 			});
 		});
 		$('.catalog_block_container').on('click','.catalog_block_container-subcategories__close',function(e){
 			e.stopPropagation();
 			e.preventDefault();
+			$('.spawn').remove();
 			$(this).parent().removeClass('opened');
+			$('.catalog_block_container-list[data-carousel=0]').find('>div').removeClass('to_left').css('top','auto');
 
 			$.each($('.catalog_block_container-list__item'),function(key, val){
-				var img =	$(val).find('>img');
+			//	var img =	$(val).find('>img');
 				$(val).find('>div').removeClass('without_border');
-				img.attr('src',img.data('image'));
+				$(val).removeClass('active');
+			//	img.attr('src',img.data('image'));
 
 			});
 			setTimeout(function(){
@@ -362,18 +376,23 @@ var Main = {
 		$('body').on('click', function(e){
 			if(opened){
 				if($(e.target).closest('.catalog_block_container-subcategories.opened').length == 0){
+					$('.spawn').remove();
 					$.each($('.catalog_block_container-list__item'),function(key, val){
-						var img =	$(val).find('>img');
-						img.attr('src',img.data('image'));
+						//var img =	$(val).find('>img');
+						//img.attr('src',img.data('image'));
 						$(val).find('>div').removeClass('without_border');
+						$(val).removeClass('active');
 					});
+					$('.catalog_block_container-list[data-carousel=0]').find('>div').removeClass('to_left').css('top','auto');
 					if($(e.target).parent().hasClass('catalog_block_container-list__item-wrapper-text')){
 						var position = $(e.target).parent().parent().parent().data('position');
 						$.each($('div[data-position='+position+']'),function(key, val){
-							var img =	$(val).find('>img');
-							img.attr('src',img.data('image-active'));
+						//	var img =	$(val).find('>img');
+							//img.attr('src',img.data('image-active'));
 							$(val).find('>div').addClass('without_border');
 						});
+
+
 						return ;
 					}
 

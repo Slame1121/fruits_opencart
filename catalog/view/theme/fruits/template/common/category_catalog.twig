@@ -4,15 +4,18 @@
             <div class="catalog_block_container-header">
                 <p>КАТАЛОГ ТОВАРОВ</p>
             </div>
-            <div id="categories_list" class="catalog_block_container-list owl-carousel owl-theme">
+            <div  data-carousel="1" class="catalog_block_container-list owl-carousel owl-theme">
                 {% for category in categories %}
                 <div  class="item catalog_block_container-list__item">
-                    <img data-image = "{{ category.image }}" data-image-active="/catalog/view/theme/fruits/images/categories/1-active.png" src="{{ category.image }}" />
+                    <div style="background:linear-gradient(to bottom , {{ category.top_gradient }}, {{ category.bottom_gradient }});" class="catalog_block_container-list__item-background">
+
+                    </div>
+                    <img  src="{{ category.image }}" />
                     <div class="item catalog_block_container-list__item-wrapper">
                         <div class="catalog_block_container-list__item-wrapper-text">
                             <h3>{{ category.name }}</h3>
                             <p>{{ category.description }}</p>
-                            <button data-category-id="{{ category.category_id }}" type="button">ПОДРОБНЕЕ</button>
+                            <button data-color="{{ category.button_color }}"  data-category-id="{{ category.category_id }}" type="button"><span>ПОДРОБНЕЕ</span></button>
                         </div>
                     </div>
                 </div>
@@ -28,7 +31,7 @@
                 </div>
                 <div class="catalog_block_container-subcategories__header">
                     <img src="/catalog/view/theme/fruits/images/icon-subcategories.png" />
-                    <p><span>СМОТРЕТЬ ВСЕ ТОВАРЫ</span> /  ягодные и фруктовые пасты </p>
+                    <a href="#"><span>СМОТРЕТЬ ВСЕ ТОВАРЫ</span> /  ягодные и фруктовые пасты </a>
                 </div>
                 <div class="catalog_block_container-subcategories__content">
                     <div class="catalog_block_container-subcategories__content-item">
