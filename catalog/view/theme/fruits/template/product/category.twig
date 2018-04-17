@@ -3,9 +3,9 @@
     <div class="container">
         <div class="breadcrumbs_block_container">
             <ul class="breadcrumbs_block_container__bread-crumbs">
-                <li><a class="home" href="index.html">Главная</a></li>
-                <li><a href="#">Каталог товаров</a></li>
-                <li>Ягодные и Фруктовые пасты</li>
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -16,53 +16,46 @@
             <div class="category_block_container_header">
                 <div class="category_block_container_header_select one">
                     <span>Вид продукции:</span>
-                    <select  class="SlectBox" placeholder="Текст" required="required">
-                        <option value="1">Черничная паста</option>
-                        <option value="2">Брусничная паста</option>
-                        <option value="3">Клюквенная паста</option>
-                        <option value="4">Облепиховая паста</option>
-                        <option value="6">Абрикосовая паста</option>
-                        <option value="7">Малиновая паста</option>
-                        <option value="8">Клубничная паста</option>
-                        <option value="9">Персиковая паста</option>
-                        <option value="10">Ежевичная паста</option>
-                        <option value="11">Смородиновые пасты</option>
-                        <option value="12">Мандариновые пасты</option>
-                        <option value="13">Сливовая паста</option>
-                        <option value="14">Яблочная паста</option>
-                        <option value="15">Томатная паста</option>
+                    <select id="category_changer"  class="SlectBox" required="required">
+                        {% for categry in select_categories %}
+                        <option  {% if categry.category_id == current_category %}selected {% endif %} value="{{ categry.link }}">{{ categry.name }}</option>
+                        {% endfor %}
+
                     </select>
                 </div>
-                <div class="category_block_container_header_select">
-                    <span>По заблеванию:</span>
-                    <select multiple="multiple" placeholder="Текст" onchange="console.log($(this).children(':selected').length)" class="testSelAll2">
-                        <option value="1">Текст заболевания</option>
-                        <option value="2">Текст заболевания</option>
-                        <option value="3">Текст заболевания</option>
-                        <option selected value="4">Текст заболевания</option>
-                        <option value="6">Текст заболевания</option>
-                        <option selected value="7">Текст заболевания</option>
-                        <option value="8">Текст заболевания</option>
-                        <option value="9">Текст заболевания</option>
-                        <option selected value="10">Текст заболевания</option>
-                        <option value="11">Текст заболевания</option>
-                        <option value="12">Текст заболевания</option>
-                    </select>
-                </div>
-                <div class="category_block_container_header_list">
-                    <span>Вид списка:</span>
-                    <div class="category_block_container_header_list__button buttons">
-                        <button id="grid" class="grid"><img src="/catalog/view/theme/fruits/images/icon-grid.png"></button>
-                        <button id="list" class="list"><img src="/catalog/view/theme/fruits/images/icon-list.png"></button>
+                <form method="get" action="">
+                    <div class="category_block_container_header_select">
+                        <span>По заблеванию:</span>
+                        <select id="ills_select" multiple="multiple" name="attributes[]"  class="testSelAll2">
+                            {% for ill in ills %}
+                                <option {% if ill.attribute_id in attributes %}selected{% endif %} value="{{ ill.attribute_id }}">{{ ill.name }}</option>
+                            {% endfor %}
+
+                        </select>
                     </div>
-                </div>
-                <div id="sorting" class="category_block_container_header_sorting">
-                    <span>Сортировка по умолчанию</span>
-                    <div class="category_block_container_header_sorting_thumb thumb-sorting"></div>
-                </div>
+                    <div class="category_block_container_header_list">
+                        <span>Вид списка:</span>
+                        <div class="category_block_container_header_list__button buttons">
+                            <button id="grid" data-list-type="0" type="button" class="grid {% if product_list_type == 0 %}active{% endif %}"></button>
+                            <button id="list" data-list-type="1" type="button" class="list {% if product_list_type == 1 %}active{% endif %}"></button>
+                        </div>
+                    </div>
+                    <div id="sorting" class="category_block_container_header_sorting">
+                        <input type="hidden" name="order" value="ASC">
+                        <select placeholder="Выбрать сортировку" id="sort_select" name="sort"  class="testSelAll2">
+                            {% for sorts in sorts %}
+                                {% if sorts.value == '%s-%s'|format(sort, order) %}
+                                    <option  data-order="{{ sorts.order }}" value="{{ sorts.sort }}"  value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
+                                {% else %}
+                                    <option  data-order="{{ sorts.order }}" value="{{ sorts.sort }}"  value="{{ sorts.href }}">{{ sorts.text }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
             </div>
             <div class="category_block_container_content">
-                <div id="grid-content" class="category_block_container_content_grid">
+                <div id="grid-content" class="category_block_container_content_grid" {% if product_list_type == 1 %}style="display: none" {% endif %}>
 
                     {% for product in products %}
                     <div class="category_block_container_content_grid-item item">
@@ -70,7 +63,9 @@
                             <div class="category_block_container_content_grid-item__items-container__header">
                                 <a href="{{ product.href }}">{{ product.name }} </a>
                                 <div class="category_block_container_content_grid-item__items-container__header-like">
-                                    <button class="category_block_container_content_grid-item__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
+                                    <button data-product-id="{{ product.product_id }} " class="category_block_container_content_grid-item__items-container__header-like__button button_like {% if product.liked %}liked{% endif %}" type="button">
+
+                                    </button>
                                 </div>
                             </div>
                             <div class="category_block_container_content_grid-item__items-container__image">
@@ -89,7 +84,8 @@
                                         {% endif %}
                                     </div>
                                     <div class="category_block_container_content_grid-item__items-container__content-price__item">
-                                        <div class="raty"></div>
+                                        <div class="raty" data-score="{{ product.rating }}"></div>
+                                        <span>{{ product.reviews }} отзывов</span>
                                     </div>
                                 </div>
                                 <div class="category_block_container_content_grid-item__items-container__content-addtocart">
@@ -102,131 +98,47 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div id="list-content" class="category_block_container_content_list" style="display: none;">
+                <div id="list-content" class="category_block_container_content_list" {% if product_list_type == 0 %}style="display: none" {% endif %}>
+                    {% for product in products %}
                     <div class="category_block_container_content_list_item item">
                         <div class="category_block_container_content_list_item__images">
-                            <img src="/catalog/view/theme/fruits/images/products/product_1.jpg">
+                            <a href="{{ product.href }}">  <img alt="{{ product.name }}" src="{{ product.image_list }}" /></a>
                         </div>
                         <div class="category_block_container_content_list_item__text-wrap">
                             <div class="category_block_container_content_list_item__text-wrap__text">
-                                <h3>Паста черного винограда</h3>
-                                <div class="category_block_container_content_list_item__text-wrap__text__raty raty"></div>
+                                <h3>{{ product.name }} </h3>
+                                <div class="category_block_container_content_list_item__text-wrap__text__raty raty" data-score="{{ product.rating }}"></div>
                                 <div class="category_block_container_content_list_item__text-wrap__text__rating">
-                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png"> <span>17 отзывов</span>
+                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png"> <span>{{ product.reviews }} отзывов</span>
                                 </div>
                                 <div class="category_block_container_content_list_item__text-wrap__text__text-desc">
-                                    Паста белого винограда пример текстПаста белого винограда пример текста пример текста пример  пример текста. Паста белого винограда пример текстПаста белого винограда пример текста пример текста пример  пример текста.
+                                    {{ product.description }}
                                 </div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__text-view"><a href="#">Смотреть подробнее</a></div>
+                                <div class="category_block_container_content_list_item__text-wrap__text__text-view"><a href="{{ product.href }}">Смотреть подробнее</a></div>
                             </div>
                             <div class="category_block_container_content_list_item__text-wrap__container">
                                 <div class="category_block_container_content_list_item__text-wrap__container-like">
-                                    <button class="category_block_container_content_list_item__text-wrap__container-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-liked.png"></button>
+                                    <button data-product-id="{{ product.product_id }}" class="category_block_container_content_list_item__text-wrap__container-like__button button_like {% if product.liked %}liked{% endif %}"  type="button"></button>
                                 </div>
                                 <div class="category_block_container_content_list_item__text-wrap__container_price">
-                                    <p><span>347</span> грн</p>
-                                    <p class="old_price"><span>317</span> грн</p>
+                                    {% if product.price %}
+                                        {% if not product.special %}
+                                            <p><span> {{ product.price }}</span> </p>
+                                        {% else %}
+                                            <p><span>{{ product.special }}</span> </p>
+                                            <p class="old_price"><span>{{ product.price }}</span> </p>
+                                        {% endif %}
+                                    {% endif %}
                                 </div>
                                 <div class="category_block_container_content_list_item__text-wrap__container_addtocart">
-                                    <a href="#">
+                                    <a  data-product-id="{{ product.product_id }}" class="button-add-to-cart" href="#">
                                         <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="category_block_container_content_list_item item">
-                        <div class="category_block_container_content_list_item__images">
-                            <img src="/catalog/view/theme/fruits/images/products/product_1.jpg">
-                        </div>
-                        <div class="category_block_container_content_list_item__text-wrap">
-                            <div class="category_block_container_content_list_item__text-wrap__text">
-                                <h3>Паста черного винограда</h3>
-                                <div class="category_block_container_content_list_item__text-wrap__text__raty raty"></div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__text-desc">
-                                    Паста белого винограда пример текстПаста белого винограда пример текста пример текста пример  пример текста. Паста белого винограда пример текстПаста белого винограда пример текста пример текста пример  пример текста.
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__text-view"><a href="#">Смотреть подробнее</a></div>
-                            </div>
-                            <div class="category_block_container_content_list_item__text-wrap__container">
-                                <div class="category_block_container_content_list_item__text-wrap__container-like">
-                                    <button class="category_block_container_content_list_item__text-wrap__container-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-liked.png"></button>
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__container_price not-available">
-                                    <p><span>1347</span> грн</p>
-                                    <p class="not">Нет в наличии</p>
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__container_addtocart not-available">
-                                    <a href="#">
-                                        <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category_block_container_content_list_item item">
-                        <div class="category_block_container_content_list_item__images">
-                            <img src="/catalog/view/theme/fruits/images/products/product_1.jpg">
-                        </div>
-                        <div class="category_block_container_content_list_item__text-wrap">
-                            <div class="category_block_container_content_list_item__text-wrap__text">
-                                <h3>Паста черного винограда</h3>
-                                <div class="category_block_container_content_list_item__text-wrap__text__raty raty"></div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__rating">
-                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png"> <span>17 отзывов</span>
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__text-desc">
-                                    Паста белого винограда пример текстПаста белого винограда пример текста пример текста пример  пример текста. Паста белого винограда пример текстПаста белого винограда пример текста пример текста пример  пример текста.
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__text-view"><a href="#">Смотреть подробнее</a></div>
-                            </div>
-                            <div class="category_block_container_content_list_item__text-wrap__container">
-                                <div class="category_block_container_content_list_item__text-wrap__container-like">
-                                    <button class="category_block_container_content_list_item__text-wrap__container-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-liked.png"></button>
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__container_price">
-                                    <p><span>347</span> грн</p>
-                                    <p class="old_price"><span>317</span> грн</p>
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__container_addtocart">
-                                    <a href="#">
-                                        <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category_block_container_content_list_item item">
-                        <div class="category_block_container_content_list_item__images">
-                            <img src="/catalog/view/theme/fruits/images/products/product_1.jpg">
-                        </div>
-                        <div class="category_block_container_content_list_item__text-wrap">
-                            <div class="category_block_container_content_list_item__text-wrap__text">
-                                <h3>Паста черного винограда</h3>
-                                <div class="category_block_container_content_list_item__text-wrap__text__raty raty"></div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__rating">
-                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png"> <span>17 отзывов</span>
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__text-desc">
-                                    Паста белого винограда пример текстПаста белого винограда пример текста пример текста пример  пример текста. Паста белого винограда пример текстПаста белого винограда пример текста пример текста пример  пример текста.
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__text__text-view"><a href="#">Смотреть подробнее</a></div>
-                            </div>
-                            <div class="category_block_container_content_list_item__text-wrap__container">
-                                <div class="category_block_container_content_list_item__text-wrap__container-like">
-                                    <button class="category_block_container_content_list_item__text-wrap__container-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-liked.png"></button>
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__container_price">
-                                    <p><span>347</span> грн</p>
-                                </div>
-                                <div class="category_block_container_content_list_item__text-wrap__container_addtocart">
-                                    <a href="#">
-                                        <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -234,11 +146,17 @@
 </section>
 <script type="text/javascript">
     $(document).ready(function () {
-        window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true});
-        window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3, selectAll:true, captionFormatAllSelected: "Все."
+        window.testSelAll2 = $('.testSelAll2').SumoSelect({placeholder: 'Выбрать болезнь',selectAll:true});
+        window.asd = $('.SlectBox').SumoSelect({  csvDispCount: 3, selectAll:true, captionFormatAllSelected: "Все."
         });
-        $('.SlectBox').on('sumo:opened', function(o) {
-            console.log("dropdown opened", o)
+        window.sort_select = $('#sort_select').SumoSelect({placeholder: 'Выбрать сортировку',selectAll:false});
+        $('.category_block_container_header_list__button').on('click','button',function(){
+            $('.category_block_container_header_list__button button').removeClass('active');
+            $(this).addClass('active');
+            var list_type = $(this).data('list-type');
+            $.post( "index.php?route=product/category", { product_list_type: list_type })
+                    .done(function() {
+                    });
         });
     });
 </script>

@@ -21,7 +21,8 @@
                                 <div class="product_list_container-content__items-container__header">
                                     <a href="{{ product.link }}">{{ product.name }}</a>
                                     <div class="product_list_container-content__items-container__header-like">
-                                        <button class="product_list_container-content__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
+                                        <button data-product-id="{{ product.product_id }}" class="product_list_container-content__items-container__header-like__button button_like {% if product.liked %}liked{% endif %}" type="button">
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="product_list_container-content__items-container__image">
@@ -40,9 +41,9 @@
                                             {% endif %}
                                         </div>
                                         <div class="product_list_container-content__items-container__content-price__item">
-                                            <div class="raty"></div>
+                                            <div class="raty" data-score="{{ product.rating }}"></div>
                                             <div class="product_list_container-content__items-container__content-price__item-rating">
-                                                <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзыва</span>
+                                                <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзывов</span>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +67,8 @@
                                     <div class="product_list_container-content__items-container__header">
                                         <a href="{{ product.link }}">{{ product.name }}</a>
                                         <div class="product_list_container-content__items-container__header-like">
-                                            <button class="product_list_container-content__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
+                                            <button data-product-id="{{ product.product_id }}" class="product_list_container-content__items-container__header-like__button button_like {% if product.liked %}liked{% endif %}" type="button">
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product_list_container-content__items-container__image">
@@ -85,9 +87,9 @@
                                                 {% endif %}
                                             </div>
                                             <div class="product_list_container-content__items-container__content-price__item">
-                                                <div class="raty"></div>
+                                                <div class="raty" data-score="{{ product.rating }}"></div>
                                                 <div class="product_list_container-content__items-container__content-price__item-rating">
-                                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзыва</span>
+                                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзывов</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +113,8 @@
                                     <div class="product_list_container-content__items-container__header">
                                         <a href="{{ product.link }}">{{ product.name }}</a>
                                         <div class="product_list_container-content__items-container__header-like">
-                                            <button class="product_list_container-content__items-container__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-like.png" /></button>
+                                            <button data-product-id="{{ product.product_id }}" class="product_list_container-content__items-container__header-like__button button_like {% if product.liked %}liked{% endif %}" type="button">
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product_list_container-content__items-container__image">
@@ -130,9 +133,9 @@
                                                 {% endif %}
                                             </div>
                                             <div class="product_list_container-content__items-container__content-price__item">
-                                                <div class="raty"></div>
+                                                <div class="raty" data-score="{{ product.rating }}"></div>
                                                 <div class="product_list_container-content__items-container__content-price__item-rating">
-                                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзыва</span>
+                                                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзывов</span>
                                                 </div>
                                             </div>
                                         </div>

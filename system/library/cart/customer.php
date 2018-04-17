@@ -9,6 +9,7 @@ class Customer {
 	private $telephone;
 	private $newsletter;
 	private $address_id;
+	private $product_list_type;
 
 	public function __construct($registry) {
 		$this->config = $registry->get('config');
@@ -16,6 +17,9 @@ class Customer {
 		$this->request = $registry->get('request');
 		$this->session = $registry->get('session');
 
+		if(!isset($this->session->data['wishlist'])){
+			$this->session->data['wishlist'] = [];
+		}
 		if (isset($this->session->data['customer_id'])) {
 			$customer_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id = '" . (int)$this->session->data['customer_id'] . "' AND status = '1'");
 
@@ -28,6 +32,7 @@ class Customer {
 				$this->telephone = $customer_query->row['telephone'];
 				$this->newsletter = $customer_query->row['newsletter'];
 				$this->address_id = $customer_query->row['address_id'];
+				$this->product_list_type = $customer_query->row['product_list_type'];
 
 				$this->db->query("UPDATE " . DB_PREFIX . "customer SET language_id = '" . (int)$this->config->get('config_language_id') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 
@@ -60,7 +65,7 @@ class Customer {
 			$this->telephone = $customer_query->row['telephone'];
 			$this->newsletter = $customer_query->row['newsletter'];
 			$this->address_id = $customer_query->row['address_id'];
-		
+			$this->product_list_type = $customer_query->row['product_list_type'];
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET language_id = '" . (int)$this->config->get('config_language_id') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 
 			return true;
@@ -116,6 +121,10 @@ class Customer {
 
 	public function getAddressId() {
 		return $this->address_id;
+	}
+
+	public function getProductListType() {
+		return $this->product_list_type;
 	}
 
 	public function getBalance() {

@@ -7,9 +7,11 @@
 		&_header {
 			display: block;
 			margin-bottom: 30px;
+          form{
+            display: inline-block;
+          }
 			&_select {
 				display: inline-block;
-				padding-right: 20px;
 				>span {
 					display: inline-block;
 					vertical-align: top;
@@ -48,7 +50,27 @@
 					button {
 						background: transparent;
 						border: 0 none;
-						margin: 10px 20px 7px 3px;
+                        padding: 8px;
+                        width: 16px;
+                        height: 16px;
+                        cursor: pointer;
+
+                      &:first-child{
+                        margin-right: 10px;
+                      }
+
+                      &.grid{
+                        background: url('/catalog/view/theme/fruits/images/icon-grid.png');
+                        &.active{
+                          background: url('/catalog/view/theme/fruits/images/icon-grid.png');
+                        }
+                      }
+                      &.list{
+                        background: url('/catalog/view/theme/fruits/images/icon-list.png');
+                        &.active{
+                          background: url('/catalog/view/theme/fruits/images/icon-list.png');
+                        }
+                      }
 					}
 				}
 			}
@@ -167,19 +189,8 @@
 							    	padding-right: 10px;
 							    	z-index: 8;
 							    	&__button {
-							    		background: transparent;
 									    border: none;
 									    cursor: pointer;
-									    img {
-									    	margin: auto;
-										    width: auto !important;
-										    display: block;
-										    position: relative;
-										    left: 0;
-										    right: 0;
-										    top: 0;
-										    bottom: 0;
-									    }
 							    	}
 							    }
 							    &_price {
@@ -274,7 +285,6 @@
 			              right: 10px;
 			              top:10px;
 			              &__button{
-			                background: transparent;
 			                border: none;
 			                cursor: pointer;
 			              }

@@ -10,7 +10,7 @@ class ControllerProductCategory extends Controller {
 		$this->load->model('tool/image');
 
 		$this->document->addScript('/catalog/view/theme/fruits/js/components/jquery.sumoselect.js');
-
+		$this->document->addScript('/catalog/view/theme/fruits/js/pages/category.js');
 		if (isset($this->request->get['filter'])) {
 			$filter = $this->request->get['filter'];
 		} else {
@@ -89,6 +89,12 @@ class ControllerProductCategory extends Controller {
 			$category_id = 0;
 		}
 
+		if(isset($this->request->post['product_list_type'])){
+			if($this->customer->isLogged()){
+				$this->model_catalog_product->setProductTypeList($this->customer->getId(), (int)$this->request->post['product_list_type']);
+			}
+			$this->session->data['product_list_type'] = $this->request->post['product_list_type'];
+		}
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 
 		if ($category_info) {
@@ -97,6 +103,8 @@ class ControllerProductCategory extends Controller {
 			$this->document->setKeywords($category_info['meta_keyword']);
 
 			$data['heading_title'] = $category_info['name'];
+
+			$data['current_category'] = $category_id;
 
 			$data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 
@@ -112,6 +120,13 @@ class ControllerProductCategory extends Controller {
 				$data['thumb'] = '';
 			}
 
+			$select_categories = $this->model_catalog_category->getCategories($category_info['parent_id']);
+
+			foreach($select_categories as $key => $category){
+				$select_categories[$key]['link'] = $this->url->link('product/category', 'path=' .$category['category_id']);
+			}
+
+			$data['select_categories'] = $select_categories;
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
 
@@ -133,10 +148,18 @@ class ControllerProductCategory extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 
+
+			//Получим все болезни
+			$filter_data = [
+				'filter_attribute_group_id' => 8
+			];
+			$ills = $this->model_catalog_product->getAttributes($filter_data);
+
+			$data['ills'] = $ills;
+
 			$data['categories'] = array();
 
 			$results = $this->model_catalog_category->getCategories($category_id);
-
 			foreach ($results as $result) {
 				$filter_data = array(
 					'filter_category_id'  => $result['category_id'],
@@ -157,8 +180,18 @@ class ControllerProductCategory extends Controller {
 				'sort'               => $sort,
 				'order'              => $order,
 				'start'              => ($page - 1) * $limit,
-				'limit'              => $limit
+				'limit'              => $limit,
+				'filter_attributes'  => isset($this->request->get['attributes']) ? $this->request->get['attributes'] : []
 			);
+
+			$data['attributes'] = isset($this->request->get['attributes']) ? $this->request->get['attributes'] : [];
+
+			$data['product_list_type'] = 0;
+			if(isset($this->session->data['product_list_type'])){
+				$data['product_list_type'] = $this->session->data['product_list_type'];
+			}elseif($this->customer->isLogged()){
+				$data['product_list_type'] = $this->customer->getProductListType();
+			}
 
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
@@ -169,6 +202,12 @@ class ControllerProductCategory extends Controller {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'));
 				} else {
 					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'));
+				}
+
+				if ($result['image']) {
+					$image_list = $this->model_tool_image->resize($result['image'],200, 180);
+				} else {
+					$image_list = $this->model_tool_image->resize('placeholder.png',200, 180);
 				}
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -194,15 +233,17 @@ class ControllerProductCategory extends Controller {
 				} else {
 					$rating = false;
 				}
-
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
+					'reviews'     => $result['reviews'],
 					'name'        => $result['name'],
+					'image_list'  => $image_list,
 					'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,
+					'liked'       => in_array((int)$result['product_id'], $this->session->data['wishlist']),
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
@@ -224,30 +265,40 @@ class ControllerProductCategory extends Controller {
 			$data['sorts'][] = array(
 				'text'  => $this->language->get('text_default'),
 				'value' => 'p.sort_order-ASC',
+				'sort' => 'p.sort_order',
+				'order' => 'ASC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.sort_order&order=ASC' . $url)
 			);
 
 			$data['sorts'][] = array(
 				'text'  => $this->language->get('text_name_asc'),
 				'value' => 'pd.name-ASC',
+				'sort' => 'pd.name',
+				'order' => 'ASC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=pd.name&order=ASC' . $url)
 			);
 
 			$data['sorts'][] = array(
 				'text'  => $this->language->get('text_name_desc'),
 				'value' => 'pd.name-DESC',
+				'sort' => 'pd.name',
+				'order' => 'DESC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=pd.name&order=DESC' . $url)
 			);
 
 			$data['sorts'][] = array(
 				'text'  => $this->language->get('text_price_asc'),
 				'value' => 'p.price-ASC',
+				'sort' => 'p.price',
+				'order' => 'ASC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=ASC' . $url)
 			);
 
 			$data['sorts'][] = array(
 				'text'  => $this->language->get('text_price_desc'),
 				'value' => 'p.price-DESC',
+				'sort' => 'p.price',
+				'order' => 'DESC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=DESC' . $url)
 			);
 
@@ -255,27 +306,20 @@ class ControllerProductCategory extends Controller {
 				$data['sorts'][] = array(
 					'text'  => $this->language->get('text_rating_desc'),
 					'value' => 'rating-DESC',
+					'sort' => 'rating',
+					'order' => 'DESC',
 					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=DESC' . $url)
 				);
 
 				$data['sorts'][] = array(
 					'text'  => $this->language->get('text_rating_asc'),
 					'value' => 'rating-ASC',
+					'sort' => 'rating',
+					'order' => 'ASC',
 					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=ASC' . $url)
 				);
 			}
 
-			$data['sorts'][] = array(
-				'text'  => $this->language->get('text_model_asc'),
-				'value' => 'p.model-ASC',
-				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.model&order=ASC' . $url)
-			);
-
-			$data['sorts'][] = array(
-				'text'  => $this->language->get('text_model_desc'),
-				'value' => 'p.model-DESC',
-				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.model&order=DESC' . $url)
-			);
 
 			$url = '';
 

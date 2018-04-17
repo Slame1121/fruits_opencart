@@ -481,17 +481,26 @@
     font-size: 12px;
   }
 
-  .catalog_block_container-subcategories{
-    width: 100%;
-    right: 0;
-
-    &__content{
-      padding: 0 20px 20px 20px;
-      &-item{
-        width: 50%;
+  .catalog_block_container{
+    &-list[data-carousel="0"]{
+      .catalog_block_container-list__item{
+        width: 100%;
       }
-
     }
+    &-subcategories{
+      width: 100%;
+      right: 0;
+
+      &__content{
+        padding: 0 0 20px 0;
+
+        &-item{
+          width: 50%;
+        }
+
+      }
+    }
+
   }
 
   .fixed_navbar-container{

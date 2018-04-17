@@ -16,13 +16,13 @@
               padding:15px 40px;
               display: inline-block;
               color:#000;
+              height: 40px;
             }
             &-like{
               position: absolute;
               right: 10px;
               top:10px;
               &__button{
-                background: transparent;
                 border: none;
                 cursor: pointer;
               }

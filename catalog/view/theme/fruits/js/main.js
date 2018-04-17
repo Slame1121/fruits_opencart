@@ -119,13 +119,36 @@ var Main = {
 		//add review button
 		$('.product_card_container_reviews__button').on('click', 'button', function(e){
 			var contaienr = $(this).parent().parent();
+			contaienr.find('.error').text('');
 			if(contaienr.find('.product_card_container_reviews__addreview').css('display') ==  'none'){
 				contaienr.find('.owl-carousel').hide();
 				contaienr.find('.product_card_container_reviews-pagination').hide();
 				contaienr.find('.product_card_container_reviews__addreview').fadeIn('slow');
 			}else{
-
-				//SEND REVIEW FORM (VALIDATION)
+				var name = contaienr.find('input[name=name]').val();
+				var text = contaienr.find('textarea[name=comment]').val();
+				var  rating = contaienr.find('#customer_rating').raty('score');
+				var product_id= $(this).attr('data-product-id');
+				$.ajax({
+					url: 'index.php?route=product/product/write&product_id='+product_id,
+					type: 'post',
+					data: 'name=' + name+'&text='+text +'&rating=' + rating,
+					dataType: 'json',
+					beforeSend: function() {
+					},
+					complete: function() {
+					},
+					success: function(json) {
+						if(typeof json.error != 'undefined'){
+							contaienr.find('.error').text(json.error);
+						}else{
+							contaienr.find('.product_card_container_reviews__addreview__content').empty().append('<h3>'+json.success+'</h3>')
+						}
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+					}
+				});
 			}
 		});
 		//close adding review block
@@ -194,6 +217,20 @@ var Main = {
 			cart.add(product_id, 1, JSON.stringify(options));
 		})
 	},
+	initRaty: function () {
+
+	},
+	initLikeButton: function () {
+		$('.button_like').on('click', function(){
+			if($(this).hasClass('liked')){
+				wishlist.remove($(this).data('product-id'));
+				$(this).removeClass('liked')
+			}else{
+				wishlist.add($(this).data('product-id'));
+				$(this).addClass('liked')
+			}
+		})
+	},
 	init: function(){
 		this.initCatalog();
 		this.initReviews();
@@ -203,6 +240,10 @@ var Main = {
 		this.initTabs();
 
 		this.initAddTocartButton();
+
+		this.initRaty();
+
+		this.initLikeButton();
 	},
 
 	InitOwlPagination: function(e){
@@ -216,15 +257,19 @@ var Main = {
 				index += count;
 			}
 		}
-		$(e.target).parent().find('.owl-custom-pagination').append('<div class="navigation"><img src="/catalog/view/theme/fruits/images/arrow-left.png" /><img src="/catalog/view/theme/fruits/images/arrow-right.png" /></div><div class="count"></div>');
-		$(e.target).parent().find('.owl-custom-pagination .navigation img:first-child').on('click', function(){
-			($(e.target).trigger('prev.owl.carousel'));
-		});
-		$(e.target).parent().find('.owl-custom-pagination .navigation img:nth-child(2)').on('click', function(){
-			($(e.target).trigger('next.owl.carousel'));
-		});
-		$(e.target).parent().find('.owl-custom-pagination').find('.navigation');
-		$(e.target).parent().find('.owl-custom-pagination .count').text(index + '/' + e.item.count)
+
+		if(e.item.count > 1){
+			$(e.target).parent().find('.owl-custom-pagination').append('<div class="navigation"><img src="/catalog/view/theme/fruits/images/arrow-left.png" /><img src="/catalog/view/theme/fruits/images/arrow-right.png" /></div><div class="count"></div>');
+			$(e.target).parent().find('.owl-custom-pagination .navigation img:first-child').on('click', function(){
+				($(e.target).trigger('prev.owl.carousel'));
+			});
+			$(e.target).parent().find('.owl-custom-pagination .navigation img:nth-child(2)').on('click', function(){
+				($(e.target).trigger('next.owl.carousel'));
+			});
+			$(e.target).parent().find('.owl-custom-pagination').find('.navigation');
+			$(e.target).parent().find('.owl-custom-pagination .count').text(index + '/' + e.item.count)
+		}
+
 	},
 	setOwlPagination: function(e){
 
@@ -445,10 +490,14 @@ var Main = {
 
 		$('.product_list_container-content .raty, .cart_block .raty, .product_card .raty, #feature_banner .raty, .category_block .raty').raty({
 			starType: 'i',
-			readOnly: true,
-			score: 3.5,/*function() {
+			readOnly: function() {
+				return !($(this).attr('data-changer') != 'undefined' && $(this).attr('data-changer') == 1);
+			},
+			size  : 25,
+			score:
+				function() {
 				return $(this).attr('data-score');
-			}*/
+			}
 		});
 	}
 };

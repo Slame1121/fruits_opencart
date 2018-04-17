@@ -13,14 +13,13 @@ class ControllerProductProduct extends Controller {
 		);
 
 		$this->load->model('catalog/category');
-
+		$data['return_text'] = '';
 		if (isset($this->request->get['path'])) {
 			$path = '';
 
 			$parts = explode('_', (string)$this->request->get['path']);
 
 			$category_id = (int)array_pop($parts);
-
 			foreach ($parts as $path_id) {
 				if (!$path) {
 					$path = $path_id;
@@ -35,7 +34,7 @@ class ControllerProductProduct extends Controller {
 						'text' => $category_info['name'],
 						'href' => $this->url->link('product/category', 'path=' . $path)
 					);
-				}
+					}
 			}
 
 			// Set the last category breadcrumb
@@ -64,6 +63,8 @@ class ControllerProductProduct extends Controller {
 					'text' => $category_info['name'],
 					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
 				);
+				$data['return_text'] = '<a href="'.$this->url->link('product/category', 'path=' . $this->request->get['path']. $url).'">Назад к <span>'.$category_info['name'].'</span></a>';
+
 			}
 		}
 
@@ -249,6 +250,8 @@ class ControllerProductProduct extends Controller {
 			} else {
 				$data['stock'] = $this->language->get('text_instock');
 			}
+
+			$data['liked'] = in_array((int)$product_info['product_id'], $this->session->data['wishlist']);
 
 			$this->load->model('tool/image');
 
@@ -451,6 +454,7 @@ class ControllerProductProduct extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
+			$data['reviews_block'] = $this->review();
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
 			$url = '';
@@ -513,7 +517,6 @@ class ControllerProductProduct extends Controller {
 			$data['continue'] = $this->url->link('common/home');
 
 			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
-
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
 			$data['content_top'] = $this->load->controller('common/content_top');
@@ -560,8 +563,8 @@ class ControllerProductProduct extends Controller {
 		$data['pagination'] = $pagination->render();
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
-
-		$this->response->setOutput($this->load->view('product/review', $data));
+		$data['product_id'] = $this->request->get['product_id'];
+		return $this->load->view('product/review', $data);
 	}
 
 	public function write() {

@@ -52,7 +52,7 @@
             .SumoSelect > .optWrapper.okCancelInMulti > .options > li.opt:last-child {border-radius: 0;}
             .SumoSelect > .optWrapper > .options li.opt:hover { background-color: #E4E4E4; }
             .SumoSelect > .optWrapper > .options li.opt.sel, .SumoSelect .select-all.sel{background-color: #a1c0e4;}
-
+.SumoSelect > .optWrapper > .options li.opt.selected{background: #9566B4;}
             .SumoSelect > .optWrapper > .options li label { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: block;cursor: pointer;}
             .SumoSelect > .optWrapper > .options li span { display: none; }
             .SumoSelect > .optWrapper > .options li.group > label {cursor: default;padding: 8px 6px;font-weight: bold;}

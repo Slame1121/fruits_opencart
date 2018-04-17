@@ -13,6 +13,7 @@ class ControllerCommonHomeProducts extends Controller {
 				$special_poducts[$key]['price'] = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				$special_poducts[$key]['special_price'] = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				$special_poducts[$key]['link'] = $this->url->link('product/product','product_id=' . $product['product_id']);
+				$special_poducts[$key]['liked'] = in_array((int)$product['product_id'], $this->session->data['wishlist']);
 			}
 		}
 		//Рекомендуемые модуль в админке id 28
@@ -26,6 +27,7 @@ class ControllerCommonHomeProducts extends Controller {
 				$product_info['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				$product_info['special_price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				$product_info['link'] = $this->url->link('product/product','product_id=' . $product_info['product_id']);
+				$product_info['liked'] = in_array((int)$product_info['product_id'], $this->session->data['wishlist']);
 				$recomended_products[] = $product_info;
 			}
 		}
@@ -38,6 +40,7 @@ class ControllerCommonHomeProducts extends Controller {
 				$new_products[$key]['price'] = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				$new_products[$key]['special_price'] = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				$new_products[$key]['link'] = $this->url->link('product/product','product_id=' . $product['product_id']);
+				$new_products[$key]['liked'] = in_array((int)$product['product_id'], $this->session->data['wishlist']);
 			}
 		}
 		$data = [

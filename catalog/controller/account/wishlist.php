@@ -2,9 +2,9 @@
 class ControllerAccountWishList extends Controller {
 	public function index() {
 		if (!$this->customer->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('account/wishlist', '', true);
+			//$this->session->data['redirect'] = $this->url->link('account/wishlist', '', true);
 
-			$this->response->redirect($this->url->link('account/login', '', true));
+			//$this->response->redirect($this->url->link('account/login', '', true));
 		}
 
 		$this->load->language('account/wishlist');
@@ -20,8 +20,13 @@ class ControllerAccountWishList extends Controller {
 			$this->model_account_wishlist->deleteWishlist($this->request->get['remove']);
 
 			$this->session->data['success'] = $this->language->get('text_remove');
-
-			$this->response->redirect($this->url->link('account/wishlist'));
+			foreach($this->session->data['wishlist'] as $key => $like){
+				if($like == (int)$this->request->get['remove']){
+					unset($this->session->data['wishlist'][$key]);
+				}
+			}
+			//$this->response->redirect($this->url->link('account/wishlist'));
+			die();
 		}
 
 		$this->document->setTitle($this->language->get('heading_title'));

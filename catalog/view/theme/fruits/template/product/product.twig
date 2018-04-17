@@ -17,7 +17,7 @@
                 <div class="product_card_container-item-wrap">
                     <div class="product_card_container-item-wrap__images">
                         <div class="product_card_container-item-wrap__images__breadcrumbs">
-                            <a href="#">Назад к <span>Виноградные пасты</span></a>
+                           {{ return_text }}
                         </div>
                         <div class="product_card_container-item-wrap__images__title">
                             {{ heading_title }}
@@ -26,9 +26,10 @@
                     </div>
                     <div class="product_card_container-item-wrap__text-wrap">
                         <div class="product_card_container-item-wrap__text-wrap__head">
-                            <div class="product_card_container-item-wrap__text-wrap__head_raty raty"></div>
+                            <div class="product_card_container-item-wrap__text-wrap__head_raty raty" data-score="{{ rating }}"></div>
                             <div class="product_card_container-item-wrap__text-wrap__head_like">
-                                <button class="product_card_container-item-wrap__text-wrap__head_like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-likeg.png"></button>
+                                <button data-product-id="{{ product_id }}" class="product_card_container-item-wrap__text-wrap__head_like__button button_like {% if liked %}liked{% endif %}" type="button">
+                                </button>
                             </div>
                             <div class="product_card_container-item-wrap__text-wrap__head_repost">
                                 <img src="/catalog/view/theme/fruits/images/icon-repost.png">
@@ -49,60 +50,7 @@
                                     </div>
                                 </div>
                                 <div id="tab_rewiews" class="product_card_container-item-wrap__text-wrap_container-content__item">
-                                    <div class="product_card_container_reviews">
-                                        <div id="pagereview" class="owl-carousel owl-theme review product_card_container_reviews-content">
-                                            <div class="product_card_container_reviews-content-items item">
-                                                <div class="product_card_container_reviews-content-items__person">
-                                                    <div class="product_card_container_reviews-content-items__person-name">
-                                                        <p>Иванов Иванов</p>
-                                                    </div>
-                                                    <div class="product_card_container_reviews-content-items__person-raty raty"></div>
-                                                </div>
-                                                <div class="product_card_container_reviews-content-items__comment">
-                                                    <p>Фруктов жидких я не знал в жизни много потерял. Фрукты житкие познал многое я осознал. Осипенко что-то знал, тайну ягод разгадал и без всякого сомненья людям тайну даровал P.s. Есть загвоздочка одна, эта тайна не проста и поймёт её не каждый только тот, кто не стандартно размышляет иногда.</p>
-                                                </div>
-                                            </div>
-                                            <div class="product_card_container_reviews-content-items item">
-                                                <div class="product_card_container_reviews-content-items__person">
-                                                    <div class="product_card_container_reviews-content-items__person-name">
-                                                        <p>Иванов Иванов</p>
-                                                    </div>
-                                                    <div class="product_card_container_reviews-content-items__person-raty raty"></div>
-                                                </div>
-                                                <div class="product_card_container_reviews-content-items__comment">
-                                                    <p>Фруктов жидких я не знал в жизни много потерял. Фрукты житкие познал многое я осознал. Осипенко что-то знал, тайну ягод разгадал и без всякого сомненья людям тайну даровал P.s. Есть загвоздочка одна, эта тайна не проста и поймёт её не каждый только тот, кто не стандартно размышляет иногда.</p>
-                                                </div>
-                                            </div>
-                                            <div class="product_card_container_reviews-content-items item">
-                                                <div class="product_card_container_reviews-content-items__person">
-                                                    <div class="product_card_container_reviews-content-items__person-name">
-                                                        <p>Иванов Иванов</p>
-                                                    </div>
-                                                    <div class="product_card_container_reviews-content-items__person-raty raty"></div>
-                                                </div>
-                                                <div class="product_card_container_reviews-content-items__comment">
-                                                    <p>Фруктов жидких я не знал в жизни много потерял. Фрукты житкие познал многое я осознал. Осипенко что-то знал, тайну ягод разгадал и без всякого сомненья людям тайну даровал P.s. Есть загвоздочка одна, эта тайна не проста и поймёт её не каждый только тот, кто не стандартно размышляет иногда.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product_card_container_reviews__addreview">
-                                            <div class="product_card_container_reviews__addreview__header">
-                                                <div class="product_card_container_reviews__addreview__header-close">
-                                                    <a href="#"><img src="/catalog/view/theme/fruits/images/icon-close.png" /></a>
-                                                </div>
-                                                <p>ДОБАВИТЬ СВОЙ ОТЗЫВ</p>
-                                            </div>
-                                            <div class="product_card_container_reviews__addreview__content">
-                                                <input type="text" name="name" value="" placeholder="Укажите Ваше имя" />
-                                                <textarea name="comment" placeholder="Оставьте Ваш отзыв" ></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="product_card_container_reviews__button">
-                                            <button>ДОБАВИТЬ ОТЗЫВ +</button>
-                                        </div>
-                                        <div class="owl-custom-pagination product_card_container_reviews-pagination">
-                                        </div>
-                                    </div>
+                                    {{ reviews_block }}
                                 </div>
                                 <div id="tab_composition" class="product_card_container-item-wrap__text-wrap_container-content__item">
                                     <div class="product_card_container-item-wrap__text-wrap_container-content__item-content">
