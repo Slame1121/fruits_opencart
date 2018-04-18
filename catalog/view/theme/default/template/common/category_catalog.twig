@@ -1,0 +1,76 @@
+<section class="catalog_block">
+    <div class="container">
+        <div class="catalog_block_container">
+            <div class="catalog_block_container-header">
+                <p>КАТАЛОГ ТОВАРОВ</p>
+            </div>
+            <div  data-carousel="1" class="catalog_block_container-list owl-carousel owl-theme">
+                {% for category in categories %}
+                <div  class="item catalog_block_container-list__item">
+                    <div style="background:linear-gradient(to bottom , {{ category.top_gradient }}, {{ category.bottom_gradient }});" class="catalog_block_container-list__item-background">
+
+                    </div>
+                    <img  src="{{ category.image }}" />
+                    <div class="item catalog_block_container-list__item-wrapper">
+                        <div class="catalog_block_container-list__item-wrapper-text">
+                            <h3>{{ category.name }}</h3>
+                            <p>{{ category.description }}</p>
+                            <button data-color="{{ category.button_color }}"  data-category-id="{{ category.category_id }}" type="button"><span>ПОДРОБНЕЕ</span></button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <div class="owl-custom-pagination catalog_block_container-pagination">
+
+            </div>
+            <div class="catalog_block_container-subcategories">
+                <div class="catalog_block_container-subcategories__close">
+                    <a href="#" ><img src="/catalog/view/theme/fruits/images/icon-close.png" /></a>
+                </div>
+                <div class="catalog_block_container-subcategories__header">
+                    <img src="/catalog/view/theme/fruits/images/icon-subcategories.png" />
+                    <a href="#"><span>СМОТРЕТЬ ВСЕ ТОВАРЫ</span> /  ягодные и фруктовые пасты </a>
+                </div>
+                <div class="catalog_block_container-subcategories__content">
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Черничная паста</a>
+                    </div>
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Клюквенная паста</a>
+                    </div>
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Клюквенная паста</a>
+                    </div>
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Черничная паста</a>
+                    </div>
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Клюквенная паста</a>
+                    </div>
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Клюквенная паста</a>
+                    </div>
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Черничная паста</a>
+                    </div>
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Клюквенная паста</a>
+                    </div>
+                    <div class="catalog_block_container-subcategories__content-item">
+                        <a href="">Клюквенная паста</a>
+                    </div>
+                </div>
+            </div>
+            <div class="catalog_block_container-footer">
+                <div class="catalog_block_container-footer__link">
+                    <a href="{{ catalog }}" class="">открыть каталог всей продукции</a>
+                </div>
+                <div class="catalog_block_container-footer__pagination">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -4033,7 +4033,6 @@ a {
           top: 30px;
           z-index: 8; }
           .cart_block_container-item-wrap__images__header-like__button {
-            background: transparent;
             border: none;
             cursor: pointer; }
         .cart_block_container-item-wrap__images img {
@@ -4055,7 +4054,7 @@ a {
           padding-right: 60px;
           float: left;
           width: 70%; }
-          .cart_block_container-item-wrap__text-wrap__text h3 {
+          .cart_block_container-item-wrap__text-wrap__text a {
             text-transform: uppercase;
             font-size: 24px;
             color: #29262f;
@@ -4063,7 +4062,7 @@ a {
             position: relative;
             display: block;
             margin-bottom: 30px; }
-            .cart_block_container-item-wrap__text-wrap__text h3:after {
+            .cart_block_container-item-wrap__text-wrap__text a:after {
               content: '';
               background: #9a9b9c;
               width: 60px;

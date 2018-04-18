@@ -189,7 +189,7 @@ var Main = {
 	},
 	initTabs: function () {
 		var all_containers = $('.tabs_container');
-		all_containers.find('.tabs_list a').on('click', function(e){
+		$('body').on('click', '.tabs_container .tabs_list a', function(e){
 			e.stopPropagation();
 			e.preventDefault();
 			$(this).parent().parent().find('a').removeClass('active');
@@ -518,21 +518,27 @@ $(document).ready(function() {
 		count = count < 1 ? 1 : count;
 		$input.val(count);
 		$input.change();
+		var cart_id = $(this).parent().data('cart-id');
+		cart.update(cart_id, $(this).parent().find('input').val());
 		return false;
 	});
 	$('#number .plus').click(function () {
 		var $input = $(this).parent().find('input');
 		$input.val(parseInt($input.val()) + 1);
 		$input.change();
+		var cart_id = $(this).parent().data('cart-id');
+		cart.update(cart_id, $(this).parent().find('input').val());
 		return false;
 	});
 
 /* delete product */
 	$( "a.remove" ).each(function(index) {
-		$(this).click(function() {
+		$(this).click(function(e) {
+			e.preventDefault();
+			e.stopPropagation();
 		  $(this).next('.cart_block_container-item-wrap').remove();
 		  $('.cart_block_container p').remove();
-		  $('.cart_block_container').prepend('<p><strong>Почему вы удалили товар ? :(</strong></p>');
+			cart.remove($(this).data('cart-id'));
 		  $(this).fadeOut(1);
 
 		});

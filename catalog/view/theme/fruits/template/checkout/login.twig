@@ -1,39 +1,40 @@
-<div class="row">
-  <div class="col-sm-6">
-    <h2>{{ text_new_customer }}</h2>
-    <p>{{ text_checkout }}</p>
-    <div class="radio">
-      <label> {% if account == 'register' %}
-        <input type="radio" name="account" value="register" checked="checked" />
-        {% else %}
-        <input type="radio" name="account" value="register" />
-        {% endif %}
-        {{ text_register }}</label>
+<div class="ordering_block_container__login-header">
+    <span class="step"><strong>Шаг 1</strong> / 4</span>
+    <img src="/catalog/view/theme/fruits/images/user-login.png" />
+</div>
+<div class="ordering_block_container__login-content">
+    <div class="tabs_container">
+        <div class="tabs">
+            <ul class="tabs_list">
+                <li><a class="active" href="#tab_register">Новый покупатель</a></li>
+                <li><a href="#tab_login">Постоянный клиент</a></li>
+            </ul>
+        </div>
+        <div class="tabs_items">
+            <div id="tab_register" class="login__form active">
+                <form id="register_form_checkout">
+                    <input type="text" name="name" value="" placeholder="Ваше имя*" />
+                    <input type="text" name="phone" value="" placeholder="Ваш номер телефона*" />
+                    <input type="email" name="email" value="" placeholder="Ваш Email" />
+                </form>
+                <div class="login__form-submit">
+                    <button  type="submit" form="register_form"><span>Выполнить вход</span></button>
+                </div>
+                <p class="follow">*email Если вы хотите следить за статусом выполнения заказа</p>
+            </div>
+            <div id="tab_login" class="login__form">
+                <form  id="login_form_checkout">
+                    <input type="email" name="email" value="" placeholder="Email" />
+                    <input type="password" name="password" value="" placeholder="Пароль" />
+                </form>
+                <div class="login__form-forget"><a href="#">Забыли свой парль?</a></div>
+                <div class="login__form-submit">
+                    <button type="submit" form="login_form"><span>Выполнить вход</span></button>
+                </div>
+                <div class="login__form-social">
+                    <p>Войти как пользователь: <a href="#"><img src="/catalog/view/theme/fruits/images/icon-facebook.png" /></a></p>
+                </div>
+            </div>
+        </div>
     </div>
-    {% if checkout_guest %}
-    <div class="radio">
-      <label> {% if account == 'guest' %}
-        <input type="radio" name="account" value="guest" checked="checked" />
-        {% else %}
-        <input type="radio" name="account" value="guest" />
-        {% endif %}
-        {{ text_guest }}</label>
-    </div>
-    {% endif %}
-    <p>{{ text_register_account }}</p>
-    <input type="button" value="{{ button_continue }}" id="button-account" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
-  </div>
-  <div class="col-sm-6">
-    <h2>{{ text_returning_customer }}</h2>
-    <p>{{ text_i_am_returning_customer }}</p>
-    <div class="form-group">
-      <label class="control-label" for="input-email">{{ entry_email }}</label>
-      <input type="text" name="email" value="" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label class="control-label" for="input-password">{{ entry_password }}</label>
-      <input type="password" name="password" value="" placeholder="{{ entry_password }}" id="input-password" class="form-control" />
-      <a href="{{ forgotten }}">{{ text_forgotten }}</a></div>
-    <input type="button" value="{{ button_login }}" id="button-login" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
-  </div>
 </div>

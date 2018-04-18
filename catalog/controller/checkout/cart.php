@@ -49,7 +49,7 @@ class ControllerCheckoutCart extends Controller {
 			} else {
 				$data['weight'] = '';
 			}
-
+			$this->load->model('catalog/product');
 			$this->load->model('tool/image');
 			$this->load->model('tool/upload');
 
@@ -129,19 +129,25 @@ class ControllerCheckoutCart extends Controller {
 						$recurring .= sprintf($this->language->get('text_payment_cancel'), $this->currency->format($this->tax->calculate($product['recurring']['price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']), $product['recurring']['cycle'], $frequencies[$product['recurring']['frequency']], $product['recurring']['duration']);
 					}
 				}
+				$product_info = $this->model_catalog_product->getProduct($product['product_id']);
 				$data['products'][] = array(
 					'cart_id'   => $product['cart_id'],
 					'thumb'     => $image,
+					'description'=> utf8_substr(trim(strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
 					'sku'       => $product['sku'],
 					'name'      => $product['name'],
 					'model'     => $product['model'],
 					'option'    => $option_data,
+					'reviews'	=> $product_info['reviews'],
 					'recurring' => $recurring,
 					'quantity'  => $product['quantity'],
 					'stock'     => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
 					'reward'    => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
 					'price'     => $price,
+					'product_id'=> $product['product_id'],
+					'liked'       => in_array((int)$product_info['product_id'], $this->session->data['wishlist']),
 					'total'     => $total,
+					'rating'    => $product_info['rating'],
 					'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
 				);
 			}
@@ -207,6 +213,9 @@ class ControllerCheckoutCart extends Controller {
 			$data['totals'] = array();
 
 			foreach ($totals as $total) {
+				if($total['code'] == 'total'){
+					$data['cart_total'] = $this->currency->format($total['value'], $this->session->data['currency']);
+				}
 				$data['totals'][] = array(
 					'title' => $total['title'],
 					'text'  => $this->currency->format($total['value'], $this->session->data['currency'])
@@ -255,7 +264,7 @@ class ControllerCheckoutCart extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			$this->response->setOutput($this->load->view('error/not_found', $data));
+			$this->response->redirect($this->url->link('common/home'));
 		}
 	}
 
@@ -385,11 +394,8 @@ class ControllerCheckoutCart extends Controller {
 		$json = array();
 
 		// Update
-		if (!empty($this->request->post['quantity'])) {
-			foreach ($this->request->post['quantity'] as $key => $value) {
-				$this->cart->update($key, $value);
-			}
-
+		if (($this->request->post['quantity']) > 0) {
+			$this->cart->update((int)$this->request->post['key'], (int)$this->request->post['quantity']);
 			$this->session->data['success'] = $this->language->get('text_remove');
 
 			unset($this->session->data['shipping_method']);
@@ -398,7 +404,54 @@ class ControllerCheckoutCart extends Controller {
 			unset($this->session->data['payment_methods']);
 			unset($this->session->data['reward']);
 
-			$this->response->redirect($this->url->link('checkout/cart'));
+
+			// Totals
+			$this->load->model('setting/extension');
+
+			$totals = array();
+			$taxes = $this->cart->getTaxes();
+			$total = 0;
+
+			// Because __call can not keep var references so we put them into an array.
+			$total_data = array(
+				'totals' => &$totals,
+				'taxes'  => &$taxes,
+				'total'  => &$total
+			);
+
+			// Display prices
+			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+				$sort_order = array();
+
+				$results = $this->model_setting_extension->getExtensions('total');
+
+				foreach ($results as $key => $value) {
+					$sort_order[$key] = $this->config->get('total_' . $value['code'] . '_sort_order');
+				}
+
+				array_multisort($sort_order, SORT_ASC, $results);
+
+				foreach ($results as $result) {
+					if ($this->config->get('total_' . $result['code'] . '_status')) {
+						$this->load->model('extension/total/' . $result['code']);
+
+						// We have to put the totals in an array so that they pass by reference.
+						$this->{'model_extension_total_' . $result['code']}->getTotal($total_data);
+					}
+				}
+
+				$sort_order = array();
+
+				foreach ($totals as $key => $value) {
+					$sort_order[$key] = $value['sort_order'];
+				}
+
+				array_multisort($sort_order, SORT_ASC, $totals);
+			}
+
+			$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+			$json['total_cart'] =  $this->currency->format($total, $this->session->data['currency']);
+
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
@@ -467,8 +520,14 @@ class ControllerCheckoutCart extends Controller {
 
 				array_multisort($sort_order, SORT_ASC, $totals);
 			}
+			if($this->cart->getTotal() > 0){
+				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+				$json['total_cart'] =  $this->currency->format($total, $this->session->data['currency']);
 
-			$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+			}else{
+				$json['redirect'] = $this->url->link('common/home');
+			}
+
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

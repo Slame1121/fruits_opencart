@@ -14,40 +14,40 @@
         <div class="cart_block_container">
             {% for product in products %}
             <div class="cart_block_container-item">
-                <a class="cart_block_container-item-remove remove" href="#">×</a>
+                <a class="cart_block_container-item-remove remove" data-cart-id="{{ product.cart_id }}" href="#">×</a>
                 <div class="cart_block_container-item-wrap">
                     <div class="cart_block_container-item-wrap__images">
                         <div class="cart_block_container-item-wrap__images__header-like">
-                            <button class="cart_block_container-item-wrap__images__header-like__button" type="button"><img src="/catalog/view/theme/fruits/images/icon-liked.png"></button>
+                            <button data-product-id="{{ product.product_id }}" class="cart_block_container-item-wrap__images__header-like__button button_like {% if product.liked == true %}liked{% endif %}" type="button"></button>
                         </div>
                         <a href="{{ product.href }}"><img src="{{ product.thumb }}"></a>
                     </div>
                     <div class="cart_block_container-item-wrap__text-wrap">
                         <div class="cart_block_container-item-wrap__text-wrap__text">
-                            <h3>{{ product.name }}</h3>
+                            <a href="{{ product.href }}">{{ product.name }}</a>
                             <div class="cart_block_container-item-wrap__text-wrap__text__sku">Код {{ product.sku }}</div>
-                            <div class="cart_block_container-item-wrap__text-wrap__text__raty raty"></div>
+                            <div class="cart_block_container-item-wrap__text-wrap__text__raty raty"  data-score="{{ product.rating }}"></div>
                             <div class="cart_block_container-item-wrap__text-wrap__text__rating">
-                                <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>17 отзывов</span>
+                                <img src="/catalog/view/theme/fruits/images/icon-arrow.png" /> <span>{{ product.reviews }} отзывов</span>
                             </div>
                             <div class="cart_block_container-item-wrap__text-wrap__text__text-desc">
                                 {% if product.option %}
                                     {% for option in product.option %} <br />
                                         <p>{{ option.name }}: {{ option.value }}</p> {% endfor %}
                                     {% else %}
-                                        Паста белого винограда привер текста. Паста белого винограда привер текста. Паста белого винограда привер текста.
+                                        {{ product.description }}
                                 {% endif %}
 
                             </div>
 
-                            <div class="cart_block_container-item-wrap__text-wrap__text__text-view"><a href="#">  {% if not product.option %}Смотреть подробнее...{% else %}&nbsp;{% endif %}</a> </div>
+                            <div class="cart_block_container-item-wrap__text-wrap__text__text-view"><a href="{{ product.href }}">  {% if not product.option %}Смотреть подробнее...{% else %}&nbsp;{% endif %}</a> </div>
 
                         </div>
                         <div class="cart_block_container-item-wrap__text-wrap__container">
-                            <div id="number" class="cart_block_container-item-wrap__text-wrap__container_number">
+                            <div id="number" class="cart_block_container-item-wrap__text-wrap__container_number" data-cart-id="{{ product.cart_id }}">
                                 <span class="cart_block_container-item-wrap__text-wrap__container_number_minus minus">-</span>
                                 <input type="text" value="{{ product.quantity }}" size="5"/>
-                                <span class="cart_block_container-item-wrap__text-wrap__container_number_plus plus">+</span>
+                                <span class="cart_block_container-item-wrap__text-wrap__container_number_plus plus" >+</span>
                             </div>
                             <div class="cart_block_container-item-wrap__text-wrap__container_price">
                                 <span>{{ product.total }}</span>
@@ -59,7 +59,7 @@
             {% endfor %}
             <div class="cart_block_container-item__checkout">
                 <div class="cart_block_container-item__checkout-total">
-                    <span>Сумма к оплате: <strong>1299</strong> грн </span>
+                    <span>Сумма к оплате: <strong>{{ cart_total }}</strong>  </span>
                 </div>
                 <div class="cart_block_container-item__checkout-addtocart">
                     <a href="{{ checkout }}">
