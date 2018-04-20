@@ -77,6 +77,11 @@ class ControllerCheckoutCheckout extends Controller {
 
 		$data['logged'] = $this->customer->isLogged();
 
+		if($this->customer->isLogged()){
+			$data['email'] = $this->customer->getEmail();
+			$data['firstname'] = $this->customer->getFirstName();
+		}
+
 		if (isset($this->session->data['account'])) {
 			$data['account'] = $this->session->data['account'];
 		} else {
@@ -84,7 +89,6 @@ class ControllerCheckoutCheckout extends Controller {
 		}
 
 		$data['shipping_required'] = $this->cart->hasShipping();
-
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');

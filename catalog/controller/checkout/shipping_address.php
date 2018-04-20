@@ -31,6 +31,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 			$data['zone_id'] = '';
 		}
 
+
 		$this->load->model('localisation/country');
 
 		$data['countries'] = $this->model_localisation_country->getCountries();
@@ -113,36 +114,36 @@ class ControllerCheckoutShippingAddress extends Controller {
 					unset($this->session->data['shipping_methods']);
 				}
 			} else {
-				if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
-					$json['error']['firstname'] = $this->language->get('error_firstname');
+				/*if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
+					//$json['error']['firstname'] = $this->language->get('error_firstname');
 				}
 
 				if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
-					$json['error']['lastname'] = $this->language->get('error_lastname');
+					//$json['error']['lastname'] = $this->language->get('error_lastname');
 				}
 
 				if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
-					$json['error']['address_1'] = $this->language->get('error_address_1');
+					//$json['error']['address_1'] = $this->language->get('error_address_1');
 				}
 
 				if ((utf8_strlen(trim($this->request->post['city'])) < 2) || (utf8_strlen(trim($this->request->post['city'])) > 128)) {
-					$json['error']['city'] = $this->language->get('error_city');
+					//$json['error']['city'] = $this->language->get('error_city');
 				}
-
+*/
 				$this->load->model('localisation/country');
 
-				$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
+				//$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
 
-				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
-					$json['error']['postcode'] = $this->language->get('error_postcode');
-				}
+				//if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+					//$json['error']['postcode'] = $this->language->get('error_postcode');
+				//}
 
-				if ($this->request->post['country_id'] == '') {
-					$json['error']['country'] = $this->language->get('error_country');
-				}
+				//if ($this->request->post['country_id'] == '') {
+				//	$json['error']['country'] = $this->language->get('error_country');
+				//}
 
 				if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '' || !is_numeric($this->request->post['zone_id'])) {
-					$json['error']['zone'] = $this->language->get('error_zone');
+					//$json['error']['zone'] = $this->language->get('error_zone');
 				}
 
 				// Custom field validation
@@ -165,6 +166,12 @@ class ControllerCheckoutShippingAddress extends Controller {
 
 					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($address_id);
 
+					$this->session->data['shipping_address']['shipping_city'] = isset($this->request->post['shipping_city']) ? $this->request->post['shipping_city'] : '';
+					$this->session->data['shipping_address']['shipping_street'] =  isset($this->request->post['shipping_city']) ? $this->request->post['shipping_street'] : '';
+					$this->session->data['shipping_address']['shipping_house'] =  isset($this->request->post['shipping_city']) ? $this->request->post['shipping_house'] : '';
+					$this->session->data['shipping_address']['shipping_flat'] = isset($this->request->post['shipping_city']) ? $this->request->post['shipping_flat'] : '';
+					$this->session->data['shipping_address']['shipping_new_post'] =  isset($this->request->post['shipping_city']) ? $this->request->post['shipping_new_post'] : '';
+
 					// If no default address ID set we use the last address
 					if (!$this->customer->getAddressId()) {
 						$this->load->model('account/customer');
@@ -172,8 +179,8 @@ class ControllerCheckoutShippingAddress extends Controller {
 						$this->model_account_customer->editAddressId($this->customer->getId(), $address_id);
 					}
 					
-					unset($this->session->data['shipping_method']);
-					unset($this->session->data['shipping_methods']);
+					//unset($this->session->data['shipping_method']);
+					//unset($this->session->data['shipping_methods']);
 				}
 			}
 		}

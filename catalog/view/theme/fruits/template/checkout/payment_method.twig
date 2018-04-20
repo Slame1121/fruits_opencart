@@ -1,43 +1,20 @@
-{% if error_warning %}
-<div class="alert alert-warning alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
-{% endif %}
-{% if payment_methods %}
-<p>{{ text_payment_method }}</p>
-{% for payment_method in payment_methods %}
-<div class="radio">
-  <label>{% if payment_method.code == code or not code %}
-    {% set code = payment_method.code %}
-    <input type="radio" name="payment_method" value="{{ payment_method.code }}" checked="checked" />
+<div class="ordering_block_container__paid-header">
+    <span class="step"><strong>Шаг 4</strong> / 4</span>
+    <img src="/catalog/view/theme/fruits/images/paid.png" />
+    <span>Способы оплаты</span>
+</div>
+<div class="ordering_block_container__paid-content">
+    {% for payment_method in payment_methods %}
+    {% if payment_method.code == code or loop.index==1 %}
+        <button name="payment_method" value="{{ payment_method.code }}" class="ordering_block_container__paid-content__button paid active"><span>{{ payment_method.title }}</span></button>
     {% else %}
-    <input type="radio" name="payment_method" value="{{ payment_method.code }}" />
+        <button name="payment_method" value="{{ payment_method.code }}"  class="ordering_block_container__paid-content__button paid"><span>{{ payment_method.title }}</span></button>
     {% endif %}
-    {{ payment_method.title }}
-    {% if payment_method.terms %}
-    ({{ payment_method.terms }})
-    {% endif %} </label>
+    {% endfor %}
+    <div class="ordering_block_container__paid-content-important">
+        <p><span>*</span> Оплата производится наложенным платежом при получении товара в почтовом отделении. Стоимость доставки товара рассчитывается индивидуально. Учитывается вес посылки, дальность отправления и способ доставки (наземная/авиа).</p>
+    </div>
+    <div class="ordering_block_container__paid-content-submit">
+        <button  type="submit"><span>Продолжить</span></button>
+    </div>
 </div>
-{% endfor %}
-{% endif %}
-<p><strong>{{ text_comments }}</strong></p>
-<p>
-  <textarea name="comment" rows="8" class="form-control">{{ comment }}</textarea>
-</p>
-{% if text_agree %}
-<div class="buttons">
-  <div class="pull-right">{{ text_agree }}
-    {% if agree %}
-    <input type="checkbox" name="agree" value="1" checked="checked" />
-    {% else %}
-    <input type="checkbox" name="agree" value="1" />
-    {% endif %}
-    &nbsp;
-    <input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
-  </div>
-</div>
-{% else %}
-<div class="buttons">
-  <div class="pull-right">
-    <input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn btn-primary" />
-  </div>
-</div>
-{% endif %} 

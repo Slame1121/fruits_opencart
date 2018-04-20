@@ -12,6 +12,7 @@ class ControllerCheckoutConfirm extends Controller {
 			// Validate if shipping method has been set.
 			if (!isset($this->session->data['shipping_method'])) {
 				$redirect = $this->url->link('checkout/checkout', '', true);
+
 			}
 		} else {
 			unset($this->session->data['shipping_address']);
@@ -21,14 +22,16 @@ class ControllerCheckoutConfirm extends Controller {
 
 		// Validate if payment address has been set.
 		if (!isset($this->session->data['payment_address'])) {
-			$redirect = $this->url->link('checkout/checkout', '', true);
+			//$redirect = $this->url->link('checkout/checkout', '', true);
 		}
 
 		// Validate if payment method has been set.
 		if (!isset($this->session->data['payment_method'])) {
 			$redirect = $this->url->link('checkout/checkout', '', true);
+
 		}
 
+		print_r($redirect);
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$redirect = $this->url->link('checkout/cart');
@@ -52,8 +55,8 @@ class ControllerCheckoutConfirm extends Controller {
 				break;
 			}
 		}
-
 		if (!$redirect) {
+
 			$order_data = array();
 
 			$totals = array();
@@ -87,7 +90,6 @@ class ControllerCheckoutConfirm extends Controller {
 					$this->{'model_extension_total_' . $result['code']}->getTotal($total_data);
 				}
 			}
-
 			$sort_order = array();
 
 			foreach ($totals as $key => $value) {
@@ -136,7 +138,7 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['custom_field'] = $this->session->data['guest']['custom_field'];
 			}
 
-			$order_data['payment_firstname'] = $this->session->data['payment_address']['firstname'];
+			/*$order_data['payment_firstname'] = $this->session->data['payment_address']['firstname'];
 			$order_data['payment_lastname'] = $this->session->data['payment_address']['lastname'];
 			$order_data['payment_company'] = $this->session->data['payment_address']['company'];
 			$order_data['payment_address_1'] = $this->session->data['payment_address']['address_1'];
@@ -149,7 +151,7 @@ class ControllerCheckoutConfirm extends Controller {
 			$order_data['payment_country_id'] = $this->session->data['payment_address']['country_id'];
 			$order_data['payment_address_format'] = $this->session->data['payment_address']['address_format'];
 			$order_data['payment_custom_field'] = (isset($this->session->data['payment_address']['custom_field']) ? $this->session->data['payment_address']['custom_field'] : array());
-
+*/
 			if (isset($this->session->data['payment_method']['title'])) {
 				$order_data['payment_method'] = $this->session->data['payment_method']['title'];
 			} else {
@@ -163,6 +165,7 @@ class ControllerCheckoutConfirm extends Controller {
 			}
 
 			if ($this->cart->hasShipping()) {
+
 				$order_data['shipping_firstname'] = $this->session->data['shipping_address']['firstname'];
 				$order_data['shipping_lastname'] = $this->session->data['shipping_address']['lastname'];
 				$order_data['shipping_company'] = $this->session->data['shipping_address']['company'];
@@ -176,7 +179,11 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['shipping_country_id'] = $this->session->data['shipping_address']['country_id'];
 				$order_data['shipping_address_format'] = $this->session->data['shipping_address']['address_format'];
 				$order_data['shipping_custom_field'] = (isset($this->session->data['shipping_address']['custom_field']) ? $this->session->data['shipping_address']['custom_field'] : array());
-
+				$order_data['shipping_city'] = $this->session->data['shipping_address']['shipping_city'];
+				$order_data['shipping_street'] = $this->session->data['shipping_address']['shipping_street'];
+				$order_data['shipping_house'] =  $this->session->data['shipping_address']['shipping_house'];
+				$order_data['shipping_flat'] = $this->session->data['shipping_address']['shipping_flat'];
+				$order_data['shipping_new_post'] = $this->session->data['shipping_address']['shipping_new_post'];
 				if (isset($this->session->data['shipping_method']['title'])) {
 					$order_data['shipping_method'] = $this->session->data['shipping_method']['title'];
 				} else {

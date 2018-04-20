@@ -900,7 +900,7 @@ class ControllerSaleOrder extends Controller {
 				'country'   => $order_info['shipping_country']
 			);
 
-			$data['shipping_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
+			$data['shipping_address'] = $order_info['shipping_city'].', ул. '.$order_info['shipping_street'].' дом' . $order_info['shipping_house'].' кв. '.$order_info['shipping_flat'];
 
 			// Uploaded files
 			$this->load->model('tool/upload');
