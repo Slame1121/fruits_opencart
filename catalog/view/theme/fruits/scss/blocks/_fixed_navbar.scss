@@ -32,11 +32,15 @@
         .dropdown{
           .dropdown-header{
             padding: 5px;
-            align-items: center;
-            display: flex;
-            p{
-              font-size: 13px;
+            a{
+              color:#000;
+              align-items: center;
+              display: flex;
+              p{
+                font-size: 13px;
+              }
             }
+
           }
           &:hover{
             .dropdown-header{
@@ -44,7 +48,7 @@
               border-left:1px solid #ccc;
               border-top:1px solid #ccc;
               border-bottom:1px solid #ccc;
-              border-radius: 5px 5px 0 0;
+              border-radius: 5px ;
               padding: 4px;
             }
             .dropdown-content{

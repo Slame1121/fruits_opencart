@@ -64,13 +64,48 @@ class ControllerAccountForgotten extends Controller {
 		$this->response->setOutput($this->load->view('account/forgotten', $data));
 	}
 
+
+	public function sendPassword(){
+		if ($this->customer->isLogged()) {
+			$this->response->redirect($this->url->link('account/account', '', true));
+		}
+		$json = [];
+		$this->load->language('account/forgotten');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('account/customer');
+		$data  =  [];
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			$this->model_account_customer->editCode($this->request->post['email'], token(40));
+
+			$this->session->data['success'] = $this->language->get('text_success');
+			$data['redirect'] = $this->url->link('account/login', '', true);
+		}else{
+			$json = $this->error;
+		}
+
+		if (!isset($json['warning'])) {
+			$json['success'] = $data;
+		}else{
+			$json['success'] = false;
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+
+		return json_encode($json);
+
+	}
+
 	protected function validate() {
 		if (!isset($this->request->post['email'])) {
+
 			$this->error['warning'] = $this->language->get('error_email');
 		} elseif (!$this->model_account_customer->getTotalCustomersByEmail($this->request->post['email'])) {
 			$this->error['warning'] = $this->language->get('error_email');
 		}
-		
+
 		// Check if customer has been approved.
 		$customer_info = $this->model_account_customer->getCustomerByEmail($this->request->post['email']);
 

@@ -1,60 +1,52 @@
-{{ header }}
-<div id="account-order" class="container">
-  <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+<div class="profile_data_tabs-container__item-orders">
+    {% if orders %}
+    {% for order in orders %}
+    <div class="profile_data_tabs-container__item-orders__item">
+        <div class="profile_data_tabs-container__item-orders__item-container">
+            <div class="profile_data_tabs-container__item-orders__item-container__order">
+                <div class="profile_data_tabs-container__item-orders__item-container__order-arrow">
+
+                </div>
+                <div class="profile_data_tabs-container__item-orders__item-container__order-number">
+                    №{{ order.order_id }}
+                </div>
+                <div class="profile_data_tabs-container__item-orders__item-container__order-date">
+                    {{ order.date_added }}
+                </div>
+                <div class="profile_data_tabs-container__item-orders__item-container__order-total">
+                    {{ order.total }}
+                </div>
+                <div class="profile_data_tabs-container__item-orders__item-container__order-status success">
+                    {{ order.status }}
+                </div>
+            </div>
+            <div class="profile_data_tabs-container__item-orders__item-container__dropdown">
+                {% for product in order.order_products %}
+                    <div class="profile_data_tabs-container__item-orders__item-container__dropdown-product">
+                        <div class="profile_data_tabs-container__item-orders__item-container__dropdown-product__thumb">
+                            <img src="{{ product.thumb }}" />
+                        </div>
+                        <div class="profile_data_tabs-container__item-orders__item-container__dropdown-product__description">
+                            <p class="title">{{ product.name }}</p>
+                            {% for option in product.option %} <br />
+                                <p> - {{ option.name }}: {{ option.value }}</p> <br />{% endfor %}
+                        </div>
+                        <div class="profile_data_tabs-container__item-orders__item-container__dropdown-product__price">
+                            <p>{{ product.total }}</p>
+                        </div>
+                        <div class="profile_data_tabs-container__item-orders__item-container__dropdown-product__quantity">
+                            <p>{{ product.quantity }} шт</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="profile_data_tabs-container__item-orders__item-container__dropdown-total">
+                    <p>Итого к оплате:  <b>{{ order.products }}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-  </ul>
-  <div class="row">{{ column_left }}
-    {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
-    {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
     {% else %}
-    {% set class = 'col-sm-12' %}
+        <p>{{ text_empty }}</p>
     {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
-      {% if orders %}
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <td class="text-right">{{ column_order_id }}</td>
-              <td class="text-left">{{ column_customer }}</td>
-              <td class="text-right">{{ column_product }}</td>
-              <td class="text-left">{{ column_status }}</td>
-              <td class="text-right">{{ column_total }}</td>
-              <td class="text-left">{{ column_date_added }}</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-           {% for order in orders %}
-            <tr>
-              <td class="text-right">#{{ order.order_id }}</td>
-              <td class="text-left">{{ order.name }}</td>
-              <td class="text-right">{{ order.products }}</td>
-              <td class="text-left">{{ order.status }}</td>
-              <td class="text-right">{{ order.total }}</td>
-              <td class="text-left">{{ order.date_added }}</td>
-              <td class="text-right"><a href="{{ order.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 text-left">{{ pagination }}</div>
-        <div class="col-sm-6 text-right">{{ results }}</div>
-      </div>
-      {% else %}
-      <p>{{ text_empty }}</p>
-      {% endif %}
-      <div class="buttons clearfix">
-        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
-      </div>
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
 </div>
-{{ footer }}

@@ -52,29 +52,29 @@
                 <div class="tabs_container">
                     <div class="tabs_items">
                         <div id="tab_register" class="login_modal-content__form active">
-                            <form  id="register_form">
+                            <form action="{{ register_link }}"  id="register_form">
                                 <input type="email" name="email" value="" placeholder="Email" />
                                 <input type="password" name="password" value="" placeholder="Пароль" />
-                                <input type="password" name="confirm_password" value="" placeholder="Повторите пароль" />
+                                <input type="password" name="confirm" value="" placeholder="Повторите пароль" />
                             </form>
                         </div>
-                        <div id="tab_login" class="login_modal-content__form">
-                            <form  id="login_form">
+                        <div  id="tab_login" class="login_modal-content__form">
+                            <form action="{{ login_link }}"   id="login_form">
                                 <input type="email" name="email" value="" placeholder="Email" />
                                 <input type="password" name="password" value="" placeholder="Пароль" />
                             </form>
                         </div>
                         <div id="tab_remember" class="login_modal-content__form">
-                            <form  id="remember_form">
+                            <form  action="{{ remember_link }}"  id="remember_form">
                                 <input type="email" name="email" value="" placeholder="Email" />
                             </form>
                         </div>
                     </div>
                     <div class="login_modal-content__tabs">
                         <ul class="tabs_list">
-                            <li><a class="active" href="#tab_register">Регистрация</a></li>
-                            <li><a href="#tab_login">Вход</a></li>
-                            <li><a href="#tab_remember">Восстановление</a></li>
+                            <li><a data-form-id="register_form" class="active" href="#tab_register">Регистрация</a></li>
+                            <li><a data-form-id="login_form"  href="#tab_login">Вход</a></li>
+                            <li><a data-form-id="remember_form" href="#tab_remember">Восстановление</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,8 +82,8 @@
                     <button type="submit" form="register_form"><span>Регистрация</span></button>
                 </div>
                 <div class="login_modal-content__social">
-                    <p>Вход через: <a href="#"><img src="/catalog/view/theme/fruits/images/icon-facebook.png" /></a></p>
-
+                    <p>Вход через: <a onclick="$('.ulogin-button-facebook').click();" href="#"><img src="/catalog/view/theme/fruits/images/icon-facebook.png" /></a></p>
+                    {{ form_login_ulogin }}
                 </div>
             </div>
         </div>

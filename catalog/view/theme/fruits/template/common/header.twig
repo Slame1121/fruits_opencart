@@ -100,9 +100,9 @@
                 <div class="fixed_navbar-container-cart__account">
                     <div class="fixed_navbar-container-cart__account-navbar dropdown">
                         <div class="dropdown-header">
-                            <img src="/catalog/view/theme/fruits/images/icon-user.png" /> <p>Личный кабинет</p>
+                            <a {% if not logged %}data-remodal-target="login-modal"{% endif %} href=" {% if logged %}{{ account }}{% endif %}"> <img src="/catalog/view/theme/fruits/images/icon-user.png" /> <p>Личный кабинет</p></a>
                         </div>
-                        <div class="dropdown-content">
+                        <div style="display: none" class="dropdown-content">
                             <ul class="fixed_navbar-container-cart__account-navbar__items">
                                 <li><a href="#login-modal">Войти</a></li>
                                 <li><a href="#">Зарегистрироваться</a></li>

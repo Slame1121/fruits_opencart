@@ -10,7 +10,7 @@ class ControllerAccountOrder extends Controller {
 		$this->load->language('account/order');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-		
+		$this->document->addScript('/catalog/view/theme/fruits/js/pages/account.js');
 		$url = '';
 
 		if (isset($this->request->get['page'])) {
@@ -43,7 +43,9 @@ class ControllerAccountOrder extends Controller {
 		$data['orders'] = array();
 
 		$this->load->model('account/order');
-
+		$this->load->model('catalog/product');
+		$this->load->model('tool/upload');
+		$this->load->model('tool/image');
 		$order_total = $this->model_account_order->getTotalOrders();
 
 		$results = $this->model_account_order->getOrders(($page - 1) * 10, 10);
@@ -52,13 +54,66 @@ class ControllerAccountOrder extends Controller {
 			$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
 			$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
 
+
+
+
+			// Products
+			$products_arr = array();
+
+			$products = $this->model_account_order->getOrderProducts($result['order_id']);
+			foreach ($products as $product) {
+				$option_data = array();
+
+				$options = $this->model_account_order->getOrderOptions($result['order_id'], $product['order_product_id']);
+
+				foreach ($options as $option) {
+					if ($option['type'] != 'file') {
+						$value = $option['value'];
+					} else {
+						$upload_info = $this->model_tool_upload->getUploadByCode($option['value']);
+
+						if ($upload_info) {
+							$value = $upload_info['name'];
+						} else {
+							$value = '';
+						}
+					}
+
+					$option_data[] = array(
+						'name'  => $option['name'],
+						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+					);
+				}
+
+				$product_info = $this->model_catalog_product->getProduct($product['product_id']);
+
+				if ($product_info) {
+					$reorder = $this->url->link('account/order/reorder', 'order_id=' . $result['order_id'] . '&order_product_id=' . $product['order_product_id'], true);
+				} else {
+					$reorder = '';
+				}
+
+				$products_arr[] = array(
+					'name'     => $product['name'],
+					'model'    => $product['model'],
+					'option'   => $option_data,
+					'quantity' => $product['quantity'],
+					'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $result['currency_code'], $result['currency_value']),
+					'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $result['currency_code'], $result['currency_value']),
+					'reorder'  => $reorder,
+					'thumb'    => $this->model_tool_image->resize($product_info['image'], 180, 180),
+					'return'   => $this->url->link('account/return/add', 'order_id=' . $result['order_id'] . '&product_id=' . $product['product_id'], true)
+				);
+			}
+
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
 				'name'       => $result['firstname'] . ' ' . $result['lastname'],
+				'order_products'   => $products_arr,
 				'status'     => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-				'products'   => ($product_total + $voucher_total),
-				'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
+				'products'   => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
+				'total'      => $product_total.' товар на '.$this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
 				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
 			);
 		}
@@ -82,7 +137,7 @@ class ControllerAccountOrder extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('account/order_list', $data));
+		return ($this->load->view('account/order_list', $data));
 	}
 
 	public function info() {

@@ -82,7 +82,9 @@ class ControllerAccountAccount extends Controller {
 		} else {
 			$data['tracking'] = '';
 		}
-		
+		$data['profile_edit'] = $this->load->controller('account/edit');
+		$data['orders'] = $this->load->controller('account/order');
+		$data['wishlist'] = $this->load->controller('account/wishlist');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');

@@ -217,26 +217,59 @@ class ControllerAccountRegister extends Controller {
 		$this->response->setOutput($this->load->view('account/register', $data));
 	}
 
-	private function validate() {
-		if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
-			$this->error['firstname'] = $this->language->get('error_firstname');
+	public function registr(){
+		if ($this->customer->isLogged()) {
+			$this->response->redirect($this->url->link('account/account', '', true));
+		}
+		$this->load->language('account/register');
+		$json = array();
+		$this->load->model('account/customer');
+		$data['redirect'] = false;
+		$data['warning'] = false;
+		$data['success'] = false;
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+
+			$customer_id = $this->model_account_customer->addCustomer($this->request->post);
+			$this->model_account_customer->deleteLoginAttempts($this->request->post['email']);
+			$this->customer->login($this->request->post['email'], $this->request->post['password']);
+			unset($this->session->data['guest']);
+			$data['redirect'] = $this->url->link('account/account');//account/success
+		}else{
+			$json = $this->error;
+
+		}
+		//var_dump($this->error);die;
+		if (!isset($json['warning'])) {
+			$json['success'] = $data;
+		}else{
+			$json['success'] = false;
 		}
 
-		if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
-			$this->error['lastname'] = $this->language->get('error_lastname');
-		}
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	private function validate() {
+		//if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
+			//$this->error['firstname'] = $this->language->get('error_firstname');
+		//}
+
+		//if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
+			//$this->error['lastname'] = $this->language->get('error_lastname');
+		//}
 
 		if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
-			$this->error['email'] = $this->language->get('error_email');
+			$this->error['warning'] = $this->language->get('error_email');
 		}
 
 		if ($this->model_account_customer->getTotalCustomersByEmail($this->request->post['email'])) {
 			$this->error['warning'] = $this->language->get('error_exists');
 		}
 
-		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
-			$this->error['telephone'] = $this->language->get('error_telephone');
-		}
+		//if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+			//$this->error['telephone'] = $this->language->get('error_telephone');
+		//}
 
 		// Customer Group
 		if (isset($this->request->post['customer_group_id']) && is_array($this->config->get('config_customer_group_display')) && in_array($this->request->post['customer_group_id'], $this->config->get('config_customer_group_display'))) {
@@ -261,11 +294,11 @@ class ControllerAccountRegister extends Controller {
 		}
 
 		if ((utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) > 40)) {
-			$this->error['password'] = $this->language->get('error_password');
+			$this->error['warning'] = $this->language->get('error_password');
 		}
 
 		if ($this->request->post['confirm'] != $this->request->post['password']) {
-			$this->error['confirm'] = $this->language->get('error_confirm');
+			$this->error['warning'] = $this->language->get('error_confirm');
 		}
 
 		// Captcha
@@ -273,7 +306,7 @@ class ControllerAccountRegister extends Controller {
 			$captcha = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha') . '/validate');
 
 			if ($captcha) {
-				$this->error['captcha'] = $captcha;
+				$this->error['warning'] = $captcha;
 			}
 		}
 
@@ -284,7 +317,7 @@ class ControllerAccountRegister extends Controller {
 			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_account_id'));
 
 			if ($information_info && !isset($this->request->post['agree'])) {
-				$this->error['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+				//$this->error['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
 			}
 		}
 		

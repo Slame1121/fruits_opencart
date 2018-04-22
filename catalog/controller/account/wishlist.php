@@ -97,6 +97,9 @@ class ControllerAccountWishList extends Controller {
 					'model'      => $product_info['model'],
 					'stock'      => $stock,
 					'price'      => $price,
+					'rating'      => $product_info['rating'],
+					'reviews'      => $product_info['reviews'],
+					'liked'      => 1,
 					'special'    => $special,
 					'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
 					'remove'     => $this->url->link('account/wishlist', 'remove=' . $product_info['product_id'])
@@ -115,7 +118,7 @@ class ControllerAccountWishList extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('account/wishlist', $data));
+		return ($this->load->view('account/wishlist', $data));
 	}
 
 	public function add() {

@@ -3025,17 +3025,19 @@ a {
           font-size: 14px;
           color: #fff; }
     .fixed_navbar-container-cart__account .dropdown .dropdown-header {
-      padding: 5px;
-      align-items: center;
-      display: flex; }
-      .fixed_navbar-container-cart__account .dropdown .dropdown-header p {
-        font-size: 13px; }
+      padding: 5px; }
+      .fixed_navbar-container-cart__account .dropdown .dropdown-header a {
+        color: #000;
+        align-items: center;
+        display: flex; }
+        .fixed_navbar-container-cart__account .dropdown .dropdown-header a p {
+          font-size: 13px; }
     .fixed_navbar-container-cart__account .dropdown:hover .dropdown-header {
       border-right: 1px solid #ccc;
       border-left: 1px solid #ccc;
       border-top: 1px solid #ccc;
       border-bottom: 1px solid #ccc;
-      border-radius: 5px 5px 0 0;
+      border-radius: 5px;
       padding: 4px; }
     .fixed_navbar-container-cart__account .dropdown:hover .dropdown-content {
       max-height: 100px; }
@@ -3856,9 +3858,15 @@ a {
       background: url("/catalog/view/theme/fruits/images/icon_profile.png");
       width: 21px;
       height: 21px; }
+.login_modal-content input.error {
+  border: 1px solid red; }
+.login_modal-content p.error {
+  color: red; }
 .login_modal-content .tabs_container {
   max-width: 80%;
   margin: 0 auto; }
+.login_modal-content__social .ulogin_form {
+  display: none; }
 .login_modal-content__submit button {
   display: block;
   cursor: pointer;
@@ -5734,6 +5742,172 @@ a {
               right: -45px; }
     .ordering_block_container__paid.active button[type="submit"] {
       background: #a4e243 !important; }
+
+.profile_data_header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center; }
+  .profile_data_header-item p {
+    font-size: 26px;
+    padding-left: 15px;
+    margin-bottom: 30px; }
+  .profile_data_header-item__logout {
+    font-size: 18px;
+    color: #000; }
+    .profile_data_header-item__logout:after {
+      content: "";
+      width: 33px;
+      height: 27px;
+      background: url("/catalog/view/theme/fruits/images/logout.png");
+      float: right;
+      display: block;
+      margin-left: 10px; }
+.profile_data_tabs {
+  margin-top: 60px; }
+  .profile_data_tabs-container__item-orders {
+    text-align: center; }
+    .profile_data_tabs-container__item-orders__item {
+      margin-bottom: 10px;
+      background: #f7f7f7; }
+      .profile_data_tabs-container__item-orders__item-container__dropdown {
+        display: none; }
+        .profile_data_tabs-container__item-orders__item-container__dropdown-total {
+          text-align: left;
+          border-top: 1px solid black;
+          padding: 20px 50px; }
+          .profile_data_tabs-container__item-orders__item-container__dropdown-total p {
+            font-size: 20px; }
+        .profile_data_tabs-container__item-orders__item-container__dropdown-product {
+          padding: 15px 0;
+          display: flex;
+          align-items: center;
+          border-top: 1px solid black; }
+          .profile_data_tabs-container__item-orders__item-container__dropdown-product__thumb {
+            width: 180px; }
+            .profile_data_tabs-container__item-orders__item-container__dropdown-product__thumb img {
+              float: left;
+              max-width: 100%; }
+          .profile_data_tabs-container__item-orders__item-container__dropdown-product__description {
+            width: calc(70% - 180px);
+            text-align: left; }
+            .profile_data_tabs-container__item-orders__item-container__dropdown-product__description p {
+              display: inline-block;
+              padding: 10px 0;
+              margin-left: 25px; }
+              .profile_data_tabs-container__item-orders__item-container__dropdown-product__description p.title {
+                font-size: 20px;
+                position: relative;
+                margin-bottom: 20px; }
+                .profile_data_tabs-container__item-orders__item-container__dropdown-product__description p.title:after {
+                  content: "";
+                  position: absolute;
+                  height: 1px;
+                  background: #acacac;
+                  width: 40%;
+                  bottom: 0;
+                  left: 0; }
+          .profile_data_tabs-container__item-orders__item-container__dropdown-product__price {
+            width: 20%; }
+            .profile_data_tabs-container__item-orders__item-container__dropdown-product__price p {
+              font-size: 30px;
+              font-weight: bold; }
+          .profile_data_tabs-container__item-orders__item-container__dropdown-product__quantity {
+            width: 10%; }
+      .profile_data_tabs-container__item-orders__item-container__order {
+        cursor: pointer;
+        display: flex;
+        padding: 15px 0;
+        font-size: 16px; }
+        .profile_data_tabs-container__item-orders__item-container__order > div {
+          padding: 5px 0; }
+        .profile_data_tabs-container__item-orders__item-container__order-arrow {
+          width: 10%;
+          background: url("/catalog/view/theme/fruits/images/order-arrow.png") center center no-repeat; }
+        .profile_data_tabs-container__item-orders__item-container__order-number {
+          width: 20%; }
+        .profile_data_tabs-container__item-orders__item-container__order-date {
+          width: 20%; }
+        .profile_data_tabs-container__item-orders__item-container__order-total {
+          width: 30%;
+          border-right: 1px solid #000;
+          align-items: center;
+          text-align: right;
+          padding-right: 30px !important; }
+        .profile_data_tabs-container__item-orders__item-container__order-status {
+          width: 20%; }
+  .profile_data_tabs-container__item .category_block_container_content_list_item {
+    border: 0 none;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.33);
+    padding: 0;
+    min-height: 240px;
+    background: #f8fafb; }
+    .profile_data_tabs-container__item .category_block_container_content_list_item__text-wrap__container {
+      margin-top: 25px; }
+    .profile_data_tabs-container__item .category_block_container_content_list_item__text-wrap__text {
+      margin-top: 25px; }
+  .profile_data_tabs-container__list {
+    width: 60%;
+    margin: 0 auto 20px;
+    text-align: center;
+    border-bottom: 1px solid #b8b8b8; }
+    .profile_data_tabs-container__list li {
+      display: inline; }
+      .profile_data_tabs-container__list li a {
+        text-transform: uppercase;
+        padding: 25px;
+        display: inline-block;
+        position: relative;
+        color: #000; }
+        .profile_data_tabs-container__list li a:hover {
+          font-weight: 700; }
+          .profile_data_tabs-container__list li a:hover:after {
+            width: 100%;
+            height: 3px; }
+        .profile_data_tabs-container__list li a.active {
+          font-weight: 700;
+          cursor: default; }
+          .profile_data_tabs-container__list li a.active:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            height: 3px;
+            background: #f36b5b; }
+        .profile_data_tabs-container__list li a:after {
+          content: "";
+          transition: all 1s;
+          width: 0;
+          height: 3px;
+          bottom: 0;
+          left: 0;
+          display: block;
+          background: #f36b5b;
+          position: absolute; }
+.profile_data_container {
+  display: flex;
+  justify-content: space-around; }
+  .profile_data_container-item {
+    width: 40%; }
+    .profile_data_container-item p {
+      font-size: 22px; }
+      .profile_data_container-item p.error {
+        font-size: 14px;
+        color: red; }
+    .profile_data_container-item button[type=submit] {
+      cursor: pointer;
+      margin-top: 65px;
+      border: 1px solid #000;
+      padding: 10px 20px;
+      font-size: 18px;
+      background: transparent; }
+    .profile_data_container-item input {
+      border: 0 none;
+      margin-top: 5px;
+      font-size: 18px;
+      width: 100%;
+      border-bottom: 1px solid #b8b8b8;
+      padding: 15px 0; }
 
 #header_navbar {
   background: #4a88db; }

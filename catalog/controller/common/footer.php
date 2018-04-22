@@ -15,6 +15,17 @@ class ControllerCommonFooter extends Controller {
 				);
 			}
 		}
+
+
+		//Form Login
+		$this->load->model('setting/module');
+		$setting_info = $this->model_setting_module->getModule('35');
+		$data['form_login_action'] = '';
+		if($setting_info['status']){
+			$data['form_login_ulogin'] = $this->load->controller('extension/module/ulogin', $setting_info);
+		}
+
+
 		$data['checkout'] = $this->url->link('checkout/checkout');
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);
@@ -29,6 +40,10 @@ class ControllerCommonFooter extends Controller {
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);
 		$data['footer_menu'] = $this->load->controller('common/footer_menu');
 		$data['newsletter'] = $this->url->link('account/newsletter', '', true);
+
+		$data['login_link'] = $this->url->link('account/login/loginAjax', '', true);
+		$data['register_link'] = $this->url->link('account/register/registr', '', true);
+		$data['remember_link'] = $this->url->link('account/forgotten/sendPassword', '', true);
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 

@@ -18,10 +18,20 @@
     }
   }
   &-content{
-
+    input.error{
+      border:1px solid red;
+    }
+    p.error{
+      color:red;
+    }
     .tabs_container{
       max-width: 80%;
       margin: 0 auto;
+    }
+    &__social{
+      .ulogin_form{
+        display: none;
+      }
     }
     &__submit{
       button{
