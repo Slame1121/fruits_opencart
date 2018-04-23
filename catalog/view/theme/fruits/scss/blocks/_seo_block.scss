@@ -22,7 +22,7 @@
             &__container{
               display: flex;
               align-items: center;
-              justify-content: space-between;
+              justify-content: flex-start;
               &__text{
                 padding:0 45px;
                 p{
@@ -35,6 +35,7 @@
               }
               &__thumb{
                 img{
+                  float:left;
                   width: auto;
                 }
               }
@@ -50,6 +51,7 @@
             display: inline;
             a{
               padding:25px;
+              text-transform: uppercase;
               display: inline-block;
               position: relative;
               color:#000;

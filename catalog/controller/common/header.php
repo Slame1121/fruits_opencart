@@ -42,7 +42,6 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$data['logo'] = '';
 		}
-
 		$this->load->language('common/header');
 
 		// Wishlist
@@ -57,7 +56,7 @@ class ControllerCommonHeader extends Controller {
 		$data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', true), $this->customer->getFirstName(), $this->url->link('account/logout', '', true));
 		
 		$data['home'] = $this->url->link('common/home');
-		$data['wishlist'] = $this->url->link('account/wishlist', '', true);
+		$data['wishlist'] = $this->url->link('account/account', '', true);
 		$data['logged'] = $this->customer->isLogged();
 		$data['account'] = $this->url->link('account/account', '', true);
 		$data['register'] = $this->url->link('account/register', '', true);
@@ -71,7 +70,7 @@ class ControllerCommonHeader extends Controller {
 		$data['checkout'] = $this->url->link('checkout/checkout', '', true);
 		$data['contact'] = $this->url->link('information/contact');
 		$data['telephone'] = $this->config->get('config_telephone');
-
+		$data['telephone_2'] = $this->config->get('config_telephone_2');
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
@@ -79,5 +78,22 @@ class ControllerCommonHeader extends Controller {
 		$data['menu'] = $this->load->controller('common/menu');
 
 		return $this->load->view('common/header', $data);
+	}
+
+	public function searchProducts(){
+		$search = htmlspecialchars($_POST['search']);
+
+		$this->load->model('catalog/product');
+		$filter_data = [
+			'filter_name' => $search,
+			'start' => 1,
+			'limit' => 5
+		];
+		$products = $this->model_catalog_product->getProducts($filter_data);
+		foreach($products as $key => $product){
+			$products[$key]['link'] = $this->url->link('product/product','product_id='.$product['product_id'], true);
+		}
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($products));
 	}
 }

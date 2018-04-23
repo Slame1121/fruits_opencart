@@ -59,6 +59,12 @@ class ControllerSettingSetting extends Controller {
 			$data['error_telephone'] = '';
 		}
 
+		if (isset($this->error['telephone_2'])) {
+			$data['error_telephone_2'] = $this->error['telephone_2'];
+		} else {
+			$data['error_telephone_2'] = '';
+		}
+
 		if (isset($this->error['meta_title'])) {
 			$data['error_meta_title'] = $this->error['meta_title'];
 		} else {
@@ -251,6 +257,42 @@ class ControllerSettingSetting extends Controller {
 			$data['config_telephone'] = $this->request->post['config_telephone'];
 		} else {
 			$data['config_telephone'] = $this->config->get('config_telephone');
+		}
+
+		if (isset($this->request->post['config_telephone_2'])) {
+			$data['config_telephone_2'] = $this->request->post['config_telephone_2'];
+		} else {
+			$data['config_telephone_2'] = $this->config->get('config_telephone_2');
+		}
+
+		if (isset($this->request->post['config_social_facebook'])) {
+			$data['config_social_facebook'] = $this->request->post['config_social_facebook'];
+		} else {
+			$data['config_social_facebook'] = $this->config->get('config_social_facebook');
+		}
+
+		if (isset($this->request->post['config_social_youtube'])) {
+			$data['config_social_youtube'] = $this->request->post['config_social_youtube'];
+		} else {
+			$data['config_social_youtube'] = $this->config->get('config_social_youtube');
+		}
+
+		if (isset($this->request->post['config_social_skype'])) {
+			$data['config_social_skype'] = $this->request->post['config_social_skype'];
+		} else {
+			$data['config_social_skype'] = $this->config->get('config_social_skype');
+		}
+
+		if (isset($this->request->post['config_social_instagram'])) {
+			$data['config_social_instagram'] = $this->request->post['config_social_instagram'];
+		} else {
+			$data['config_social_instagram'] = $this->config->get('config_social_instagram');
+		}
+
+		if (isset($this->request->post['config_social_google'])) {
+			$data['config_social_google'] = $this->request->post['config_social_google'];
+		} else {
+			$data['config_social_google'] = $this->config->get('config_social_google');
 		}
 		
 		if (isset($this->request->post['config_fax'])) {
@@ -911,6 +953,7 @@ class ControllerSettingSetting extends Controller {
 		if ((utf8_strlen($this->request->post['config_telephone']) < 3) || (utf8_strlen($this->request->post['config_telephone']) > 32)) {
 			$this->error['telephone'] = $this->language->get('error_telephone');
 		}
+
 
 		if (!empty($this->request->post['config_customer_group_display']) && !in_array($this->request->post['config_customer_group_id'], $this->request->post['config_customer_group_display'])) {
 			$this->error['customer_group_display'] = $this->language->get('error_customer_group_display');

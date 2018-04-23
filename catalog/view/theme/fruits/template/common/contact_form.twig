@@ -21,20 +21,19 @@
                     <p class="block-title">СВЯЖИТЕСЬ С НАМИ!</p>
                     <div class="phones-wrapper">
                         <div class="phones-wrapper_phones">
-                            <p>+38 (050) 232 23 33</p>
-                            <p>+38 (050) 232 23 33</p>
+                            <p><a href="tel:{{ telephone }}">{{ telephone }}</a></p>
+                            <p><a href="tel:{{ telephone_2 }}">{{ telephone_2 }}</a></p>
                         </div>
                         <div class="phones-wrapper_icon">
                             <img src="/catalog/view/theme/fruits/images/icon-tel.png">
                         </div>
                     </div>
                     <p class="email-block">
-                        INFO@LIQUIDFRUITS.COM.UA
+                        <a href="mailto:{{ config_email }}">{{ config_email }}</a>
                     </p>
                     <div class="address-wrapper">
                         <div class="address-wrapper_address">
-                            73002, Украина, г.Херсон
-                            пр.Текстильщиков, 7
+                          {{ config_address }}
                         </div>
                         <div class="address-wrapper_icon">
                             <img src="/catalog/view/theme/fruits/images/icon-pin.png">

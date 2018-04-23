@@ -69,7 +69,11 @@
     justify-content: space-between;
     padding:10px 20px;
     align-items: center;
-
+    &__social{
+      a{
+        margin-right:10px;
+      }
+    }
     &__copyrights{
       font-weight: 200;
       font-size: 16px;

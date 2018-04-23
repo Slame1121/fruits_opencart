@@ -12,7 +12,7 @@
 
                 <div class="news_container-content__list owl-carousel owl-theme">
                     {% for post in posts %}
-                    <div class="item news_container-content__list-item">
+                    <div class="item news_container-content__list-item {% if loop.index is divisible by(2) %}shadow{% endif %}">
                         <div class="item news_container-content__list-item__thumb">
                             <img src="{{ post.image }}" />
                         </div>

@@ -1,5 +1,9 @@
 {{ header }}
-
+<style>
+    .seo_block_container{
+        margin-top: 0;
+    }
+</style>
 <section class="breadcrumbs_block">
     <div class="container">
         <div class="breadcrumbs_block_container">
@@ -60,7 +64,7 @@
                     </div>
                     <div class="question_block_container-content-item__text">
                         <p class="header">Консультация по телефону</p>
-                        <p>Возникли вопросы?<br />Мы с радостью на них ответим!<br />+38 (095) 098 90 58</p>
+                        <p>Возникли вопросы?<br />Мы с радостью на них ответим!<br /><a  href="tel:{{ telephone }}">{{ telephone }}</a></p>
                     </div>
                 </div>
                 <div class="question_block_container-content-item">
@@ -78,12 +82,12 @@
                     </div>
                     <div class="question_block_container-content-item__text">
                         <p class="header">Написать нам письмо</p>
-                        <p>Идеи? Предложения?<br />Мы открыты для любых вопросов<br />sample.email@com.ua</p>
+                        <p>Идеи? Предложения?<br />Мы открыты для любых вопросов<br /><a  href="mailto:{{ config_email }}">{{ config_email }}</a></p>
                     </div>
                 </div>
             </div>
             <div class="question_block_container-link">
-                <a href="#" >Заказать звонок</a>
+                <a href="/contacts" >Заказать звонок</a>
             </div>
         </div>
     </div>
@@ -98,55 +102,93 @@
         <div class="faq_block_container-content">
             <ul class="faq_block_container-content_wrapper left">
                 <li class="faq_block_container-content_wrapper__item">
-                    <span class="faq_block_container-content_wrapper__item-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span><span class="yon">+</span>
+                    <span class="faq_block_container-content_wrapper__item-title">Что входит в состав ЯГОДНЫХ ПАСТ?</span><span class="yon">+</span>
                     <div class="faq_block_container-content_wrapper__item-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                    </div>
+                        <p>Наши ЯГОДНЫЕ ПАСТЫ состоят исключительно из ягод, включая измельченную косточку и шкурку, которые проходят специальную переработку по HTD-технологии.
+                        </p></div>
                 </li>
                 <li class="faq_block_container-content_wrapper__item">
-                    <span class="faq_block_container-content_wrapper__item-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span><span class="yon">+</span>
+                    <span class="faq_block_container-content_wrapper__item-title">Какой консервант используется для сохранения Ваших ПАСТ?</span><span class="yon">+</span>
                     <div class="faq_block_container-content_wrapper__item-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                    </div>
+                        <p>
+                            В наших ПАСТАХ не используются сторонние вещества для консервирования продукта. Сохранность паст происходит за счет гидроудара, в результате которого продукт становится стерильным и может храниться в закрытой таре до нескольких лет без потери качества.
+                        </p></div>
                 </li>
                 <li class="faq_block_container-content_wrapper__item">
-                    <span class="faq_block_container-content_wrapper__item-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span><span class="yon">+</span>
+                    <span class="faq_block_container-content_wrapper__item-title">Почему Ваши ЯГОДНЫЕ ПАСТЫ полезнее свежих ягод?</span><span class="yon">+</span>
                     <div class="faq_block_container-content_wrapper__item-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                    </div>
+                        <p>
+                            В результате переработки ягод по HTD-технологии, происходят следующие изменения: </p>
+                        <ol>
+                            <li>Измельчается косточка, в составе которой содержится спектр питательных веществ (полиненасыщенные жирные кислоты, витамины и т.д.), становясь доступным для усвоения</li>
+                        <li>Измельчается оболочка, состав которой богат полифенольными веществами, которые оказывают мощное антиоксидантное действие на организм.</li>
+                        <li>Клетчатка частично переходит в мелкодисперсную форму (становится диетическим питанием для маленьких детей, пожилых людей и ослабленных болезнью) и часть переходит в водорастворимую форму (становится питательной средой для положительных бактерий)</li>
+                        <li>
+                            Протопектин переходит в пектин, который, обволакивая стенки ЖКТ помогает всасыванию питательных веществ и выводит тяжёлые металлы, хлор и другие вредные вещества из организма.
+                        </li>
+                            <li>
+                                Доступны круглый год, в отличие от свежих ягод.
+                            </li>
+                        </ol>
+                        <p>
+                            В итоге мы получаем круглый год воздействие на организм, в разы более сильное, чем от свежих ягод.
+                        </p>
+
+                       </div>
                 </li>
                 <li class="faq_block_container-content_wrapper__item">
-                    <span class="faq_block_container-content_wrapper__item-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span><span class="yon">+</span>
+                    <span class="faq_block_container-content_wrapper__item-title">Ваши ПАСТЫ – это БАД или лекарство?</span><span class="yon">+</span>
                     <div class="faq_block_container-content_wrapper__item-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                    </div>
+                        <p>
+                            Наши продукты не являются БАДами или лекарствами. ЯГОДНЫЕ и БЕЛКОВЫЕ ПАСТЫ ТМ «ЖИДКИЕ ФРУКТЫ» — это функциональные продукты питания. Функциональные продукты – это еда в обычной форме потребления (не таблетки, не капсулы, не порошки, не сиропы), предназначенная для приема в пищу в течение всей жизни, как часть повседневного меню, с ярко выраженным терапевтическим воздействием на организм.
+                            Когда Вы делаете функциональные продукты частью ежедневного рациона питания, в большинстве случаев, отпадает потребность в БАДах и лекарствах.
+
+                        </p> </div>
                 </li>
             </ul>
             <ul class="faq_block_container-content_wrapper right">
                 <li class="faq_block_container-content_wrapper__item">
-                    <span class="faq_block_container-content_wrapper__item-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span><span class="yon">+</span>
+                    <span class="faq_block_container-content_wrapper__item-title">В каком количестве потреблять Ваши продукты, для получения желаемого результата?</span><span class="yon">+</span>
                     <div class="faq_block_container-content_wrapper__item-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                       <p>Ниже приведены общие рекомендации:</p>
+                        <p><b>ЯГОДНЫЕ ПАСТЫ</b></p>
+                        <p> Если Вы употребляете наши ЯГОДНЫЕ ПАСТЫ с целью общего укрепления организма и имеете относительно нормальное здоровье без серьезных отклонений, рекомендуем прислушиваться к потребности Вашего организма и кушать наши ЯГОДНЫЕ ПАСТЫ в желаемом количестве без ограничений (как обычные продукты питания).
+                        Если Вы начинаете употребление наших ЯГОДНЫХ ПАСТ с целью поправки здоровья при конкретном нарушении, рекомендуем дневную дозировку исходя из 1-2г на 1кг веса для основных продуктов, рекомендуемых при Вашем нарушении + 0,5г на 1 кг веса для вспомогательных продуктов. Прием может быть разделен на 1-3 раза в течение дня или сразу весь рекомендуемый объем утром. При серьезных гормональных расстройствах рекомендуем начинать прием с четверти дневной дозировки в первую неделю и далее постепенно увеличивать объем до рекомендуемого, уделяя внимание состоянию организма.
+                        В большинстве случаев рекомендуем употребление ЯГОДНЫХ ПАСТ утром непосредственно перед едой, однако, если Вы имеете нарушения работы ЖКТ (язвенная болезнь, гастрит с повышенной кислотностью и т.д.), рекомендуем прием во время или после еды. В некоторых случаях рекомендуем делать морс из наших ЯГОДНЫХ ПАСТ: при онкологии ЖКТ, после серьезной операции, маленьким детям до трех лет и т.д.
+                        Когда Вы употребляете несколько ЯГОДНЫХ ПАСТ одновременно, желательно принимать их по очереди в течение дня или все утром, но не смешивая, а одну за одной.
+                        </p>
+                        <p><b>СОЕВЫЕ СЛИВКИ</b></p>
+                        <p> При активном образе жизни с повышенными физическими нагрузками (рабочий, спортсмен, коммивояжёр) рекомендуем употреблять в среднем 1 бутылку (300мл) в день. При низкой физической активности примерно треть бутылки (100мл) в день. Детям рекомендуем дневной прием в 2-3 раза меньше, чем взрослым. Однако, вышеуказанные рекомендации относительны, и, как в случае с ЯГОДНЫМИ ПАСТАМИ, рекомендуем прислушиваться к потребностям Вашего организма и пить СОЕВЫЕ СЛИВКИ, когда возникает желание и в желаемом количестве.
+                        </p>
+                        <p><b>ШЕЙКИ</b></p>
+                        <p>Большой популярностью среди наших покупателей в последнее время пользуется приготовление ШЕЙКОВ из ЯГОДНЫХ ПАСТ с СОЕВЫМИ СЛИВКАМИ (на 3 части СОЕВЫХ СЛИВОК 1 часть ЯГОДНОЙ ПАСТЫ). Гармонично сочетаются с МАЛИНОВОЙ, КЛУБНИЧНОЙ и АБРИКОСОВОЙ ПАСТАМИ. Данная рекомендация не идет вразрез с раннее сделанными рекомендациями, т.к. речь идет о сочетании ягодного и белкового продукта, которые прекрасно друг друга дополняют.
+                        </p>
+                        <p><b>  БЕЛКОВЫЕ ПАСТЫ (СОЕВАЯ и СЕМЯН ПОДСОЛНУХА)</b></p>
+                        <p>
+                        Для данной группы продуктов нет конкретных рекомендаций и ограничений. Состав БЕЛКОВЫХ ПАСТ не позволит Вам допустить переедания, т.к. Вы достаточно быстро ощутите сытость от приема продукта, что и будет сигналом к желаемому размеру порции.
+                        Вы можете употреблять в пищу эти ПАСТЫ в чистом виде или добавляя в них по вкусу дополнительные ингредиенты (например, СОЕВАЯ ПАСТА прекрасно сочетается с ПЕЧЕНЬЮ ТРЕСКИ)
+                        Мы считаем, что данных рекомендаций достаточно, чтобы любой человек смог определиться с приемом нашей продукции. Однако, если Вы проходите лечение и имеете потребность в дополнительных рекомендациях, можете обратиться за консультацией к Вашему лечащему врачу.
+                        </p>
                     </div>
                 </li>
                 <li class="faq_block_container-content_wrapper__item">
-                    <span class="faq_block_container-content_wrapper__item-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span><span class="yon">+</span>
+                    <span class="faq_block_container-content_wrapper__item-title">В чем отличие ЯГОДНЫХ ПАСТ ТМ «ЖИДКИЕ ФРУКТЫ» и ТМ «LIQBERRY»?</span><span class="yon">+</span>
                     <div class="faq_block_container-content_wrapper__item-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                    </div>
+                        <p>
+                            ЯГОДНЫЕ ПАСТЫ ТМ «ЖИДКИЕ ФРУКТЫ» и ТМ «LIQBERRY» — это одни и те же продукты, созданные по HTD-технологии, разработанной Осипенко Сергеем Борисовичем. Различия исключительно в этикетках, в связи с различными каналами сбыта продукции.
+                        </p></div>
                 </li>
                 <li class="faq_block_container-content_wrapper__item">
-                    <span class="faq_block_container-content_wrapper__item-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span><span class="yon">+</span>
+                    <span class="faq_block_container-content_wrapper__item-title">Что такое HTD-технология?</span><span class="yon">+</span>
                     <div class="faq_block_container-content_wrapper__item-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                    </div>
+                        <p>
+                            В основе HTD-технологии лежат разработки в области гидродинамики Академика Инженерной Академии Наук Осипенко Сергея Борисовича.
+                            В результате гидроудара «струи» ягод, фруктов или семян, в замкнутом контуре без доступа кислорода, разбиваются до клеточного уровня, высвобождая весь потенциал, заложенный природой. Также, благодаря кавитационным завихрениям, разрываются бактерии, что позволяет создать стерильный продукт без дополнительной термообработки и избежать добавления консервантов.
+                            Более подробно с технологиями и разработками Академика Осипенко С.Б. можно ознакомиться на сайте tekmash.ua.
+
+                        </p></div>
                 </li>
-                <li class="faq_block_container-content_wrapper__item">
-                    <span class="faq_block_container-content_wrapper__item-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span><span class="yon">+</span>
-                    <div class="faq_block_container-content_wrapper__item-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                    </div>
-                </li>
+
             </ul>
         </div>
     </div>

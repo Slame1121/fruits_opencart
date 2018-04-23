@@ -38,6 +38,18 @@
 
       &__list{
         padding:0 40px;
+        .active{
+          &:before{
+            content: "";
+            left:0;
+            top:0;
+            height: 100%;
+            width: 30px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.37), #fff);
+            position: absolute;
+            z-index: 0;
+          }
+        }
         &-item{
           background: #fff;
             display: flex;
@@ -67,6 +79,8 @@
             }
           }
           &__thumb{
+            position: relative;
+            z-index:1;
             img{
               width: auto !important;
             }

@@ -26,6 +26,9 @@ class ControllerCommonFooter extends Controller {
 		}
 
 
+		$data['config_social_facebook'] = $this->config->get('config_social_facebook');
+		$data['config_social_youtube'] = $this->config->get('config_social_youtube');
+
 		$data['checkout'] = $this->url->link('checkout/checkout');
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);

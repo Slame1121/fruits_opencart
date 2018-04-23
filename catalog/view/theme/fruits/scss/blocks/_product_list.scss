@@ -1,4 +1,17 @@
 .product_list{
+  position: relative;
+  &_backgrounds{
+    &-1{
+      left:0;
+      top:-150px;
+      position: absolute;
+    }
+    &-2{
+      position: absolute;
+      right:0;
+      top:250px;
+    }
+  }
   &_container{
     &-content{
       &__items{

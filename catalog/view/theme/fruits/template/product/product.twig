@@ -133,7 +133,7 @@
         </div>
     </div>
 </section>
-{% for product in products %}
+
 <section class="feature_product">
     <div class="container">
         <div class="feature_product_container">
@@ -142,7 +142,7 @@
         </div>
         <div class="feature_product_container-content">
             <div id="feature_banner" class="owl-carousel owl-theme feature_product_container-content__items">
-
+                {% for product in products %}
                     <div class="item">
                     <div class="feature_product_container-content__items-container">
                         <div class="feature_product_container-content__items-container__header">
@@ -178,11 +178,11 @@
                         </div>
                     </div>
                 </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>
     </div>
 </section>
-{% endfor %}
+
 {{ footer }} 

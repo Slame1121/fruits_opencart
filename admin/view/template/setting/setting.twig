@@ -141,6 +141,36 @@
                   <div class="text-danger">{{ error_email }}</div>
                   {% endif %} </div>
               </div>
+                <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-facebook">Facebook</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="config_social_facebook" value="{{ config_social_facebook }}" placeholder="Facebook" id="input-facebook" class="form-control" />
+                    </div>
+                </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-youtube">YouTube</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="config_social_youtube" value="{{ config_social_youtube }}" placeholder="YouTube" id="input-youtube" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-skype">Skype</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="config_social_skype" value="{{ config_social_skype }}" placeholder="Skype" id="input-skype" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-instagram">Instagram</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="config_social_instagram" value="{{ config_social_instagram }}" placeholder="Instagram" id="input-instagram" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-google">Google</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="config_social_google" value="{{ config_social_google }}" placeholder="Google" id="input-google" class="form-control" />
+                        </div>
+                    </div>
               <div class="form-group required">
                 <label class="col-sm-2 control-label" for="input-telephone">{{ entry_telephone }}</label>
                 <div class="col-sm-10">
@@ -149,6 +179,14 @@
                   <div class="text-danger">{{ error_telephone }}</div>
                   {% endif %} </div>
               </div>
+                <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-telephone-2">{{ entry_telephone }}</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="config_telephone_2" value="{{ config_telephone_2 }}" placeholder="{{ entry_telephone }}" id="input-telephone-2" class="form-control" />
+                        {% if error_telephone_2 %}
+                            <div class="text-danger">{{ error_telephone }}</div>
+                        {% endif %} </div>
+                </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-fax">{{ entry_fax }}</label>
                 <div class="col-sm-10">

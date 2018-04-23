@@ -1,5 +1,17 @@
 .catalog_block{
-
+  position: relative;
+  &_background{
+    &-1{
+      position: absolute;
+      left:0;
+      top:50px;
+    }
+    &-2{
+      position: absolute;
+      right:0;
+      top:400px;
+    }
+  }
   &_container{
     position: relative;
     z-index: 1;

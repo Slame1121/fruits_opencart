@@ -1,5 +1,14 @@
 .main_banner{
   margin-bottom:25px;
+  .container{
+    position: relative;
+  }
+  &_background{
+    position: absolute;
+    left:30px;
+    z-index:29;
+    top:200px;
+  }
   &_container{
     position: relative;
     &-pagination{

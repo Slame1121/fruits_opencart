@@ -51,14 +51,16 @@
 
       &_right{
         width: 30%;
-
+        a{
+          color:#000;
+        }
         .address-wrapper{
           display: flex;
           justify-content: space-around;
           align-items: center;
 
           &_address{
-            max-width:70%;
+            max-width:190px;
           }
           p{
             font-size: 15px;

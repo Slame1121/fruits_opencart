@@ -38,6 +38,10 @@ class ControllerInformationInformation extends Controller {
 
 			$data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
 
+			$data['telephone'] = $this->config->get('config_telephone');
+			$data['telephone_2'] = $this->config->get('config_telephone_2');
+			$data['config_email'] = $this->config->get('config_email');
+			$data['config_address'] = $this->config->get('config_address');
 			$data['continue'] = $this->url->link('common/home');
             $data['reviews_form'] = $this->load->controller('common/reviews_form');
 			$data['contact_form'] = $this->load->controller('common/contact_form');

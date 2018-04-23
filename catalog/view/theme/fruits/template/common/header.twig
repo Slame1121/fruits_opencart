@@ -31,6 +31,7 @@
     <script type="text/javascript" src="/catalog/view/theme/fruits/js/components/remodal.js"></script>
     <script type="text/javascript" src="/catalog/view/theme/fruits/js/components/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="/catalog/view/theme/fruits/js/components/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/catalog/view/theme/fruits/js/components/jquery.paroller.min.js"></script>
     <script type="text/javascript" src="/catalog/view/theme/fruits/js/main.js"></script>
     <script type="text/javascript" src="/catalog/view/theme/fruits/js/pages/home.js"></script>
     <script type="text/javascript" src="/catalog/view/theme/fruits/js/media.js"></script>
@@ -55,7 +56,9 @@
         <div class="top_navbar-container">
             <div class="top_navbar-container__item">
                 <div class="top_navbar-container__item-logo">
-                    <a href=""><img src="/catalog/view/theme/fruits/images/logo.png" /></a>
+                    {% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="" /></a>{% else %}
+                        <a href="/"><img src="/catalog/view/theme/fruits/images/logo.png" /></a>
+                    {% endif %}
                 </div>
                 <div class="top_navbar-container__item-mobile-nav">
                     <div class="top_navbar-container__item-mobile-nav__button">
@@ -74,14 +77,21 @@
             <div class="top_navbar-container__item">
                 <div class="top_navbar-container__item-contacts">
                     <span><img src="/catalog/view/theme/fruits/images/icon-tel.png" /></span>
-                    <a href="tel:+380990989058">+38 (099) 098 90 58</a>
-                    <a href="tel:+380990989058">+38 (096) 338 45 90</a>
+                    <a href="tel:{{ telephone }}">{{ telephone }}</a>
+                    <a href="tel:{{ telephone_2 }}">{{ telephone_2 }}</a>
                 </div>
                 <div class="top_navbar-container__item-menu">
                     <ul class="top_navbar-container__item-menu__list">
                         {{ menu }}
-                        <li><img src="/catalog/view/theme/fruits/images/icon-search.png" /></li>
                     </ul>
+                    <div class="top_navbar-container__item-menu__search">
+                        <img src="/catalog/view/theme/fruits/images/icon-search.png" />
+                        <input type="text" value="" placeholder="Поиск..." />
+                        <div class="top_navbar-container__item-menu__search-dropdown">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,7 +122,7 @@
                     </div>
                 </div>
                 <div class="fixed_navbar-container-cart__like">
-                    <a href="#"><img src="/catalog/view/theme/fruits/images/icon-like.png" /> <span>2</span></a>
+                    <a {% if not logged %}data-remodal-target="login-modal"  href="#" {% else %}href="{{ wishlist }}"{% endif %}><img src="/catalog/view/theme/fruits/images/icon-like.png" /> <span>{{ text_wishlist }}</span></a>
                 </div>
             </div>
 

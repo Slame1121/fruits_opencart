@@ -1,7 +1,15 @@
+@media (max-width: 1800px) {
+  //дизайнер немного ударился башкой со своими бэкграундами
+  .backgrounds{
+    display: none;
+  }
+}
 @media (max-width: 1200px) {
   .container {
     width: 960px;
   }
+
+
   .blog_block {
     &_container {
       &_wrap-item {
@@ -365,7 +373,6 @@
   .container {
     width: 100%;
   }
-
   .breadcrumbs_block {
     &_container {
       padding-left: 10px;
