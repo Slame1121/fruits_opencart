@@ -2968,7 +2968,7 @@ a {
       position: absolute;
       right: 0;
       padding: 10px 0;
-      z-index: 20000;
+      z-index: 200;
       top: 0;
       width: 27px;
       transition: all .9s; }

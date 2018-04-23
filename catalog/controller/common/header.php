@@ -55,7 +55,7 @@ class ControllerCommonHeader extends Controller {
 
 		$data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', true), $this->customer->getFirstName(), $this->url->link('account/logout', '', true));
 		
-		$data['home'] = $this->url->link('common/home');
+		$data['home'] = '/';
 		$data['wishlist'] = $this->url->link('account/account', '', true);
 		$data['logged'] = $this->customer->isLogged();
 		$data['account'] = $this->url->link('account/account', '', true);
