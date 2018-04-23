@@ -120,8 +120,16 @@ class ControllerCommonColumnLeft extends Controller {
 
             if ($this->user->hasPermission('access', 'catalog/testimonial')) {
                 $catalog[] = array(
-                    'name'	   => 'Отзывы по сайту',
+                    'name'	   => $this->language->get('text_testimonial'),
                     'href'     => $this->url->link('catalog/testimonial', 'user_token=' . $this->session->data['user_token'], true),
+                    'children' => array()
+                );
+            }
+
+            if ($this->user->hasPermission('access', 'catalog/feedback')) {
+                $catalog[] = array(
+                    'name'	   => $this->language->get('text_feedback'),
+                    'href'     => $this->url->link('catalog/feedback', 'user_token=' . $this->session->data['user_token'], true),
                     'children' => array()
                 );
             }

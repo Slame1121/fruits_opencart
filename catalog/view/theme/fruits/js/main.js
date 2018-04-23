@@ -86,7 +86,44 @@ var Main = {
 		});
 	},
 
+    validateFeedback: function () {
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
 
+		$('.contacts_container-content_left button.feedback_button').click(function(){
+            var name = $('#contacts-name').val();
+            var email = $('#contacts-email').val();
+            var message = $('#contacts-message').val();
+
+            if(name == ''){
+                $('#contacts-name').addClass('error-block');
+            }
+
+            if(!validateEmail(email)){
+                $('#contacts-email').addClass('error-block');
+            }
+
+            if(message == ''){
+                $('#contacts-message').addClass('error-block');
+            }
+
+            if($('.error-block').length > 0){
+                return false;
+            }else{
+                $.post( "index.php?route=common/contact_form/addFeedback", { name: name, email: email, message: message })
+				.done(function() {
+                    $('#contacts-name, #contacts-email, #contacts-message').val('');
+					swal('Поздравляем, ' + name, "Ваше сообщение отправлено !", "success");
+				});
+            }
+		});
+
+		$('#contacts-name, #contacts-email, #contacts-message').change(function(){
+			$(this).removeClass('error-block');
+		});
+	},
 
 	initReviews2: function () {
 		
@@ -283,6 +320,7 @@ var Main = {
 	},
 	init: function(){
 		this.initCatalog();
+        this.validateFeedback();
 		this.initReviews();
 		this.initReviews2();
 		this.initNews();

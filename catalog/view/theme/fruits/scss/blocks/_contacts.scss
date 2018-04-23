@@ -29,6 +29,10 @@
           }
         }
 
+        input.error-block{
+          border-bottom: 3px solid rgba(251, 41, 41, 0.5) !important;
+        }
+
         button.form-button-custom{
           display: block;
           margin-top: 45px;
@@ -90,4 +94,15 @@
       }
     }
   }
+}
+
+.swal-button {
+  padding: 10px 15px;
+  background: #97e538;
+  text-transform: uppercase;
+  color: #fff;
+  border: 0 none;
+  box-shadow: 0 0 16px #00000063;
+  font-weight: 700;
+  font-size: 24px;
 }
