@@ -21,9 +21,9 @@ a{
   }
 }
 .button_like{
-  background: url(/catalog/view/theme/fruits/images/icon-like.png);
-  width: 23px;
-  height: 22px;
+  background: url(/catalog/view/theme/fruits/images/icon-like.png) no-repeat;
+  width: 24px;
+  height: 23px;
   &:focus{
     background: url(/catalog/view/theme/fruits/images/icon-like.png);
   }
@@ -38,8 +38,8 @@ a{
   }
 }
 .owl-custom-pagination{
-  padding: 25px 50px;
-  bottom: 0;
+  padding: 15px 50px;
+  bottom: 10px;
   right:0;
   background: #fff;
   color:#000;

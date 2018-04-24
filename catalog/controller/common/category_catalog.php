@@ -53,7 +53,7 @@ class ControllerCommonCategoryCatalog extends Controller {
 
 			$data['categories'][] = array(
 				'category_id' => $category['category_id'],
-				'description' => substr(htmlspecialchars_decode($category['description']), 0, 180).(strlen($category['description']) > 180 ?  '...' : ''),
+				'description' => htmlspecialchars_decode(mb_substr ($category['description'], 0, 140)).'' .(utf8_strlen($category['description']) > 140 ?  '...' : ''),
 				'image'       => $this->model_tool_image->resize($category['image'], 150, 215),
 				'active_image'       => $this->model_tool_image->resize($category['active_image'], 400, 340),
 				'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),

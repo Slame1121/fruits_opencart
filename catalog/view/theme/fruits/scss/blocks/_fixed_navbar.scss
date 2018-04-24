@@ -133,6 +133,7 @@
         transition: all 0.8s;
         position: absolute;
         .catalog_block{
+          padding: 0;
           &_background{
             &-1, &-2{
             display: none;

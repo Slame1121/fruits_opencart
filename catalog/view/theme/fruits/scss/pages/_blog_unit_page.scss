@@ -1,8 +1,13 @@
 .blog_unit_page{
+  min-height: 800px;
   h1{
     margin:10px 0 30px 0;
   }
   p{
     margin-top:30px;
+  }
+  img{
+    float:left;
+    margin:10px;
   }
 }

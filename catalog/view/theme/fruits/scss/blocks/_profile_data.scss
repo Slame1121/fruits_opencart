@@ -11,6 +11,7 @@
         margin-bottom:30px;
 
       }
+
       &__logout{
         font-size: 18px;
         color:#000;
@@ -206,12 +207,19 @@
 
     &-item{
       width: 40%;
+      &:first-child{
+        text-align: center;
+      }
       p{
         font-size: 22px;
         &.error{
           font-size: 14px;
           color:red;
         }
+      }
+      img{
+        margin: 0 auto;
+        opacity: .2;
       }
       button[type=submit]{
         cursor: pointer;
@@ -220,6 +228,28 @@
         padding: 10px 20px;
         font-size: 18px;
         background: transparent;
+        position: relative;
+        z-index:2;
+        span{
+          z-index: 2;
+          position: relative;
+        }
+        &:hover{
+          &:before{
+            width: 100%;
+          }
+        }
+        &:before{
+          z-index: 0;
+          position: absolute;
+          height: 100%;
+          transition: all .5s;
+          width: 0;
+          left: 0;
+          top: 0;
+          background: #8bf46a;
+          content: "";
+        }
       }
       input{
         border: 0 none;

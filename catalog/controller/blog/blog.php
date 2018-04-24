@@ -15,7 +15,7 @@ class ControllerBlogBlog extends Controller {
 
 		if($post_info){
 			$data['title'] = ($post_info['title']);
-			$data['image'] =  $this->model_tool_image->resize($post_info['image'], 1200, 450);
+			$data['image'] =  $this->model_tool_image->resize($post_info['image'], 205, 295);
 			$data['description'] = html_entity_decode($post_info['description']);
 			return $this->response->setOutput($this->load->view('blog/blog', $data));
 		}else{

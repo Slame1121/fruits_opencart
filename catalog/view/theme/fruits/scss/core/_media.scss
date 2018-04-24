@@ -585,7 +585,7 @@
         display: none;
       }
       &-menu{
-        display: none;
+        display: none; 
       }
       &:first-child{
         width: 100%;
@@ -656,6 +656,11 @@
   .res .responsive {
     margin: 0;
     width: 100%;
+  }
+
+
+  .main_banner_background{
+    display: none;
   }
 
     .paid_block {

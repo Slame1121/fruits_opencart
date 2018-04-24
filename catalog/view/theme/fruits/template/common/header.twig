@@ -108,6 +108,10 @@
             </div>
             <div class="fixed_navbar-container-cart">
                 {{ cart }}
+
+                <div class="fixed_navbar-container-cart__like">
+                    <a {% if not logged %}data-remodal-target="login-modal"  href="#" {% else %}href="{{ wishlist }}"{% endif %}><img src="/catalog/view/theme/fruits/images/icon-like.png" /> <span>{{ text_wishlist }}</span></a>
+                </div>
                 <div class="fixed_navbar-container-cart__account">
                     <div class="fixed_navbar-container-cart__account-navbar dropdown">
                         <div class="dropdown-header">
@@ -120,9 +124,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="fixed_navbar-container-cart__like">
-                    <a {% if not logged %}data-remodal-target="login-modal"  href="#" {% else %}href="{{ wishlist }}"{% endif %}><img src="/catalog/view/theme/fruits/images/icon-like.png" /> <span>{{ text_wishlist }}</span></a>
                 </div>
             </div>
 
