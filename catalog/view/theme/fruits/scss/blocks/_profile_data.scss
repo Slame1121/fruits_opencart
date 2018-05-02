@@ -238,6 +238,10 @@
           &:before{
             width: 100%;
           }
+
+          & span{
+            color: #fff;
+          }
         }
         &:before{
           z-index: 0;
@@ -247,7 +251,7 @@
           width: 0;
           left: 0;
           top: 0;
-          background: #8bf46a;
+          background: #0bab47;
           content: "";
         }
       }

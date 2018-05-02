@@ -1,5 +1,16 @@
 var Main = {
 
+	initHeader: function () {
+        //fixed
+        $(window).bind('scroll', function () {
+            if ($(window).scrollTop() > 0) {
+                $('.fixed_navbar').addClass('fixed');
+
+            } else {
+                $('.fixed_navbar').removeClass('fixed');
+            }
+        });
+	},
 	initReviews: function () {
 		var owl = $('.reviews_block_container-wrapper .owl-carousel');
 		owl.on('changed.owl.carousel', function(e) {
@@ -346,6 +357,7 @@ var Main = {
 		});
 	},
 	init: function(){
+		this.initHeader();
 		this.initCatalog();
         this.validateFeedback();
 		this.initReviews();

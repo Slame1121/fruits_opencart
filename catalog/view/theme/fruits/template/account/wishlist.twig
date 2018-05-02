@@ -1,40 +1,46 @@
-{% for product in products %}
-    <div class="category_block_container_content_list_item item">
-        <div class="category_block_container_content_list_item__images">
-            <a href="{{ product.href }}">  <img alt="{{ product.name }}" src="{{ product.thumb }}" /></a>
-        </div>
-        <div class="category_block_container_content_list_item__text-wrap">
-            <div class="category_block_container_content_list_item__text-wrap__text">
-                <h3>{{ product.name }} </h3>
-                <div class="category_block_container_content_list_item__text-wrap__text__raty raty" data-score="{{ product.rating }}"></div>
-                <div class="category_block_container_content_list_item__text-wrap__text__rating">
-                    <img src="/catalog/view/theme/fruits/images/icon-arrow.png"> <span>{{ product.reviews }} отзывов</span>
-                </div>
-                <div class="category_block_container_content_list_item__text-wrap__text__text-desc">
-                    {{ product.description }}
-                </div>
-                <div class="category_block_container_content_list_item__text-wrap__text__text-view"><a href="{{ product.href }}">Смотреть подробнее</a></div>
+{% if products %}
+    {% for product in products %}
+        <div class="category_block_container_content_list_item item">
+            <div class="category_block_container_content_list_item__images">
+                <a href="{{ product.href }}">  <img alt="{{ product.name }}" src="{{ product.thumb }}" /></a>
             </div>
-            <div class="category_block_container_content_list_item__text-wrap__container">
-                <div class="category_block_container_content_list_item__text-wrap__container-like">
-                    <button data-product-id="{{ product.product_id }}" class="category_block_container_content_list_item__text-wrap__container-like__button button_like {% if product.liked %}liked{% endif %}"  type="button"></button>
+            <div class="category_block_container_content_list_item__text-wrap">
+                <div class="category_block_container_content_list_item__text-wrap__text">
+                    <h3>{{ product.name }} </h3>
+                    <div class="category_block_container_content_list_item__text-wrap__text__raty raty" data-score="{{ product.rating }}"></div>
+                    <div class="category_block_container_content_list_item__text-wrap__text__rating">
+                        <img src="/catalog/view/theme/fruits/images/icon-arrow.png"> <span>{{ product.reviews }} отзывов</span>
+                    </div>
+                    <div class="category_block_container_content_list_item__text-wrap__text__text-desc">
+                        {{ product.description }}
+                    </div>
+                    <div class="category_block_container_content_list_item__text-wrap__text__text-view"><a href="{{ product.href }}">Смотреть подробнее</a></div>
                 </div>
-                <div class="category_block_container_content_list_item__text-wrap__container_price">
-                    {% if product.price %}
-                        {% if not product.special %}
-                            <p><span> {{ product.price }}</span> </p>
-                        {% else %}
-                            <p><span>{{ product.special }}</span> </p>
-                            <p class="old_price"><span>{{ product.price }}</span> </p>
+                <div class="category_block_container_content_list_item__text-wrap__container">
+                    <div class="category_block_container_content_list_item__text-wrap__container-like">
+                        <button data-product-id="{{ product.product_id }}" class="category_block_container_content_list_item__text-wrap__container-like__button button_like {% if product.liked %}liked{% endif %}"  type="button"></button>
+                    </div>
+                    <div class="category_block_container_content_list_item__text-wrap__container_price">
+                        {% if product.price %}
+                            {% if not product.special %}
+                                <p><span> {{ product.price }}</span> </p>
+                            {% else %}
+                                <p><span>{{ product.special }}</span> </p>
+                                <p class="old_price"><span>{{ product.price }}</span> </p>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                </div>
-                <div class="category_block_container_content_list_item__text-wrap__container_addtocart">
-                    <a  data-product-id="{{ product.product_id }}" class="button-add-to-cart" href="#">
-                        <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
-                    </a>
+                    </div>
+                    <div class="category_block_container_content_list_item__text-wrap__container_addtocart">
+                        <a  data-product-id="{{ product.product_id }}" class="button-add-to-cart" href="#">
+                            <span>В корзину</span> <img src="/catalog/view/theme/fruits/images/icon-bag-big.png" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+    {% endfor %}
+{% else %}
+    <div style="text-align: center">
+        <p>{{ text_empty_wish }}</p>
     </div>
-{% endfor %}
+{% endif %}

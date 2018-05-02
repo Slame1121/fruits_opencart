@@ -1,4 +1,15 @@
 .fixed_navbar{
+
+  &.fixed{
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 9999;
+    top: 0;
+    background: #fff;
+    box-shadow: 1px 3px 12px 9px #00000026;
+  }
+
   &-container{
     padding:10px 0;
     display: flex;

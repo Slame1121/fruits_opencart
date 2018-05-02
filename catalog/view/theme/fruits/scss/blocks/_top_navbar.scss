@@ -83,8 +83,12 @@
           &.active{
             width: 140%;
             input{
-              padding: 11px 0 10px 40px;
+              padding: 14px 0 10px 40px;
               display: block;
+              border-left: none;
+              border-right: none;
+              border-top: none;
+              border-bottom: 1px solid #cccccc;
             }
             img{
               position: absolute;
