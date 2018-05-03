@@ -1,6 +1,17 @@
 .reviews_block{
   position: relative;
 
+  & .container{
+    position: relative;
+
+    & .review_banner_background{
+      position: absolute;
+      left: -70px;
+      z-index: 23;
+      top: 600px;
+    }
+  }
+
   &_backgrounds{
     position: absolute;
     top:0;

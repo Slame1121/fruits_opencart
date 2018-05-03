@@ -305,7 +305,7 @@
     &_container {
       &-item {
         &-wrap {
-          display: table;
+          display: block;
           width: 100%;
           &__images {
             width: 100%;
@@ -457,6 +457,7 @@
 
   .product_list_container-header{
     flex-direction: column;
+    border-bottom: none;
     &__item{
       margin-right: 0;
       text-align: center;
@@ -466,6 +467,11 @@
         display: inline-block;
       }
     }
+  }
+
+  .catalog_block_container-footer__link a {
+    font-size: 10px;
+    padding: 15px 10px;
   }
 
   .owl-custom-pagination{

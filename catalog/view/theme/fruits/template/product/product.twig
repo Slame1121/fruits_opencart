@@ -92,7 +92,7 @@
                                                     </div>
                                                     <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type-wrap">
                                                         {% for option_value in option.product_option_value %}
-                                                        <button data-product-option-id="{{ option.product_option_id }}" data-product-option-value-id="{{ option_value.product_option_value_id }}" class="type-amount product_option_value {% if loop.index == 1 %}active{% endif %}">{{ option_value.name }}</button>
+                                                        <button data-product-price="{{ price }}" data-product-option-value-price="{{ option_value.price }}" data-product-option-id="{{ option.product_option_id }}" data-product-option-value-id="{{ option_value.product_option_value_id }}" class="type-amount product_option_value {% if loop.index == 1 %}active{% endif %}">{{ option_value.name }}</button>
                                                         {% endfor %}
                                                     </div>
 

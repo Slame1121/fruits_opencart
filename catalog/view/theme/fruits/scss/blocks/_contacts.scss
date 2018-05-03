@@ -1,6 +1,18 @@
 .contacts{
+  & .container{
+    position: relative;
+  }
+
+  & .contacts_banner_background{
+    position: absolute;
+    left: -70px;
+    z-index: 23;
+    top: 500px;
+  }
+
   &_container{
     margin-top:100px;
+
     &-header{
       text-align: center;
       margin-bottom:50px;

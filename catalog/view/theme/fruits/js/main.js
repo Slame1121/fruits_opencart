@@ -287,6 +287,23 @@ var Main = {
 			}
 		})
 	},
+	initOptionsChange: function () {
+		$('.product_option_value').on('click', function(){
+			var choosen_price = $(this).data("product-option-value-price");
+			var price = $(this).data("product-price");
+
+            $(".product_card_container-item-wrap__text-wrap__addtocart_price span").text(parseInt(price) + parseInt(choosen_price) + " грн");
+		})
+	},
+    initCartChange: function () {
+        $('.cart_block_container-item-wrap__text-wrap__container_number span.minus').on('click', function(){
+
+        	var count = $(this).parent("cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').val();
+        	var price = $(this).parent("cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text();
+            $(this).parent(".cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text(count*parseInt(price) + " грн");
+
+        })
+    },
 	initLoginModal: function () {
 
 		$('.login_modal-content__tabs').on('click', 'a', function(){
@@ -331,8 +348,9 @@ var Main = {
 	},
 	initParalax: function () {
 			$("#leaf_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
-
-
+			$("#leaf_contacts_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
+			$("#leaf_review_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
+			$("#leaf_delivery_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
 	},
 	initSearch: function () {
 		$('.top_navbar-container__item-menu__search').on('click', function(e){
@@ -363,7 +381,8 @@ var Main = {
 		this.initReviews();
 		this.initReviews2();
 		this.initNews();
-
+        this.initOptionsChange();
+        this.initCartChange();
 		this.initTabs();
 
 		this.initAddTocartButton();
@@ -587,8 +606,9 @@ var Main = {
 	initProductsList: function(){
 		$('.product_list_container-content').find('.owl-carousel').owlCarousel({
 			margin: 0,
-			nav: false,
+			nav: true,
 			dots:false,
+            navText : ['<img src="/catalog/view/theme/fruits/images/right_arrow_new.png" />','<img src="/catalog/view/theme/fruits/images/left_arrow_new.png" />'],
 			responsive: {
 				0: {
 					items: 1

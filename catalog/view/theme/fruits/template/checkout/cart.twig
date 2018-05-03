@@ -41,7 +41,10 @@
 
                             </div>
 
-                            <div class="cart_block_container-item-wrap__text-wrap__text__text-view"><a href="{{ product.href }}">  {% if not product.option %}Смотреть подробнее...{% else %}&nbsp;{% endif %}</a> </div>
+                            <div class="cart_block_container-item-wrap__text-wrap__text__text-view">
+                                {#<a href="{{ product.href }}">  {% if not product.option %}Смотреть подробнее...{% else %}&nbsp;{% endif %}</a> #}
+                                <a href="{{ product.href }}"> Смотреть подробнее...</a>
+                            </div>
 
                         </div>
                         <div class="cart_block_container-item-wrap__text-wrap__container">
