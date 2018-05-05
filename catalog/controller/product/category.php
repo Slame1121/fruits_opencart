@@ -456,7 +456,7 @@ class ControllerProductCategory extends Controller {
 
 				$data['categories'][] = array(
 					'category_id' => $category['category_id'],
-					'description' => substr(htmlspecialchars_decode($category['description']), 0, 100),
+					'description' => mb_substr(htmlspecialchars_decode(strip_tags($category['description'])), 0, 100,'UTF-8').'...',
 					'image'       => $this->model_tool_image->resize($category['image'], 150, 215),
 					'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
 					'active_image'       => $this->model_tool_image->resize($category['active_image'], 400, 340),

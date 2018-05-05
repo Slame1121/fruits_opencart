@@ -3,11 +3,13 @@ var Main = {
 	initHeader: function () {
         //fixed
         $(window).bind('scroll', function () {
-            if ($(window).scrollTop() > 0) {
-                $('.fixed_navbar').addClass('fixed');
+        	if($(window).width() > 786){
+				if ($(window).scrollTop() > 0) {
+					$('.fixed_navbar').addClass('fixed');
 
-            } else {
-                $('.fixed_navbar').removeClass('fixed');
+				} else {
+					$('.fixed_navbar').removeClass('fixed');
+				}
             }
         });
 	},

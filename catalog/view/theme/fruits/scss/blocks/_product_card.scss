@@ -1,5 +1,11 @@
 .product_card {
 	display: block;
+
+	& img{
+		max-width: 100%;
+		object-fit: cover;
+	}
+
 	&_container {
 		display: block;
 		position: relative;
@@ -58,7 +64,7 @@
 					display: block;
 					float: left;
 					background: #f8fafb;
-					padding: 55px 70px 40px 120px;
+					padding: 55px 0px 40px 120px;
 				    &__head {
 				    	display: inline-block;
 				    	padding-bottom: 20px;

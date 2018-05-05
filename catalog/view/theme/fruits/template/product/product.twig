@@ -134,16 +134,17 @@
     </div>
 </section>
 
+{% if products %}
 <section class="feature_product">
     <div class="container">
         <div class="feature_product_container">
             <div class="feature_product_container-header">
-            <p>С этим товаром покупают</p>
-        </div>
-        <div class="feature_product_container-content">
+                <p>С этим товаром покупают</p>
+            </div>
+            <div class="feature_product_container-content">
             <div id="feature_banner" class="owl-carousel owl-theme feature_product_container-content__items">
                 {% for product in products %}
-                    <div class="item">
+                <div class="item">
                     <div class="feature_product_container-content__items-container">
                         <div class="feature_product_container-content__items-container__header">
                             <a href="{{ product.href }}">{{ product.name }}</a>
@@ -181,8 +182,10 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+        </div>
     </div>
 </section>
+
+{% endif %}
 
 {{ footer }} 
