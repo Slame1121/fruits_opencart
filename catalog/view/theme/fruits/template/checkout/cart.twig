@@ -50,7 +50,7 @@
                         <div class="cart_block_container-item-wrap__text-wrap__container">
                             <div id="number" class="cart_block_container-item-wrap__text-wrap__container_number" data-cart-id="{{ product.cart_id }}">
                                 <span class="cart_block_container-item-wrap__text-wrap__container_number_minus minus">-</span>
-                                <input type="text" value="{{ product.quantity }}" size="5"/>
+                                <input type="text" data-price-origin="{{ product.price }}" value="{{ product.quantity }}" size="5"/>
                                 <span class="cart_block_container-item-wrap__text-wrap__container_number_plus plus" >+</span>
                             </div>
                             <div class="cart_block_container-item-wrap__text-wrap__container_price">

@@ -342,6 +342,14 @@ class ControllerProductProduct extends Controller {
 				);
 			}
 
+            $data['product_option_and_price'] = false;
+            foreach ($this->model_catalog_product->getProductOptions($this->request->get['product_id']) as $option) {
+                foreach ($option['product_option_value'] as $option_value) {
+                    $data['product_option_and_price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
+                    break;
+                }
+            }
+
 			if ($product_info['minimum']) {
 				$data['minimum'] = $product_info['minimum'];
 			} else {

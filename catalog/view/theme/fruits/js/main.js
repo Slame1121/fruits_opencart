@@ -294,17 +294,23 @@ var Main = {
 			var choosen_price = $(this).data("product-option-value-price");
 			var price = $(this).data("product-price");
 
-            $(".product_card_container-item-wrap__text-wrap__addtocart_price span").text(parseInt(price) + parseInt(choosen_price) + " грн");
+            $(".product_card_container-item-wrap__text-wrap__addtocart_price span").text(parseFloat(price) + parseFloat(choosen_price) + " грн");
 		})
 	},
     initCartChange: function () {
+        $('.cart_block_container-item-wrap__text-wrap__container_number span.plus').on('click', function(){
+        	var count = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').val();
+        	var price = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').data("price-origin");
+            $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text(count*parseFloat(price) + " грн");
+        });
+
         $('.cart_block_container-item-wrap__text-wrap__container_number span.minus').on('click', function(){
-
-        	var count = $(this).parent("cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').val();
-        	var price = $(this).parent("cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text();
-            $(this).parent(".cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text(count*parseInt(price) + " грн");
-
-        })
+            var count = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').val();
+            var price = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').data("price-origin");
+            if(count > 0){
+				$(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text(count*parseFloat(price) + " грн");
+			}
+        });
     },
 	initLoginModal: function () {
 

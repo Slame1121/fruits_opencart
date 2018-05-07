@@ -116,9 +116,14 @@
                             </div>
                             <div class="product_card_container-item-wrap__text-wrap__addtocart_price">
                                 {% if price %}
-                                     {% if not special %}
+                                     {% if product_option_and_price %}
+                                         <span>{{ product_option_and_price }}</span>
+                                     {% elseif not special %}
                                          <span>{{ price }}</span>
-                                        {% else %} <span>{{ special }}</span> <span class="old_price">{{ price }}</span> {% endif %}
+                                     {% else %}
+                                        <span>{{ special }}</span>
+                                        <span class="old_price">{{ price }}</span>
+                                     {% endif %}
                                 {% endif %}
                             </div>
                             <div class="product_card_container-item-wrap__text-wrap__addtocart_button">
