@@ -21,7 +21,7 @@ class ControllerCommonHomeProducts extends Controller {
                                 }
                             }
 
-                            $special_poducts[$key]['special_price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                            $special_poducts[$key]['special_price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product['special'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 
                             break;
                         }
@@ -57,7 +57,7 @@ class ControllerCommonHomeProducts extends Controller {
                                 }
                             }
 
-                            $product_info['special_price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                            $product_info['special_price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 
                             break;
                         }
@@ -84,14 +84,14 @@ class ControllerCommonHomeProducts extends Controller {
                     foreach ($this->model_catalog_product->getProductOptions($product['product_id']) as $option) {
                         foreach ($option['product_option_value'] as $option_value) {
                             if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
-                                if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
+                                if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price'))) {
                                     $new_products[$key]['price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product['price'], $product['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
                                 } else {
                                     $new_products[$key]['price'] = false;
                                 }
                             }
 
-                            $new_products[$key]['special_price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                            $new_products[$key]['special_price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product['special'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 
                             break;
                         }

@@ -16,9 +16,11 @@
             <div class="product_card_container-item">
                 <div class="product_card_container-item-wrap">
                     <div class="product_card_container-item-wrap__images">
+                        {% if return_text != '' %}
                         <div class="product_card_container-item-wrap__images__breadcrumbs">
                            {{ return_text }}
                         </div>
+                        {% endif %}
                         <div class="product_card_container-item-wrap__images__title">
                             {{ heading_title }}
                         </div>
@@ -92,7 +94,7 @@
                                                     </div>
                                                     <div class="product_card_container-item-wrap__text-wrap__addtocart_head_type-wrap">
                                                         {% for option_value in option.product_option_value %}
-                                                        <button data-product-price="{{ price }}" data-product-option-value-price="{{ option_value.price }}" data-product-option-id="{{ option.product_option_id }}" data-product-option-value-id="{{ option_value.product_option_value_id }}" class="type-amount product_option_value {% if loop.index == 1 %}active{% endif %}">{{ option_value.name }}</button>
+                                                        <button data-product-special="{{ clear_special }}" data-product-price="{{ clear_price }}" data-product-option-value-price="{% if option_value.price %}{{ option_value.price }}{% else %}0{% endif %}" data-product-option-id="{{ option.product_option_id }}" data-product-option-value-id="{{ option_value.product_option_value_id }}" class="type-amount product_option_value {% if loop.index == 1 %}active{% endif %}">{{ option_value.name }}</button>
                                                         {% endfor %}
                                                     </div>
 
@@ -115,16 +117,13 @@
                                 </div>
                             </div>
                             <div class="product_card_container-item-wrap__text-wrap__addtocart_price">
-                                {% if price %}
-                                     {% if product_option_and_price %}
-                                         <span>{{ product_option_and_price }}</span>
-                                     {% elseif not special %}
+
+                                     {% if special <= 0 %}
                                          <span>{{ price }}</span>
                                      {% else %}
                                         <span>{{ special }}</span>
                                         <span class="old_price">{{ price }}</span>
                                      {% endif %}
-                                {% endif %}
                             </div>
                             <div class="product_card_container-item-wrap__text-wrap__addtocart_button">
                                 <a class="button-add-to-cart" data-product-id="{{ product_id }}" href="#">

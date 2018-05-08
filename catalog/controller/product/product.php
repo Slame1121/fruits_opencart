@@ -341,12 +341,15 @@ class ControllerProductProduct extends Controller {
 					'required'             => $option['required']
 				);
 			}
+			$data['clear_price'] =  $product_info['price'];
+			$data['clear_special'] =  $product_info['special'];
 
             $data['product_option_and_price'] = false;
             foreach ($this->model_catalog_product->getProductOptions($this->request->get['product_id']) as $option) {
                 foreach ($option['product_option_value'] as $option_value) {
-                    $data['product_option_and_price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
-                    break;
+					$data['price'] = $this->currency->format($this->tax->calculate($option_value['price'] + $product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
+					$data['special'] = $product_info['special'] <= 0 ? 0 : $this->currency->format($this->tax->calculate($option_value['price'] + $product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
+					break;
                 }
             }
 

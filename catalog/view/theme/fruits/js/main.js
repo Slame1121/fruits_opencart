@@ -252,7 +252,7 @@ var Main = {
 	},
 	initAddTocartButton: function () {
 		$('body').on('click','.button-add-to-cart', function(e){
-			e.stopPropagation();
+			e.stopPropagation(); 
 			e.preventDefault();
 			var product_id = $(this).data('product-id');
 			var options = {};
@@ -293,23 +293,19 @@ var Main = {
 		$('.product_option_value').on('click', function(){
 			var choosen_price = $(this).data("product-option-value-price");
 			var price = $(this).data("product-price");
-
+			var special = $(this).data("product-special");
             $(".product_card_container-item-wrap__text-wrap__addtocart_price span").text(parseFloat(price) + parseFloat(choosen_price) + " грн");
+			if(parseFloat(special) > 0){
+				$(".product_card_container-item-wrap__text-wrap__addtocart_price span:not(.old_price)").text(parseFloat(special) + parseFloat(choosen_price) + " грн");
+			}
 		})
 	},
     initCartChange: function () {
         $('.cart_block_container-item-wrap__text-wrap__container_number span.plus').on('click', function(){
-        	var count = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').val();
-        	var price = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').data("price-origin");
-            $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text(count*parseFloat(price) + " грн");
         });
 
         $('.cart_block_container-item-wrap__text-wrap__container_number span.minus').on('click', function(){
-            var count = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').val();
-            var price = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').data("price-origin");
-            if(count > 0){
-				$(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text(count*parseFloat(price) + " грн");
-			}
+
         });
     },
 	initLoginModal: function () {
@@ -671,6 +667,11 @@ $(document).ready(function() {
 		$input.change();
 		var cart_id = $(this).parent().data('cart-id');
 		cart.update(cart_id, $(this).parent().find('input').val());
+		var count = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').val();
+		var price = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').data("price-origin");
+		if(count > 0){
+			$(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text(count*parseFloat(price) + " грн");
+		}
 		return false;
 	});
 	$('#number .plus').click(function () {
@@ -679,6 +680,11 @@ $(document).ready(function() {
 		$input.change();
 		var cart_id = $(this).parent().data('cart-id');
 		cart.update(cart_id, $(this).parent().find('input').val());
+
+		var count = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').val();
+		var price = $(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('div.cart_block_container-item-wrap__text-wrap__container_number input').data("price-origin");
+		$(this).closest(".cart_block_container-item-wrap__text-wrap__container").find('.cart_block_container-item-wrap__text-wrap__container_price span').text(count*parseFloat(price) + " грн");
+
 		return false;
 	});
 
