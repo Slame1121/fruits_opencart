@@ -36,6 +36,7 @@
                                 </div>
                                 <div class="product_list_container-content__items-container__content">
                                     <div class="product_list_container-content__items-container__content-price">
+
                                         <div class="product_list_container-content__items-container__content-price__item">
                                             {% if product.special > 0 %}
                                             <p class="old_price">
@@ -46,6 +47,7 @@
                                                 <p>{{ product.price }}</p>
                                             {% endif %}
                                         </div>
+
                                         <div class="product_list_container-content__items-container__content-price__item">
                                             <div class="raty" data-score="{{ product.rating }}"></div>
                                             <div class="product_list_container-content__items-container__content-price__item-rating">
