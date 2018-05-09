@@ -1,4 +1,38 @@
 .ordering_block{
+
+  & .ordering_block_container{
+    & .checkout_step{
+      & .checkout-step-back{
+        position: absolute;
+        top: 28px;
+        left: 24px;
+        color: black;
+
+        & a:hover{
+          text-decoration: underline;
+          color: #29262f;
+        }
+      }
+    }
+  }
+
+
+  & .ordering_block_container{
+    & .checkout_step:not(.active){
+      & .overlay-checkout-step{
+        position: absolute;
+        border: 1px solid red;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        left: 0;
+        top: 0;
+        display: block;
+        z-index: 4;
+      }
+    }
+  }
+
   &_container{
     display: block;
     position: relative;

@@ -13,8 +13,9 @@
 <section id="ordering" class="ordering_block">
     <div class="container">
         <div class="ordering_block_container">
-            <div {% if  logged %}style="z-index:3;"{% endif %} class="ordering_block_container__login {% if not logged %}active{% endif %}">
+            <div {% if  logged %}style="z-index:3;"{% endif %} class="ordering_block_container__login {% if not logged %}active{% endif %} checkout_step">
                 {% if logged %}
+                <div class="overlay-checkout-step"></div>
                 <div class="ordering_block_container__login-header">
                     <span class="step"><strong>Шаг 1</strong> / 4</span>
                     <img src="/catalog/view/theme/fruits/images/user-login.png" />
@@ -28,7 +29,11 @@
                 </div>
                 {% endif %}
             </div>
-            <div class="ordering_block_container__delivery {% if logged %}active{% endif %}">
+            <div class="ordering_block_container__delivery {% if logged %}active{% endif %} checkout_step">
+                <div class="overlay-checkout-step"></div>
+                <div class="checkout-step-back">
+                    < <a href="#">Назад</a>
+                </div>
                 <div class="ordering_block_container__delivery-header">
                     <span class="step"><strong>Шаг 2</strong> / 4</span>
                     <img src="/catalog/view/theme/fruits/images/delivery.png" />
@@ -43,7 +48,11 @@
                     </div>
                 </div>
             </div>
-            <div class="ordering_block_container__address">
+            <div class="ordering_block_container__address checkout_step">
+                <div class="checkout-step-back">
+                    < <a href="#">Назад</a>
+                </div>
+                <div class="overlay-checkout-step"></div>
                 <div class="ordering_block_container__address-header">
                     <span class="step"><strong>Шаг 3</strong> / 4</span>
                     <img src="/catalog/view/theme/fruits/images/address.png" />
@@ -61,7 +70,11 @@
                     </div>
                 </div>
             </div>
-            <div class="ordering_block_container__paid">
+            <div class="ordering_block_container__paid checkout_step">
+                <div class="checkout-step-back">
+                    < <a href="#">Назад</a>
+                </div>
+                <div class="overlay-checkout-step"></div>
                 <div class="ordering_block_container__paid-header">
                     <span class="step"><strong>Шаг 4</strong> / 4</span>
                     <img src="/catalog/view/theme/fruits/images/paid.png" />
@@ -152,9 +165,10 @@
                              complete: function() {
                              },
                              success: function(json) {
-                             if (json['redirect']) {
-                             location = json['redirect'];
-                             }
+                                 if (json['redirect']) {
+                                    location = json['redirect'];
+                                 }
+
                              },
                              error: function(xhr, ajaxOptions, thrownError) {
                              alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -354,6 +368,16 @@
 
 
     });
+
+    $("body").on('click', '.checkout-step-back a', function(e){
+        e.stopPropagation();
+        e.preventDefault();
+
+        $(this).closest(".checkout_step").prev().addClass('active').css("z-index", "300");
+        $(this).closest(".checkout_step").removeClass('active');
+
+    });
+
     });
 
 </script>

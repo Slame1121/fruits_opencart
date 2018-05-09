@@ -352,7 +352,7 @@ var Main = {
 	},
 	initParalax: function () {
 			$("#leaf_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
-			$("#leaf_contacts_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
+			$("#leaf_contacts_paralax").paroller({ factor: '0.6', type: 'foreground', direction: 'vertical' });
 			$("#leaf_review_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
 			$("#leaf_delivery_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
 	},

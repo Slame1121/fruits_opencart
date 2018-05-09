@@ -109,7 +109,7 @@
 				padding: 0 60px;
 				&_item {
 					border: 10px solid rgba(204, 204, 204, 0.65);
-					padding: 15px 20px;
+					padding: 20px 20px;
 					margin-bottom: 25px;
 					display: flex;
 					&__images {
@@ -164,7 +164,7 @@
 								    font-weight: 300;
 								    color: #000;
 								    padding-bottom: 10px;
-								    border-bottom: 1px solid #ff6d6d;
+									position: relative;
 								    &:after {
 								    	content: '';
 								    	background: url('/catalog/view/theme/fruits/images/arrow-right.png') no-repeat 0 0;
@@ -174,6 +174,24 @@
 								    	position: relative;
 								    	margin-left: 15px;
 								    }
+
+									&:before{
+										content: '';
+										transition: all 1s;
+										background: #9a9b9c;
+										width: 30%;
+										height: 3px;
+										display: block;
+										position: absolute;
+										bottom: -10px;
+										float: left;
+									}
+
+									&:hover::before{
+										width: 100%;
+										height: 3px;
+										background: #f36b5b;
+									}
     							}
 							}
 					    }

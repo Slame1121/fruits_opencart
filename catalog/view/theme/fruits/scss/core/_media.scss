@@ -66,6 +66,12 @@
     }
   }
 
+  .product_list{
+    div.owl-nav {
+      display: none;
+    }
+  }
+
   .product_card {
     &_container {
       &-item {
@@ -874,6 +880,15 @@
     }
 
     .ordering_block{
+
+      & .ordering_block_container{
+        & .checkout_step:not(.active){
+            position: absolute;
+            left: -9999px;
+            top: 0;
+        }
+      }
+
       &_container{
         &__login {
 

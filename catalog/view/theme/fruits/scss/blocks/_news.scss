@@ -1,4 +1,9 @@
 .news{
+
+  & .container{
+    position: relative;
+  }
+
   position: relative;
   &_backgrounds{
     position: absolute;
@@ -22,6 +27,14 @@
     }
 
   }
+
+  & .contacts_banner_background{
+    position: absolute;
+    left: -70px;
+    z-index: 23;
+    top: 1000px;
+  }
+
   &_container{
     margin-top:100px;
     position: relative;
@@ -37,7 +50,7 @@
     &-content{
 
       &__list{
-        padding:0 40px;
+        padding:0;
         .active{
           &:before{
             content: "";
