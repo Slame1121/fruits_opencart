@@ -355,6 +355,9 @@ var Main = {
 			$("#leaf_contacts_paralax").paroller({ factor: '0.6', type: 'foreground', direction: 'vertical' });
 			$("#leaf_review_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
 			$("#leaf_delivery_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
+		setTimeout(function(){
+			$("#leaf_paralax,#leaf_review_paralax,#leaf_contacts_paralax,#leaf_delivery_paralax").parent().css('height','auto');
+		}, 300)
 	},
 	initSearch: function () {
 		$('.top_navbar-container__item-menu__search').on('click', function(e){
