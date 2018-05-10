@@ -2785,9 +2785,9 @@ a { text-decoration: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/blocks\/_fixed_navbar\.scss}line{font-family:\00003165}}
 .fixed_navbar-container-catalog__dropdown > div { background: #fff; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/blocks\/_fixed_navbar\.scss}line{font-family:\00003171}}
-.fixed_navbar-container-catalog button { cursor: pointer; text-transform: uppercase; border: 0 none; background: transparent; padding: 10px; font-size: 16px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/blocks\/_fixed_navbar\.scss}line{font-family:\00003178}}
-.fixed_navbar-container-catalog button img { float: left; margin-right: 10px; }
+.fixed_navbar-container-catalog button { cursor: pointer; text-transform: uppercase; border: 0 none; background: transparent; padding: 10px; font-size: 16px; padding-left: 30px; background-image: url(/catalog/view/theme/fruits/images/normal_state_list.png); background-repeat: no-repeat; background-position: left center; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/blocks\/_fixed_navbar\.scss}line{font-family:\00003184}}
+.fixed_navbar-container-catalog button:hover { background-image: url(/catalog/view/theme/fruits/images/hover_state_list.png); background-repeat: no-repeat; background-position: left center; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/blocks\/_main_banner\.scss}line{font-family:\000031}}
 .main_banner { margin-bottom: 25px; }
@@ -4493,154 +4493,154 @@ box-sizing: border-box;*/ }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003635}}
   .fixed_navbar-container-cart__cart-price { display: none !important; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003638}}
-  .fixed_navbar-container-catalog button { max-width: 120px; font-size: 12px; text-align: right; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003643}}
-  .fixed_navbar-container-catalog button img { margin-top: 5px; }
+  .fixed_navbar-container-catalog button { max-width: 120px; font-size: 12px; text-align: left; margin-left: 10px; padding-left: 30px; padding-right: 0; padding-top: 0; padding-bottom: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003648}}
+  .fixed_navbar-container-catalog button img { margin-top: 5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003653}}
   .fixed_navbar-container .fixed_navbar-container-cart { margin-top: 7px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003654}}
-  .news_container-content__list { padding: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003656}}
-  .news_container-content__list-item { flex-direction: column; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003659}}
+  .news_container-content__list { padding: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003661}}
+  .news_container-content__list-item { flex-direction: column; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003664}}
   .news_container-content__list-item__thumb { display: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003667}}
-  .news_container-footer .news_container-footer__link a { padding: 10px 15px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003672}}
+  .news_container-footer .news_container-footer__link a { padding: 10px 15px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003677}}
   .footer_container { margin: 0; text-align: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003675}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003680}}
   .footer_container-top { flex-direction: column; padding: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003679}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003684}}
   .footer_container-top__navbar-list li { display: block; width: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003688}}
-  .contacts_container { margin-top: 50px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003690}}
-  .contacts_container-content { margin-bottom: 30px; flex-direction: column; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003693}}
-  .contacts_container-content_right { width: auto; text-align: center; }
+  .contacts_container { margin-top: 50px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003695}}
+  .contacts_container-content { margin-bottom: 30px; flex-direction: column; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003698}}
-  .contacts_container-content_left { width: 90%; text-align: center; margin: 0 auto; margin-bottom: 20px; }
+  .contacts_container-content_right { width: auto; text-align: center; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003703}}
+  .contacts_container-content_left { width: 90%; text-align: center; margin: 0 auto; margin-bottom: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003708}}
   .contacts_container-content_left button.form-button-custom { margin: 20px auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003706}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003711}}
   .contacts_container-content_left input.form-input-custom { margin: 10px auto; text-align: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003713}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003718}}
   .contacts_container .contacts_container-content_right .address-wrapper { justify-content: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003717}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003722}}
   .contacts_container .contacts_container-content_right .phones-wrapper { justify-content: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003721}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003726}}
   .contacts_container .contacts_container-content_right .phones-wrapper .phones-wrapper_icon { margin-left: 30px; margin-right: 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003725}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003730}}
   .contacts_container .contacts_container-content_right .address-wrapper .address-wrapper_icon { margin-left: 30px; margin-right: 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003731}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003736}}
   .top_navbar-container { flex-direction: column; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003735}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003740}}
   .top_navbar-container__item-mobile-nav__container { display: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003738}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003743}}
   .top_navbar-container__item-menu { display: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003741}}
-  .top_navbar-container__item:first-child { width: 100%; display: flex; justify-content: space-between; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003746}}
+  .top_navbar-container__item:first-child { width: 100%; display: flex; justify-content: space-between; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003751}}
   .top_navbar-container__item-mobile-nav { display: block; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003749}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003754}}
   .top_navbar-container__item-contacts { padding: 15px 0; text-align: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003760}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003765}}
   .blog_block_container_wrap-item__images img { width: 100%; height: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003771}}
-  .social_block_container-header { padding-top: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003776}}
+  .social_block_container-header { padding-top: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003781}}
   .social_block_container_content__images li { padding: 0 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003778}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003783}}
   .social_block_container_content__images li img { width: 100%; height: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003788}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003793}}
   .res { display: block !important; vertical-align: top; max-width: 100%; width: 100%; overflow-x: auto; white-space: nowrap; border-collapse: collapse; border-spacing: 0; margin: 20px 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003799}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003804}}
   .res { -webkit-overflow-scrolling: touch; background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center; background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center; background-size: 10px 100%, 10px 100%; background-attachment: scroll, scroll; background-repeat: no-repeat; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003807}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003812}}
   .res .responsive { margin: 0; width: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003813}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003818}}
   .main_banner_background { display: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003820}}
-  .paid_block_container-content__wrapper { padding: 0 30px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003825}}
+  .paid_block_container-content__wrapper { padding: 0 30px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003830}}
   .paid_block .paid_block_container-content__wrapper-content__item__container__text_table tbody td:first-child { padding-left: 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003831}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003836}}
   .seo_block.about .about_consultation { margin: 100px 50px 50px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003840}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003845}}
   .faq_block_container-content_wrapper.left { width: 100%; padding: 0 10px 0 10px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003844}}
-  .faq_block_container-content_wrapper.right { width: 100%; padding: 0 10px 0 10px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003849}}
+  .faq_block_container-content_wrapper.right { width: 100%; padding: 0 10px 0 10px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003854}}
   .faq_block_container-content_wrapper__item .yon { line-height: 25px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003852}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003857}}
   .faq_block_container-content_wrapper__item-title { max-width: 90%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003862}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003867}}
   .question_block_container { margin-bottom: 30px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003864}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003869}}
   .question_block_container-content { display: block; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003866}}
-  .question_block_container-content-item { border-bottom: 1px solid #ccc; border-right: 0 none; padding: 40px 0; width: 100%; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003871}}
+  .question_block_container-content-item { border-bottom: 1px solid #ccc; border-right: 0 none; padding: 40px 0; width: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003876}}
   .question_block_container-content-item:last-child { border-bottom: 0 none; padding-bottom: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003877}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003882}}
   .question_block_container-link { margin-bottom: 60px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003886}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003891}}
   .ordering_block .ordering_block_container .checkout_step:not(.active) { position: absolute; left: -9999px; top: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003894}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003899}}
   .ordering_block_container__login { width: auto; margin-left: auto; margin-right: auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003900}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003905}}
   .ordering_block_container__delivery { width: auto; display: block; position: relative; left: 0; margin-left: auto; margin-right: auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003908}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003913}}
   .ordering_block_container__address { width: auto; display: block; position: relative; margin-left: auto; margin-right: auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003915}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003920}}
   .ordering_block_container__paid { width: auto; display: block; position: relative; left: 0; margin-left: auto; margin-right: auto; margin-bottom: 30px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003928}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003933}}
   .cart_block_container-item { position: relative; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003930}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003935}}
   .cart_block_container-item-wrap { display: inline-block; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003932}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003937}}
   .cart_block_container-item-wrap__images { width: 100%; min-height: 180px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003936}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003941}}
   .cart_block_container-item-wrap__text-wrap { display: inline-block; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003938}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003943}}
   .cart_block_container-item-wrap__text-wrap__text { padding-right: 0; width: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003942}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003947}}
   .cart_block_container-item-wrap__text-wrap__container { width: 100%; padding: 0; text-align: left; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003946}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003951}}
   .cart_block_container-item-wrap__text-wrap__container_number { margin-right: 30px; text-align: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003950}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003955}}
   .cart_block_container-item-wrap__text-wrap__container_price { display: inline-block; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003956}}
-  .cart_block_container-item__checkout { display: inline-block; text-align: center; margin: 70px auto 70px; width: 100%; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003961}}
+  .cart_block_container-item__checkout { display: inline-block; text-align: center; margin: 70px auto 70px; width: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003966}}
   .cart_block_container-item__checkout-total { width: 100%; margin-bottom: 30px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003964}}
-  .cart_block_container-item__checkout-total:before { content: ''; display: inline-block; float: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003969}}
+  .cart_block_container-item__checkout-total:before { content: ''; display: inline-block; float: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003974}}
   .cart_block_container-item__checkout-total span { padding-top: 15px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003973}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003978}}
   .cart_block_container-item__checkout-addtocart { width: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003975}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003980}}
   .cart_block_container-item__checkout-addtocart a { float: none; margin: 0 auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003986}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003991}}
   .blog_unit_page img { float: none; margin: 0 auto; display: block; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003993}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\00003998}}
   .about_consultation_container { border-left: none; margin: 40px; padding-left: 0px; } }
-@media (max-width: 600px) { @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031002}}
+@media (max-width: 600px) { @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031007}}
   .container { width: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031007}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031012}}
   .category_block_container_header { text-align: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031009}}
-  .category_block_container_header_select { text-align: left; }
 @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031014}}
+  .category_block_container_header_select { text-align: left; }
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031019}}
   .category_block_container_content_grid-item { width: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031021}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031026}}
   .product_card_container-item-wrap__text-wrap__addtocart_button a span { padding-right: 0; font-size: 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031025}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031030}}
   .feature_product_container-header p { padding: 20px; } }
-@media (max-width: 460px) { @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031034}}
+@media (max-width: 460px) { @media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031039}}
   .catalog_block_container-list[data-carousel="0"] .catalog_block_container-list__item { width: 100% !important; }
-@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031040}}
+@media -sass-debug-info{filename{font-family:file\:\/\/E\:\/OpenServer\/domains\/fruits\.my\/catalog\/view\/theme\/fruits\/scss\/core\/_media\.scss}line{font-family:\000031045}}
   .catalog_block_container-list__item-wrapper-text { max-width: 150px; } }
 
 /*# sourceMappingURL=main.css.map */

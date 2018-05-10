@@ -175,9 +175,16 @@
         background: transparent;
         padding: 10px;
         font-size: 16px;
-        img{
-          float:left;
-          margin-right:10px;
+
+        padding-left: 30px;
+        background-image: url(/catalog/view/theme/fruits/images/normal_state_list.png);
+        background-repeat: no-repeat;
+        background-position: left center;
+
+        &:hover{
+          background-image: url(/catalog/view/theme/fruits/images/hover_state_list.png);
+          background-repeat: no-repeat;
+          background-position: left center;
         }
       }
     }
