@@ -85,6 +85,9 @@ class ControllerProductCategory extends Controller {
 					);
 				}
 			}
+
+			$data['action'] = $this->url->link('product/category', 'path=' . (string)$this->request->get['path']);
+			$data['path'] = (string)$this->request->get['path'];
 		} else {
 			$category_id = 0;
 		}
@@ -156,6 +159,7 @@ class ControllerProductCategory extends Controller {
 			$ills = $this->model_catalog_product->getAttributes($filter_data);
 
 			$data['ills'] = $ills;
+
 
 			$data['categories'] = array();
 

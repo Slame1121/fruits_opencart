@@ -23,7 +23,9 @@
 
                     </select>
                 </div>
-                <form method="get" action="">
+                <form method="get" action="{{ action }}">
+                    <input type="hidden" name="route" value="product/category" />
+                    <input type="hidden" name="path" value="{{ path }}" />
                     <div class="category_block_container_header_select">
                         <span>По заблеванию:</span>
                         <select id="ills_select" multiple="multiple" name="attributes[]"  class="testSelAll2">
@@ -148,7 +150,14 @@
 </section>
 <script type="text/javascript">
     $(document).ready(function () {
-        window.testSelAll2 = $('.testSelAll2').SumoSelect({placeholder: 'Выбрать болезнь',selectAll:true});
+        if($(window).width() > '768'){
+            window.testSelAll2 = $('.testSelAll2').SumoSelect({placeholder: 'Выбрать болезнь',selectAll:true});
+        }else{
+            $('.testSelAll2').SumoSelect({placeholder: 'Выбрать болезнь', okCancelInMulti: true ,
+                triggerChangeCombined: true,
+                forceCustomRendering: true
+            });
+        }
         window.asd = $('.SlectBox').SumoSelect({  csvDispCount: 3, selectAll:true, captionFormatAllSelected: "Все."
         });
         window.sort_select = $('#sort_select').SumoSelect({placeholder: 'Выбрать сортировку',selectAll:false});

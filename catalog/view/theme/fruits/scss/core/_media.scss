@@ -342,7 +342,7 @@
     &_container {
       &-item {
         &-wrap {
-          display: block;
+          flex-direction: column;
           width: 100%;
           &__images {
             width: 100%;
@@ -547,26 +547,32 @@
     width: 100%;
   }
 
-  .seo_block_container-content{
-    &__tabs{
-      ul{
-        li{
-          display: block;
-          width: 100%;
-        }
-      }
-
+  .seo_block_container{
+    &-header p{
+      font-size: 24px;
     }
-    &__wrapper{
-      padding: 0 15px;
-      &-content__item__container{
-        flex-direction: column;
-        &__text{
-          padding: 20px 15px;
+    &-content{
+      &__tabs{
+        ul{
+          li{
+            display: block;
+            width: 100%;
+          }
         }
 
       }
+      &__wrapper{
+        padding: 0 15px;
+        &-content__item__container{
+          flex-direction: column;
+          &__text{
+            padding: 20px 15px;
+          }
+
+        }
+      }
     }
+
 
   }
 
@@ -610,6 +616,9 @@
   }
 
   .catalog_block_container{
+    &-subcategories__content-item a{
+      font-size: 12px;
+    }
     &-list[data-carousel="0"]{
       .catalog_block_container-list__item{
         width: 100%;
@@ -635,11 +644,12 @@
     &-cart__cart-price{
       display: none !important;
     }
-    &-catalog button{
+    &-catalog > button{
       max-width: 120px;
       font-size: 12px;
       text-align: left;
       margin-left: 10px;
+      margin-top: 12px;
       padding-left: 30px;
       padding-right: 0;
       padding-top: 0;
@@ -824,11 +834,63 @@
         &-content {
           &__wrapper {
             padding: 0 30px;
+              &-content__item__container__text_table{
+                tbody td:first-child {
+                  padding-left: 20px;
+                }
+                &__like{
+                  text-align: right;
+                }
+              }
+            table {
+              border: 0;
+              caption {
+                font-size: 1.3em;
+              }
+
+              thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+              }
+
+              tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+              }
+
+              td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .7em;
+                text-align: right;
+              }
+
+              td::before {
+                /*
+                * aria-label has no advantage, it won't be read inside a table
+                content: attr(aria-label);
+                */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+              }
+
+              td:last-child {
+                border-bottom: 0;
+              }
+            }
+
+
           }
         }
-      }
-      .paid_block_container-content__wrapper-content__item__container__text_table tbody td:first-child {
-        padding-left: 20px;
       }
     }
     
@@ -862,7 +924,9 @@
         }
       }      
     }
-
+  .login_modal-content__tabs ul li a{
+    font-size: 14px;
+  }
     .question_block{
       &_container{
         margin-bottom: 30px;
@@ -1043,6 +1107,9 @@
 
   }
   .catalog_block_container-list__item-wrapper-text {
-    max-width: 150px;
+    max-width: 180px;
+    p{
+      font-size: 13px;
+    }
   }
 }

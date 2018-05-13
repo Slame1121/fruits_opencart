@@ -35,6 +35,37 @@
               display: flex;
               align-items: center;
               justify-content: space-between;
+
+              table {
+                border-collapse: collapse;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                table-layout: fixed;
+
+                caption {
+                  font-size: 1.5em;
+                  margin: .5em 0 .75em;
+                }
+
+                tr {
+                  padding: .35em;
+                }
+
+                th,
+                td {
+                  padding: .625em;
+                  text-align: center;
+                }
+
+                th {
+                  font-size: .85em;
+                  letter-spacing: .1em;
+                  text-transform: uppercase;
+                }
+              }
+
+
               &__text {
                 padding:0;
                 display: block;
@@ -62,7 +93,7 @@
                       height: 1px;
                       background: #cccccc;
                       box-shadow: 0 0 5px rgba(0, 0, 0, 0.45);
-                    }                  
+                    }
                   }
                   tbody {
                     td {
@@ -140,7 +171,8 @@
                     box-shadow: none;
                   }
                 }
-              } 
+              }
+
             }
           }
         }

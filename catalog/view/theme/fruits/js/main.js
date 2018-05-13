@@ -352,11 +352,11 @@ var Main = {
 	},
 	initParalax: function () {
 			$("#leaf_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
-			$("#leaf_contacts_paralax").paroller({ factor: '0.6', type: 'foreground', direction: 'vertical' });
+			$("#leaf_contacts_paralax").paroller({ factor: '-0.6', type: 'foreground', direction: 'vertical' });
 			$("#leaf_review_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
 			$("#leaf_delivery_paralax").paroller({ factor: '0.8', type: 'foreground', direction: 'vertical' });
 		setTimeout(function(){
-			$("#leaf_paralax,#leaf_review_paralax,#leaf_contacts_paralax,#leaf_delivery_paralax").parent().css('height','auto');
+			//$("#leaf_contacts_paralax").css('top','100px');
 		}, 300)
 	},
 	initSearch: function () {
@@ -496,12 +496,22 @@ var Main = {
 				container.addClass('to_left');
 				var index = container.index();
 				container.before('<div class="spawn" style="width:400px;height:340px;"></div>');
-				container.css({
-					top: (340 * (Math.floor(index/3) )  +(Math.floor(index/3))*10) + 'px'
-				})
-				catalog_container.parent().find('.catalog_block_container-subcategories').css({
-					top: (340 * (parseInt(Math.floor(index/3) )) + 60 +(Math.floor(index/3))*10) + 'px'
-				});
+				if($(window).width() > 768){
+					container.css({
+						top: (340 * (Math.floor(index/3) )  +(Math.floor(index/3))*10) + 'px'
+					})
+					catalog_container.parent().find('.catalog_block_container-subcategories').css({
+						top: (340 * (parseInt(Math.floor(index/3) )) + 60 +(Math.floor(index/3))*10) + 'px'
+					});
+				}else{
+					container.css({
+						top: (340 * (Math.floor(index) )  +(Math.floor(index))*10) + 'px'
+					})
+					catalog_container.parent().find('.catalog_block_container-subcategories').css({
+						top: (340 * (parseInt(Math.floor(index) )) + 60 +(Math.floor(index))*10) + 'px'
+					});
+				}
+
 			}
 
 			var n = container.data('position');

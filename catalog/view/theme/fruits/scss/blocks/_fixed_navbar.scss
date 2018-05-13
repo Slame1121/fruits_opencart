@@ -134,6 +134,12 @@
           height: 516px;
           z-index:226;
         }
+        >button{
+          background-image: url(/catalog/view/theme/fruits/images/hover_state_list.png);
+          background-repeat: no-repeat;
+          background-position: left center;
+          font-weight: bold;
+        }
       }
 
       &__dropdown{
@@ -181,11 +187,7 @@
         background-repeat: no-repeat;
         background-position: left center;
 
-        &:hover{
-          background-image: url(/catalog/view/theme/fruits/images/hover_state_list.png);
-          background-repeat: no-repeat;
-          background-position: left center;
-        }
+
       }
     }
   }
