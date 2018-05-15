@@ -1,16 +1,19 @@
 .ordering_block{
 
-  & .ordering_block_container{
-    & .checkout_step{
-      & .checkout-step-back{
+  .ordering_block_container{
+    .checkout_step{
+      .checkout-step-back{
         position: absolute;
         top: 28px;
         left: 24px;
         color: black;
 
-        & a:hover{
-          text-decoration: underline;
-          color: #29262f;
+        a{
+          color: #8c8c8c;
+          &:hover{
+            text-decoration: none;
+            color: #000;
+          }
         }
       }
     }

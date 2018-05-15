@@ -5633,9 +5633,11 @@ a {
   top: 28px;
   left: 24px;
   color: black; }
-  .ordering_block .ordering_block_container .checkout_step .checkout-step-back a:hover {
-    text-decoration: underline;
-    color: #29262f; }
+  .ordering_block .ordering_block_container .checkout_step .checkout-step-back a {
+    color: #8c8c8c; }
+    .ordering_block .ordering_block_container .checkout_step .checkout-step-back a:hover {
+      text-decoration: none;
+      color: #000; }
 .ordering_block .ordering_block_container .checkout_step:not(.active) .overlay-checkout-step {
   position: absolute;
   width: 100%;

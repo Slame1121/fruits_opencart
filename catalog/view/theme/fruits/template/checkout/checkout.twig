@@ -32,7 +32,7 @@
             <div class="ordering_block_container__delivery {% if logged %}active{% endif %} checkout_step">
                 <div class="overlay-checkout-step"></div>
                 <div class="checkout-step-back">
-                    < <a href="#">Назад</a>
+                    <a href="#">< Назад</a>
                 </div>
                 <div class="ordering_block_container__delivery-header">
                     <span class="step"><strong>Шаг 2</strong> / 4</span>
@@ -50,7 +50,7 @@
             </div>
             <div class="ordering_block_container__address checkout_step">
                 <div class="checkout-step-back">
-                    < <a href="#">Назад</a>
+                    <a href="#">< Назад</a>
                 </div>
                 <div class="overlay-checkout-step"></div>
                 <div class="ordering_block_container__address-header">
@@ -72,7 +72,7 @@
             </div>
             <div class="ordering_block_container__paid checkout_step">
                 <div class="checkout-step-back">
-                    < <a href="#">Назад</a>
+                    <a href="#">< Назад</a>
                 </div>
                 <div class="overlay-checkout-step"></div>
                 <div class="ordering_block_container__paid-header">
@@ -372,9 +372,9 @@
     $("body").on('click', '.checkout-step-back a', function(e){
         e.stopPropagation();
         e.preventDefault();
-
-        $(this).closest(".checkout_step").prev().addClass('active').css("z-index", "300");
         $(this).closest(".checkout_step").removeClass('active');
+        $(this).closest(".checkout_step").prev().addClass('active').removeAttr('style');
+
 
     });
 
