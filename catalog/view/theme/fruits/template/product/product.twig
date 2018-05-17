@@ -24,7 +24,15 @@
                         <div class="product_card_container-item-wrap__images__title">
                             {{ heading_title }}
                         </div>
-                        <img src="{{ thumb }}">
+
+                        <div class="fotorama" data-nav="thumbs" data-width="100%" data-ratio="800/800">
+                            <img src="{{ thumb }}">
+                            {% if images %}
+                                {% for image in images %}
+                                    <img src="{{ image.popup }}" />
+                                {% endfor %}
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="product_card_container-item-wrap__text-wrap">
                         <div class="product_card_container-item-wrap__text-wrap__head">

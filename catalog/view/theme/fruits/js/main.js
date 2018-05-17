@@ -672,6 +672,7 @@ $(document).ready(function(){
 /* -dp- number product cart -dp- */
 
 $(document).ready(function() {
+
 	$('#number .minus').click(function () {
 		var $input = $(this).parent().find('input');
 		var count = parseInt($input.val()) - 1;
