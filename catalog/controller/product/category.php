@@ -68,26 +68,37 @@ class ControllerProductCategory extends Controller {
 			$parts = explode('_', (string)$this->request->get['path']);
 
 			$category_id = (int)array_pop($parts);
+			$category_info = $this->model_catalog_category->getCategory($category_id);
+			if(isset($category_info['parent_id'])){
+				while($category_info['parent_id'] > 0){
+					$category_info = $this->model_catalog_category->getCategory($category_info['parent_id']);
+					$data['breadcrumbs'][] = array(
+						'text' => $category_info['name'],
+						'href' => $this->url->link('product/category', 'path=' . $category_info['category_id'] . $url)
+					);
+				}
+			}
 
 			foreach ($parts as $path_id) {
 				if (!$path) {
 					$path = (int)$path_id;
 				} else {
+
 					$path .= '_' . (int)$path_id;
 				}
 
-				$category_info = $this->model_catalog_category->getCategory($path_id);
+				//$category_info = $this->model_catalog_category->getCategory($path_id);
 
 				if ($category_info) {
-					$data['breadcrumbs'][] = array(
+					/*$data['breadcrumbs'][] = array(
 						'text' => $category_info['name'],
 						'href' => $this->url->link('product/category', 'path=' . $path . $url)
-					);
+					);*/
 				}
 			}
 
-			$data['action'] = $this->url->link('product/category', 'path=' . (string)$this->request->get['path']);
-			$data['path'] = (string)$this->request->get['path'];
+			$data['action'] = $this->url->link('product/category', 'path=' . $category_id);
+			$data['path'] = $category_id;
 		} else {
 			$category_id = 0;
 		}
@@ -370,7 +381,11 @@ class ControllerProductCategory extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
-
+			if (isset($this->request->get['attributes']) && $this->request->get['attributes']) {
+				foreach($this->request->get['attributes'] as $attribute_id){
+					$url .= urlencode('&attributes[]=' . (int)$attribute_id);
+				}
+			}
 			$pagination = new Pagination();
 			$pagination->total = $product_total;
 			$pagination->page = $page;

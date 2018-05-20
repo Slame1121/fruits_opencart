@@ -73,7 +73,8 @@ function uloginCallback(token){
                             .replace(/(\?|&)$/, '');
                         location.href = currentUrl;
 					}
-                    if(data.redirect){location.href = data.redirect; }
+					// if(data.redirect){location.href = data.redirect; }
+					if(data.redirect){location.reload(); }
 					break;
 			}
 

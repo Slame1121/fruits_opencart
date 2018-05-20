@@ -515,6 +515,19 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+
+		if (!empty($data['filter_specials'])) {
+			$sql .= " and (SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) > 0";
+		}
+
+
+		if (!empty($data['filter_attributes'])) {
+			foreach($data['filter_attributes'] as $key => $val){
+				$data['filter_attributes'][$key] = (int)$val;
+			}
+			$sql .= " and (SELECT COUNT(*) FROM " . DB_PREFIX . "product_attribute pa WHERE pa.attribute_id in (".implode(',',$data['filter_attributes']).") and pa.product_id = p.product_id) > 0 ";
+		}
+
 		if (!empty($data['filter_name']) || !empty($data['filter_tag'])) {
 			$sql .= " AND (";
 
