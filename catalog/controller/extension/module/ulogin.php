@@ -170,7 +170,7 @@ class ControllerExtensionModuleUlogin extends Controller {
 					'msg' => $msg,
 					'networks' => $networks,
 					'type' => 'success',
-                    'redirect' => $this->url->link('account/account', '', true)
+                    'redirect' => $this->url->link($this->request->get['route'] , '', true)
 				));
 				return;
 			}

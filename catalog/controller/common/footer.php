@@ -25,6 +25,8 @@ class ControllerCommonFooter extends Controller {
 			$data['form_login_ulogin'] = $this->load->controller('extension/module/ulogin', $setting_info);
 		}
 
+		$data['logged'] = $this->customer->isLogged();
+
 
 		$data['config_social_facebook'] = $this->config->get('config_social_facebook');
 		$data['config_social_youtube'] = $this->config->get('config_social_youtube');

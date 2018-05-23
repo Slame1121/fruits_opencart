@@ -41,54 +41,57 @@
         </div>
     </div>
 </section>
-<section class="hidden_section">
-    <div class="remodal" data-remodal-id="login-modal">
-        <button data-remodal-action="close" class="remodal-close"></button>
-        <div class="login_modal">
-            <div class="login_modal-header">
-                <span>Регистрация</span>
-            </div>
-            <div class="login_modal-content">
-                <div class="tabs_container">
-                    <div class="tabs_items">
-                        <div id="tab_register" class="login_modal-content__form active">
-                            <form action="{{ register_link }}"  id="register_form">
-                                <input type="email" name="email" value="" placeholder="Email" />
-                                <input type="password" name="password" value="" placeholder="Пароль" />
-                                <input type="password" name="confirm" value="" placeholder="Повторите пароль" />
-                            </form>
+{% if not logged %}
+
+    <section class="hidden_section">
+        <div class="remodal" data-remodal-id="login-modal">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <div class="login_modal">
+                <div class="login_modal-header">
+                    <span>Регистрация</span>
+                </div>
+                <div class="login_modal-content">
+                    <div class="tabs_container">
+                        <div class="tabs_items">
+                            <div id="tab_register" class="login_modal-content__form active">
+                                <form action="{{ register_link }}"  id="register_form">
+                                    <input type="email" name="email" value="" placeholder="Email" />
+                                    <input type="password" name="password" value="" placeholder="Пароль" />
+                                    <input type="password" name="confirm" value="" placeholder="Повторите пароль" />
+                                </form>
+                            </div>
+                            <div  id="tab_login" class="login_modal-content__form">
+                                <form action="{{ login_link }}"   id="login_form">
+                                    <input type="email" name="email" value="" placeholder="Email" />
+                                    <input type="password" name="password" value="" placeholder="Пароль" />
+                                </form>
+                            </div>
+                            <div id="tab_remember" class="login_modal-content__form">
+                                <form  action="{{ remember_link }}"  id="remember_form">
+                                    <input type="email" name="email" value="" placeholder="Email" />
+                                </form>
+                            </div>
                         </div>
-                        <div  id="tab_login" class="login_modal-content__form">
-                            <form action="{{ login_link }}"   id="login_form">
-                                <input type="email" name="email" value="" placeholder="Email" />
-                                <input type="password" name="password" value="" placeholder="Пароль" />
-                            </form>
-                        </div>
-                        <div id="tab_remember" class="login_modal-content__form">
-                            <form  action="{{ remember_link }}"  id="remember_form">
-                                <input type="email" name="email" value="" placeholder="Email" />
-                            </form>
+                        <div class="login_modal-content__tabs">
+                            <ul class="tabs_list">
+                                <li><a data-form-id="register_form" class="active" href="#tab_register">Регистрация</a></li>
+                                <li><a data-form-id="login_form"  href="#tab_login">Вход</a></li>
+                                <li><a data-form-id="remember_form" href="#tab_remember">Восстановление</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="login_modal-content__tabs">
-                        <ul class="tabs_list">
-                            <li><a data-form-id="register_form" class="active" href="#tab_register">Регистрация</a></li>
-                            <li><a data-form-id="login_form"  href="#tab_login">Вход</a></li>
-                            <li><a data-form-id="remember_form" href="#tab_remember">Восстановление</a></li>
-                        </ul>
+                    <div class="login_modal-content__submit">
+                        <button type="submit" form="register_form"><span>Регистрация</span></button>
                     </div>
-                </div>
-                <div class="login_modal-content__submit">
-                    <button type="submit" form="register_form"><span>Регистрация</span></button>
-                </div>
-                <div class="login_modal-content__social">
-                    <p>Вход через: <a onclick="$('.ulogin-button-facebook').click(); return false;" href="#"><img src="/catalog/view/theme/fruits/images/icon-facebook.png" /></a></p>
-                    {{ form_login_ulogin }}
+                    <div class="login_modal-content__social">
+                        <p>Вход через: <a onclick="$('.ulogin-button-facebook').click(); return false;" href="#"><img src="/catalog/view/theme/fruits/images/icon-facebook.png" /></a></p>
+                        {{ form_login_ulogin }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 {% for script in scripts %}
     <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
