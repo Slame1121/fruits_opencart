@@ -38,7 +38,7 @@ class ControllerBlogBlog extends Controller {
 			foreach($posts as $post){
 				$data['posts'][] = [
 					'title' => $post['title'],
-					'description' => html_entity_decode($post['description']),
+					'description' => utf8_substr(strip_tags(html_entity_decode($post['description'])),0,220) . '...',
 					'image' => $this->model_tool_image->resize($post['image'], 600, 340),
 					'link' => $this->url->link('blog/blog', 'post_id=' .$post['post_id'])
 				];
