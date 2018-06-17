@@ -5677,6 +5677,22 @@ a {
       z-index: 300; }
       .ordering_block_container__login.active .step {
         color: #000; }
+    .ordering_block_container__login-content__continue {
+      margin-bottom: 30px; }
+      .ordering_block_container__login-content__continue button {
+        border: 0 none;
+        display: block;
+        padding: 20px 35px;
+        color: #fff;
+        font-size: 18px;
+        background: #a4e243;
+        margin: 0 auto;
+        cursor: pointer; }
+        .ordering_block_container__login-content__continue button.checked:before {
+          content: "\f14a"; }
+        .ordering_block_container__login-content__continue button:before {
+          font-family: 'Font Awesome 5 Free';
+          content: "\f0c8"; }
     .ordering_block_container__login-content .login__form-submit {
       padding-top: 20px; }
       .ordering_block_container__login-content .login__form-submit button {

@@ -99,6 +99,13 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
+
+        $('.ordering_block').on('click', '.ordering_block_container__login-content__continue button',function(){
+            $(this).toggleClass('checked');
+            $('.ordering_block_container__login-content .tabs_container').toggleClass('opened');
+            $('.ordering_block_container__login-content .ordering_block_container__login-content__without').toggleClass('opened');
+        })
+
     {% if not logged %}
 
         $.ajax({
