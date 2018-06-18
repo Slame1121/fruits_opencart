@@ -125,11 +125,11 @@ class ControllerCheckoutShippingAddress extends Controller {
 				if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
 					//$json['error']['address_1'] = $this->language->get('error_address_1');
 				}
-
-				if ((utf8_strlen(trim($this->request->post['city'])) < 2) || (utf8_strlen(trim($this->request->post['city'])) > 128)) {
-					//$json['error']['city'] = $this->language->get('error_city');
-				}
 */
+				if ((utf8_strlen(trim($this->request->post['shipping_city'])) < 2) || (utf8_strlen(trim($this->request->post['shipping_city'])) > 128)) {
+					$json['error']['shipping_city'] = $this->language->get('error_city');
+				}
+
 				$this->load->model('localisation/country');
 
 				//$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
@@ -139,7 +139,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 				//}
 
 				//if ($this->request->post['country_id'] == '') {
-				//	$json['error']['country'] = $this->language->get('error_country');
+				//	$json['error']['country'] = $this->language->get('e rror_country');
 				//}
 
 				if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '' || !is_numeric($this->request->post['zone_id'])) {
@@ -167,10 +167,8 @@ class ControllerCheckoutShippingAddress extends Controller {
 					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($address_id);
 
 					$this->session->data['shipping_address']['shipping_city'] = isset($this->request->post['shipping_city']) ? $this->request->post['shipping_city'] : '';
-					$this->session->data['shipping_address']['shipping_street'] =  isset($this->request->post['shipping_city']) ? $this->request->post['shipping_street'] : '';
-					$this->session->data['shipping_address']['shipping_house'] =  isset($this->request->post['shipping_city']) ? $this->request->post['shipping_house'] : '';
-					$this->session->data['shipping_address']['shipping_flat'] = isset($this->request->post['shipping_city']) ? $this->request->post['shipping_flat'] : '';
-					$this->session->data['shipping_address']['shipping_new_post'] =  isset($this->request->post['shipping_city']) ? $this->request->post['shipping_new_post'] : '';
+					$this->session->data['shipping_address']['shipping_street'] =  isset($this->request->post['shipping_street']) ? $this->request->post['shipping_street'] : '';
+					$this->session->data['shipping_address']['shipping_new_post'] =  isset($this->request->post['shipping_new_post']) ? $this->request->post['shipping_new_post'] : '';
 
 					// If no default address ID set we use the last address
 					if (!$this->customer->getAddressId()) {

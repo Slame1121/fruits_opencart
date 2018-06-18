@@ -22,7 +22,9 @@
                 </div>
                 <div class="ordering_block_container__login-content">
                         <input disabled type="text" name="firstname" value="{{ firstname }}" placeholder="Имя" />
-                        <input disabled type="text" name="email" value="{{ email }}" placeholder="Email" />
+                    <input disabled type="text" name="firstname" value="{{ customer_telephone }}" placeholder="Телефон" />
+
+                    <input disabled type="text" name="email" value="{{ email }}" placeholder="Email" />
                         <div class="login__form-submit">
                             <button type="submit" form="login_form_checkout"><span>Продолжить</span></button>
                         </div>
@@ -40,11 +42,14 @@
                     <span>Способ доставки</span>
                 </div>
                 <div class="ordering_block_container__delivery-content">
-                    <button disabled class="ordering_block_container__delivery-content__button delivery"><span>Доставка курьером Херсон</span></button>
-                    <button disabled class="ordering_block_container__delivery-content__button delivery"><span>Новая почта</span></button>
-                    <button disabled class="ordering_block_container__delivery-content__button delivery active"><span>Самовывоз</span></button>
+                    <button name="shipping_method" value="ukr_post.ukr_post" class="ordering_block_container__delivery-content__button active"><span>Доставка Укрпочта</span></button>
+                    <button name="shipping_method" value="citylink.citylink" class="ordering_block_container__delivery-content__button "><span>Доставка по городу (Херсон)  </span></button>
+                    <button name="shipping_method" value="mist_express.mist_express" class="ordering_block_container__delivery-content__button "><span>Доставка через "Мист Экспресс"</span></button>
+                    <button name="shipping_method" value="new_post.new_post" class="ordering_block_container__delivery-content__button "><span>Доставка через "Новая почта"</span></button>
+                    <button name="shipping_method" value="pickup.pickup" class="ordering_block_container__delivery-content__button "><span>Самовывоз из офиса (Херсон, п-т Текстильщиков, 7)</span></button>
+
                     <div class="ordering_block_container__delivery-content-submit">
-                        <button disabled type="submit"><span>Продолжить</span></button>
+                        <button type="submit"><span>Продолжить</span></button>
                     </div>
                 </div>
             </div>
@@ -198,6 +203,10 @@
     }).on('click','.ordering_block_container__address-content-submit button',function(e){
         e.stopPropagation();
         e.preventDefault();
+        $('.p_or').removeClass('error').text('или');
+        if($('textarea[name="shipping_street"]').val() === '' && $('input[name="shipping_new_post"]').val() === ''){
+            $('.p_or').text('Одно из полей домашний адрес или адрес отделения обязательно для заполнения!').addClass('error');
+        }
         $.ajax({
             url: 'index.php?route=checkout/shipping_address/save',
             type: 'post',
@@ -206,10 +215,14 @@
             beforeSend: function() {
             },
             success: function(json) {
+                $('.ordering_block_container__address-content p.error:not(.p_or)').remove();
                 if (json['redirect']) {
                     location = json['redirect'];
                 } else if (json['error']) {
-
+                    for (i in json['error']) {
+                        var element = $('input[name="' + i + '"]');
+                        $(element).after('<p class="error">' + json['error'][i] + '</p>');
+                    }
                 } else {
                     $.ajax({
                         url: 'index.php?route=checkout/payment_method',
@@ -242,7 +255,7 @@
         $.ajax({
             url: 'index.php?route=checkout/shipping_method/save',
             type: 'post',
-            data: {shipping_method: $('button[name=shipping_method]').val()},
+            data: {shipping_method: $('button[name=shipping_method].active').val()},
             dataType: 'json',
             beforeSend: function() {
             },

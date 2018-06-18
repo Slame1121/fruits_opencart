@@ -1,5 +1,8 @@
 .ordering_block{
-
+  p.error{
+    color:red;
+    text-align: center;
+  }
   .ordering_block_container{
     .checkout_step{
       .checkout-step-back{
@@ -42,7 +45,7 @@
     &__login {
       display: inline-block;
       width: 460px;
-      height: 575px;
+      height: 675px;
       padding: 30px;
       box-sizing: border-box;
       box-shadow: 0 0 15px #00000052;
@@ -261,7 +264,7 @@
     &__delivery{
       display: inline-block;
       width: 460px;
-      height: 575px;
+      height: 675px;
       padding: 30px;
       box-sizing: border-box;
       box-shadow: 0 0 15px #00000052;
@@ -362,7 +365,7 @@
     &__address{
       display: inline-block;
       width: 460px;
-      height: 575px;
+      height: 675px;
       padding: 30px;
       box-sizing: border-box;
       box-shadow: 0 0 15px #00000052;
@@ -399,7 +402,7 @@
       }
       &-content {
         display: block;
-        input {
+        input,textarea {
           display: block;
           position: relative;
           width: 100%;
@@ -450,7 +453,7 @@
     &__paid{
       display: inline-block;
       width: 460px;
-      height: 575px;
+      height: 675px;
       padding: 30px;
       box-sizing: border-box;
       box-shadow: 0 0 15px #00000052;

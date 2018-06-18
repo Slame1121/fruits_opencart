@@ -831,7 +831,6 @@ class ControllerSaleOrder extends Controller {
 
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['payment_method'] = $order_info['payment_method'];
-
 			// Payment Address
 			if ($order_info['payment_address_format']) {
 				$format = $order_info['payment_address_format'];
@@ -900,7 +899,7 @@ class ControllerSaleOrder extends Controller {
 				'country'   => $order_info['shipping_country']
 			);
 
-			$data['shipping_address'] = $order_info['shipping_city'].', ул. '.$order_info['shipping_street'].' дом' . $order_info['shipping_house'].' кв. '.$order_info['shipping_flat'];
+			$data['shipping_address'] = $order_info['shipping_city'].', '.$order_info['shipping_street'].' '.$order_info['shipping_new_post'];
 
 			// Uploaded files
 			$this->load->model('tool/upload');
