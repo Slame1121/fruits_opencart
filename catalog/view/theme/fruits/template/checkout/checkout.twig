@@ -25,6 +25,7 @@
                     <input disabled type="text" name="firstname" value="{{ customer_telephone }}" placeholder="Телефон" />
 
                     <input disabled type="text" name="email" value="{{ email }}" placeholder="Email" />
+                    <p><a href="{{ account_link }}">Изменить информацию</a></p>
                         <div class="login__form-submit">
                             <button type="submit" form="login_form_checkout"><span>Продолжить</span></button>
                         </div>
@@ -65,10 +66,11 @@
                 </div>
                 <div class="ordering_block_container__address-content">
                     <form id="address_form">
-                        <input disabled type="text" name="name" value="" placeholder="Ваш город*" />
-                        <input disabled type="text" name="street" value="" placeholder="Ваша улица*" />
-                        <input disabled type="text" name="number-home" value="" placeholder="Номер вашего дома*" />
-                        <input disabled type="text" name="number-room" value="" placeholder="Номер вашей квартиры*" />
+                        <input type="text" id="input-shipping-city" name="shipping_city" value="" placeholder="Ваш город*" />
+                        <br />
+                        <input  type="text" name="shipping_new_post" value="" placeholder="Адрес и номер отделения почты" />
+                        <p class="p_or">или</p>
+                        <textarea  name="shipping_street"  placeholder="Ваш домашний Адрес (пример: ул Богородицкая 15, дом 3,кв 94, вход со стороны магазина)" ></textarea>
                     </form>
                     <div class="ordering_block_container__address-content-submit">
                         <button disabled form="address_form" type="submit"><span>Продолжить</span></button>
