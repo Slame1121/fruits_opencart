@@ -4619,8 +4619,7 @@ a {
               .paid_block_container-content__wrapper-content__item__container__text_table tbody td {
                 border: 0 none;
                 padding: 6px 20px;
-                text-transform: uppercase;
-                text-align: left; }
+                text-transform: uppercase; }
                 .paid_block_container-content__wrapper-content__item__container__text_table tbody td:first-child {
                   padding-left: 0; }
               .paid_block_container-content__wrapper-content__item__container__text_table__like {
